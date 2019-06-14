@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Widr Lite</string>
+
+    <string name="nav_title_news">News</string>
+    <string name="nav_title_messages">Messages</string>
+    <string name="nav_title_create">Create</string>
+    <string name="nav_title_notifications">Notifications</string>
+    <string name="nav_title_profile">Profile</string>
+
+    <string name="default_error_api">Something went wrong on our side</string>
+    <string name="default_error_submit">Something went wrong, try again later</string>
+    <string name="default_error_password">Password length should be at least 6 symbols</string>
+    <string name="default_error_no_internet">Please, check your internet connection</string>
+    <string name="default_error_long_message">Maximum length of the message is 600 symbols</string>
+
+
+
 </resources>
