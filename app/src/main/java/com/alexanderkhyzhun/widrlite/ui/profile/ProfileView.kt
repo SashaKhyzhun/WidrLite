@@ -40,4 +40,7 @@ interface ProfileView : MvpView, ErrorView, LoadingView {
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun savePhotoFromStorage(photo: Bitmap)
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onClickedBurger()
+
 }

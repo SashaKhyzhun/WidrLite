@@ -55,4 +55,8 @@ class ProfilePresenter : BasePresenter<ProfileView>(), KoinComponent {
         useCase.savePhoto(photo)
     }
 
+    fun onClickBurger() {
+        viewState.onClickedBurger()
+    }
+
 }

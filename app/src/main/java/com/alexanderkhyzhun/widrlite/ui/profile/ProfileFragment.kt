@@ -21,6 +21,9 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.jakewharton.rxbinding2.view.clicks
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.item_burger_icon.*
+import kotlinx.android.synthetic.main.item_profile_proposal.*
+import org.jetbrains.anko.support.v4.toast
 import org.koin.android.ext.android.inject
 import java.util.concurrent.TimeUnit
 
@@ -68,6 +71,12 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe { presenter.onClickImport() }
+
+        fragment_profile_iv_burger.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { presenter.onClickBurger() }
     }
 
 
@@ -102,7 +111,11 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
     }
 
     override fun onClickedProposal() {
+        toast("Proposal")
+    }
 
+    override fun onClickedBurger() {
+        toast("Burger")
     }
 
     override fun savePhotoFromCamera(photo: Bitmap) {
@@ -132,7 +145,6 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
     companion object {
         const val TAG = "ProfileFragment"
         const val PAGER_POSITION = 3
-
 
 
         fun newInstance() = ProfileFragment()

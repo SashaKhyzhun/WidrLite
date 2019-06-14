@@ -2,10 +2,10 @@
 <resources>
 
     <!--    Primary     -->
-    <color name="primary">#5f3284</color>
-    <color name="primaryLight">#654e7a</color>
-    <color name="primaryDark">#160824</color>
-    <color name="primaryAccept">#5c007a</color>
+    <color name="primary">#2196F3</color>
+    <color name="primaryLight">#BBDEFB</color>
+    <color name="primaryDark">#1976D2</color>
+    <color name="primaryAccept">#03A9F4</color>
     <color name="primaryText">#ffffff</color>
     <color name="primaryHint">#9aa1a6</color>
     <color name="primaryHintGray">#F1F1F1</color>
@@ -22,7 +22,6 @@
     <color name="gradient_profile_start">#227998</color>
     <color name="gradient_profile_end">#229b56</color>
 
-
     <color name="error">#BE1405</color>
     <color name="inactive">#505a60</color>
     <color name="button_dark">#3a1d53</color>
@@ -33,6 +32,9 @@
     <color name="profile_proposal_foreground">#ffceaf</color>
     <color name="profile_proposal_text">#fe5602</color>
     <color name="profile_proposal_icon">@color/profile_proposal_text</color>
+    <color name="profile_menu_background">#dae2fe</color>
+    <color name="profile_menu_foreground">#224ff3</color>
+    <color name="profile_bottom_line">#e5e3e5</color>
 
 
 </resources>
