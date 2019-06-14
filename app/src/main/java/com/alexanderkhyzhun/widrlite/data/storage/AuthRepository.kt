@@ -6,8 +6,6 @@ package com.alexanderkhyzhun.widrlite.data.storage
  */
 interface AuthRepository {
 
-    fun signIn()
-    fun signUp()
     fun logout()
     fun isUserAuthorized(): Boolean
 

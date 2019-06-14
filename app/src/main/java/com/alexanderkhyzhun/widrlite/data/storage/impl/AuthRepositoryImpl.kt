@@ -13,18 +13,11 @@ class AuthRepositoryImpl(
     private val api: Api
 ): AuthRepository {
 
-    override fun signIn() {
-
-    }
-
-    override fun signUp() {
-
-    }
-
-    override fun logout() {
-
-    }
 
     override fun isUserAuthorized(): Boolean = storage.getAuthStatus()
+
+    override fun logout() {
+        storage.clear()
+    }
 
 }

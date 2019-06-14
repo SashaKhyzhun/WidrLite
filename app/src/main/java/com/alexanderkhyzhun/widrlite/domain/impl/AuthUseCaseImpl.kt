@@ -35,10 +35,6 @@ class AuthUseCaseImpl(
 
     override fun nextButton(): BehaviorSubject<Boolean> = signUpRepository.nextButton()
 
-    override fun signUpAccount(): Observable<ResponseBody> {
-        signUpRepository.signUpAccount()
+    override fun signUpAccount(): Observable<Boolean> = signUpRepository.signUpAccount()
 
-        // mock callback
-        return Observable.just(ResponseBody.create(MediaType.parse(""), ""))
-    }
 }

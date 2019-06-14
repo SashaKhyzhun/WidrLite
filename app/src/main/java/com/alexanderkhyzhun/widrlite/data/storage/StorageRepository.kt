@@ -1,5 +1,6 @@
 package com.alexanderkhyzhun.widrlite.data.storage
 
+import android.graphics.Bitmap
 import com.alexanderkhyzhun.widrlite.enums.Account
 
 
@@ -19,6 +20,7 @@ interface StorageRepository {
     fun setBusinessName(name: String)
     fun setBusinessType(type: String)
     fun setAccountType(account: Account)
+    fun setPhoto(photo: String)
 
     fun getUUID(): String?
     fun getFirstName(): String?
@@ -30,5 +32,8 @@ interface StorageRepository {
     fun getBusinessName(): String?
     fun getBusinessType(): String?
     fun getAccountType(): String?
+    fun getPhoto(): String?
+
+    fun clear()
 
 }

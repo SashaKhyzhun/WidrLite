@@ -1,6 +1,7 @@
 package com.alexanderkhyzhun.widrlite.data.storage.impl
 
 import android.content.SharedPreferences
+import android.graphics.Bitmap
 import com.alexanderkhyzhun.widrlite.data.storage.StorageRepository
 import com.alexanderkhyzhun.widrlite.enums.Account
 
@@ -56,6 +57,10 @@ class StorageRepositoryImpl(
         sharedPreferences.edit().putString(KEY_ACCOUNT_TYPE, account.type).apply()
     }
 
+    override fun setPhoto(photo: String) {
+        sharedPreferences.edit().putString(KEY_PHOTO, photo).apply()
+    }
+
     /**
      * GET
      */
@@ -80,11 +85,14 @@ class StorageRepositoryImpl(
 
     override fun getAccountType(): String? = sharedPreferences.getString(KEY_ACCOUNT_TYPE, null)
 
+    override fun getPhoto(): String? = sharedPreferences.getString(KEY_PHOTO, null)
+
+
     /**
      * Other
      */
 
-    fun clear() {
+    override fun clear() {
         sharedPreferences.edit().clear().apply()
     }
 
@@ -95,6 +103,7 @@ class StorageRepositoryImpl(
         private const val KEY_LAST_NAME = "LastName"
         private const val KEY_PHONE_NUMBER = "PhoneNumber"
         private const val KEY_EMAIL = "Email"
+        private const val KEY_PHOTO = "Photo"
         private const val KEY_PASSWORD = "Password"
         private const val KEY_AUTH_STATUS = "AuthStatus"
         private const val KEY_BUSINESS_NAME = "BusinessName"

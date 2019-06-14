@@ -14,8 +14,9 @@ interface AuthUseCase {
     fun password(): BehaviorSubject<CharSequence>
     fun terms(): BehaviorSubject<Boolean>
     fun nextButton(): BehaviorSubject<Boolean>
+
     fun photo(): BehaviorSubject<Bitmap>
 
-    fun signUpAccount(): Observable<ResponseBody>
+    fun signUpAccount(): Observable<Boolean>
 
 }

@@ -1,6 +1,7 @@
 package com.alexanderkhyzhun.widrlite.data.storage
 
 import android.graphics.Bitmap
+import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 
 interface SignUpRepository {
@@ -18,6 +19,6 @@ interface SignUpRepository {
 
     fun nextButton(): BehaviorSubject<Boolean>
 
-    fun signUpAccount()
+    fun signUpAccount(): Observable<Boolean>
 
 }

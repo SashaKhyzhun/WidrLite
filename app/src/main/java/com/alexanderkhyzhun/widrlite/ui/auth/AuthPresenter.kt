@@ -7,6 +7,7 @@ import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.domain.AuthUseCase
 import com.alexanderkhyzhun.widrlite.domain.modles.ValidationView
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
+import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity.Companion.PHONE_NUMBER_REGEX
 import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
 import com.arellomobile.mvp.InjectViewState
 import io.reactivex.Observable
@@ -15,6 +16,7 @@ import io.reactivex.subjects.PublishSubject
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import java.util.concurrent.TimeUnit
+import java.util.regex.Pattern
 
 /**
  * @author Alexander Khyzhun
@@ -38,42 +40,72 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
 
 
     init {
-        val firstNameFieldState = Observables.combineLatest(useCase
-            .firstName()
-            .sample(BaseActivity.FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
-            .map(CharSequence::toString), firstNameFocusChangesSubject) { text, focus ->
+        val firstNameFieldState = Observables.combineLatest(
+            useCase
+                .firstName()
+                .sample(
+                    BaseActivity.FIELD_CHECK_DELAY,
+                    TimeUnit.MILLISECONDS,
+                    schedulers.computation()
+                )
+                .map(CharSequence::toString), firstNameFocusChangesSubject
+        ) { text, focus ->
 
             ValidationView.FirstNameCell(text, focus)
         }
 
-        val lastNameFieldState = Observables.combineLatest(useCase
-            .lastName()
-            .sample(BaseActivity.FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
-            .map(CharSequence::toString), lastNameFocusChangesSubject) { text, focus ->
+        val lastNameFieldState = Observables.combineLatest(
+            useCase
+                .lastName()
+                .sample(
+                    BaseActivity.FIELD_CHECK_DELAY,
+                    TimeUnit.MILLISECONDS,
+                    schedulers.computation()
+                )
+                .map(CharSequence::toString), lastNameFocusChangesSubject
+        ) { text, focus ->
 
             ValidationView.LastNameCell(text, focus)
         }
 
-        val phoneNumberFieldState = Observables.combineLatest(useCase
-            .phoneNumber()
-            .sample(BaseActivity.FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
-            .map(CharSequence::toString), phoneNumberFocusChangesSubject) { text, focus ->
+        val phoneNumberFieldState = Observables.combineLatest(
+            useCase
+                .phoneNumber()
+                .sample(
+                    BaseActivity.FIELD_CHECK_DELAY,
+                    TimeUnit.MILLISECONDS,
+                    schedulers.computation()
+                )
+                .map(CharSequence::toString), phoneNumberFocusChangesSubject
+        ) { text, focus ->
 
             ValidationView.PhoneNumberCell(text, focus)
         }
 
-        val emailFieldState = Observables.combineLatest(useCase
-            .email()
-            .sample(BaseActivity.FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
-            .map(CharSequence::toString), emailFocusChangesSubject) { text, focus ->
+        val emailFieldState = Observables.combineLatest(
+            useCase
+                .email()
+                .sample(
+                    BaseActivity.FIELD_CHECK_DELAY,
+                    TimeUnit.MILLISECONDS,
+                    schedulers.computation()
+                )
+                .map(CharSequence::toString), emailFocusChangesSubject
+        ) { text, focus ->
 
             ValidationView.EmailCell(text, focus)
         }
 
-        val passwordFieldState = Observables.combineLatest(useCase
-            .password()
-            .sample(BaseActivity.FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
-            .map(CharSequence::toString), passwordFocusChangesSubject) { text, focus ->
+        val passwordFieldState = Observables.combineLatest(
+            useCase
+                .password()
+                .sample(
+                    BaseActivity.FIELD_CHECK_DELAY,
+                    TimeUnit.MILLISECONDS,
+                    schedulers.computation()
+                )
+                .map(CharSequence::toString), passwordFocusChangesSubject
+        ) { text, focus ->
 
             ValidationView.PasswordCell(text, focus)
         }
@@ -85,14 +117,16 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
             viewState.nextButtonState(it)
         }
 
-        Observable.merge(listOf(
-            firstNameFieldState,
-            lastNameFieldState,
-            phoneNumberFieldState,
-            emailFieldState,
-            passwordFieldState,
-            termsState
-        ))
+        Observable.merge(
+            listOf(
+                firstNameFieldState,
+                lastNameFieldState,
+                phoneNumberFieldState,
+                emailFieldState,
+                passwordFieldState,
+                termsState
+            )
+        )
             .scan(ValidationView.Form(), { currentState, newState ->
                 when (newState) {
                     is ValidationView.FirstNameCell -> {
@@ -129,7 +163,8 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
                     }
 
                     is ValidationView.EmailCell -> {
-                        val emailValid = Patterns.EMAIL_ADDRESS.matcher(newState.email).matches()
+                        val emailValid =
+                            Patterns.EMAIL_ADDRESS.matcher(newState.email).matches()
                         val showEmailError = !emailValid
 
                         currentState.copy(
@@ -139,7 +174,8 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
                     }
 
                     is ValidationView.PasswordCell -> {
-                        val passwordValid = newState.password.length >= BaseActivity.MIN_PASSWORD_LENGTH
+                        val passwordValid =
+                            newState.password.length >= BaseActivity.MIN_PASSWORD_LENGTH
                         val showPasswordError = !passwordValid
 
                         currentState.copy(
@@ -220,7 +256,17 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
 
     fun onClickSignUp() {
         useCase.signUpAccount()
-        viewState.onAccountCreated()
+            .compose(bindUntilDestroy())
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.mainThread())
+            .doOnComplete { viewState.hideLoader() }
+            .doOnError { viewState.hideLoader() }
+            .doOnSubscribe { viewState.showLoader() }
+            .subscribe({
+                val result = it
+                viewState.onAccountCreated()
+            }, viewState::renderError)
+
 
     }
 

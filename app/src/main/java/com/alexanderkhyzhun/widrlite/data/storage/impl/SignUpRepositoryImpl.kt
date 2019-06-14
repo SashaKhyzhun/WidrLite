@@ -1,8 +1,11 @@
 package com.alexanderkhyzhun.widrlite.data.storage.impl
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
+import com.alexanderkhyzhun.widrlite.data.models.AccountPersonal
 import com.alexanderkhyzhun.widrlite.data.storage.SignUpRepository
 import com.alexanderkhyzhun.widrlite.data.storage.StorageRepository
+import io.reactivex.Observable
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.subjects.BehaviorSubject
 import timber.log.Timber
@@ -51,31 +54,42 @@ class SignUpRepositoryImpl(
 
     override fun nextButton(): BehaviorSubject<Boolean> = nextButtonSubject
 
-    override fun signUpAccount() {
+    @SuppressLint("CheckResult")
+    override fun signUpAccount(): Observable<Boolean> {
         val firstNameObs = firstName().map(CharSequence::toString)
         val lastNameObs = lastName().map(CharSequence::toString)
         val phoneNumberObs = phoneNumber().map(CharSequence::toString)
         val emailObs = email().map(CharSequence::toString)
         val passwordObs = password().map(CharSequence::toString)
-        val photoObs = photo()
 
-        Observables.zip(
+        return Observables.zip(
             firstNameObs,
             lastNameObs,
             phoneNumberObs,
             emailObs,
-            passwordObs,
-            photoObs
-        ) { firstName, lastName, phone, email, password, photo ->
+            passwordObs
+        ) { firstName, lastName, phone, email, password ->
 
-            with(storage) {
-                setFirstName(firstName)
-                setLastName(lastName)
-                setPhoneNumber(phone)
-                setEmail(email)
-                setPassword(password)
-                setPhoneNumber(phone)
-            }
+            AccountPersonal(
+                UUID.randomUUID().toString(),
+                firstName,
+                lastName,
+                phone,
+                email,
+                password
+            )
         }
+            .map {
+                with(storage) {
+                    setFirstName(it.firstName)
+                    setLastName(it.lastName)
+                    setPhoneNumber(it.phoneNumber)
+                    setEmail(it.email)
+                    setPassword(it.password)
+                    setAuthStatus(true)
+                }
+            }
+            .map { true }
+            .doOnError(Timber::e)
     }
 }
