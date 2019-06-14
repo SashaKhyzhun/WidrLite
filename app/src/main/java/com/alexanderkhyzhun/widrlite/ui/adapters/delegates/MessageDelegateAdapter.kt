@@ -28,7 +28,7 @@ class MessageDelegateAdapter(
         holder: RecyclerView.ViewHolder,
         payloads: MutableList<Any>
     ) {
-        (holder as NotificationViewHolder).bind(items[position], position, click, dispose)
+        (holder as MessageViewHolder).bind(items[position], position, click, dispose)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup) = MessageViewHolder.create(parent)

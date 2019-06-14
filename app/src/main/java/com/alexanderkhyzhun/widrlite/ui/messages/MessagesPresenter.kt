@@ -8,6 +8,7 @@ import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
 import com.arellomobile.mvp.InjectViewState
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
+import timber.log.Timber
 
 /**
  * @author Alexander Khyzhun
@@ -34,7 +35,7 @@ class MessagesPresenter : BasePresenter<MessagesView>(), KoinComponent {
     }
 
     fun onMessageClick(item: DisplayableItem) {
-
+        Timber.d("item = $item")
     }
 
 
