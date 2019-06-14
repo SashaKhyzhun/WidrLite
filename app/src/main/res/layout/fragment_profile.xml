@@ -1,488 +1,492 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutTop"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@drawable/item_profile_header_gradient">
+        android:layout_height="match_parent">
 
-        <include layout="@layout/item_burger_icon" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutBottom"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/layoutTop" >
-
-        <TextView
-            android:id="@+id/fragment_profile_tv_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="16dp"
-            android:text="Alexander Maquin"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textAllCaps="false"
-            android:lines="1"
-            android:ellipsize="end"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <include
-            android:id="@+id/item_profile_proposal"
-            layout="@layout/item_profile_proposal" />
-
-
-        <!-- Notifications block -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_profile_layout_notifications"
+            android:id="@+id/fragment_profile_layout_top"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_profile_proposal">
+            android:layout_height="180dp"
+            android:background="@drawable/item_profile_header_gradient">
 
-            <ImageView
-                android:id="@+id/fragment_profile_image_notifications"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:src="@drawable/ic_profile_notifications"
-                android:background="@drawable/item_profile_menu_foreground_solid"
-                android:padding="6dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/fragment_profile_title_notifications"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Manage notifications"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_notifications"
-                app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_notifications" />
-
-            <TextView
-                android:id="@+id/fragment_profile_description_notifications"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="4 filters saved"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/primaryHint"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_notifications"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_notifications"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_notifications" />
-
-            <ImageView
-                android:id="@+id/fragment_profile_arrow_notifications"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/item_profile_arrow_forward_gray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:background="@color/profile_bottom_line"
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:alpha="1"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+            <include layout="@layout/item_burger_icon" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Premium block -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_profile_layout_premium"
+            android:id="@+id/fragment_profile_layout_bottom"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_notifications">
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/fragment_profile_layout_top" >
 
-            <ImageView
-                android:id="@+id/fragment_profile_image_premium"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/fragment_profile_tv_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:src="@drawable/ic_champy"
-                android:background="@drawable/item_profile_menu_foreground_solid"
-                android:padding="6dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="16dp"
+                android:text="Alexander Maquin"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:lines="1"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/fragment_profile_title_premium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Premium"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_premium"
-                app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_premium" />
+            <include
+                android:id="@+id/item_profile_proposal"
+                layout="@layout/item_profile_proposal" />
 
-            <TextView
-                android:id="@+id/fragment_profile_description_premium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="You are using Free plan"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/primaryHint"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_premium"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_premium"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_premium" />
 
-            <ImageView
-                android:id="@+id/fragment_profile_arrow_premium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/item_profile_arrow_forward_gray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:background="@color/black"
+            <!-- Notifications block -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_profile_layout_notifications"
                 android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:alpha="0.085"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- My posts block -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_profile_layout_posts"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_premium">
-
-            <ImageView
-                android:id="@+id/fragment_profile_image_posts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@drawable/item_profile_menu_foreground_solid"
-                android:padding="6dp"
-                android:src="@drawable/ic_flash"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/item_profile_proposal">
 
-            <TextView
-                android:id="@+id/fragment_profile_title_posts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="My posts"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_posts"
-                app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_posts" />
+                <ImageView
+                    android:id="@+id/fragment_profile_image_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_profile_notifications"
+                    android:background="@drawable/item_profile_menu_foreground_solid"
+                    android:padding="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/fragment_profile_description_posts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="4 active, 12 archived"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/primaryHint"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_posts"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_posts"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_posts" />
+                <TextView
+                    android:id="@+id/fragment_profile_title_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Manage notifications"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_notifications"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_notifications" />
 
-            <ImageView
-                android:id="@+id/fragment_profile_arrow_posts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/item_profile_arrow_forward_gray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/fragment_profile_description_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="4 filters saved"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primaryHint"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_notifications"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_notifications"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_notifications" />
 
-            <View
+                <ImageView
+                    android:id="@+id/fragment_profile_arrow_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/item_arrow_forward_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:background="@color/profile_bottom_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:alpha="1"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Premium block -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_profile_layout_premium"
                 android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:alpha="0.07"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Sent recommendations block -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_profile_layout_sent"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_posts">
-
-            <ImageView
-                android:id="@+id/fragment_profile_image_sent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@drawable/item_profile_menu_foreground_solid"
-                android:padding="6dp"
-                android:src="@drawable/ic_shop"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_notifications">
 
-            <TextView
-                android:id="@+id/fragment_profile_title_sent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Sent recommendations"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_sent"
-                app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_sent" />
+                <ImageView
+                    android:id="@+id/fragment_profile_image_premium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_champy"
+                    android:background="@drawable/item_profile_menu_foreground_solid"
+                    android:padding="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/fragment_profile_description_sent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="216 sent, 8 under review"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/primaryHint"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_sent"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_sent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_sent" />
+                <TextView
+                    android:id="@+id/fragment_profile_title_premium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Premium"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_premium"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_premium" />
 
-            <ImageView
-                android:id="@+id/fragment_profile_arrow_sent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/item_profile_arrow_forward_gray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/fragment_profile_description_premium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="You are using Free plan"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primaryHint"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_premium"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_premium"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_premium" />
 
-            <View
+                <ImageView
+                    android:id="@+id/fragment_profile_arrow_premium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/item_arrow_forward_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:alpha="0.085"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- My posts block -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_profile_layout_posts"
                 android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:alpha="0.055"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Contacts block -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_profile_layout_contacts"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_sent">
-
-            <ImageView
-                android:id="@+id/fragment_profile_image_contacts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@drawable/item_profile_menu_foreground_solid"
-                android:padding="6dp"
-                android:src="@drawable/ic_person"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_premium">
 
-            <TextView
-                android:id="@+id/fragment_profile_title_contacts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Contacts"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_contacts"
-                app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_contacts" />
+                <ImageView
+                    android:id="@+id/fragment_profile_image_posts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/item_profile_menu_foreground_solid"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_flash"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/fragment_profile_description_contacts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="248 contacts, 16 in Widr"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/primaryHint"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_contacts"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_contacts"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_contacts" />
+                <TextView
+                    android:id="@+id/fragment_profile_title_posts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="My posts"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_posts"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_posts" />
 
-            <ImageView
-                android:id="@+id/fragment_profile_arrow_contacts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/item_profile_arrow_forward_gray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/fragment_profile_description_posts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="4 active, 12 archived"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primaryHint"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_posts"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_posts"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_posts" />
 
-            <View
+                <ImageView
+                    android:id="@+id/fragment_profile_arrow_posts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/item_arrow_forward_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:alpha="0.07"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Sent recommendations block -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_profile_layout_sent"
                 android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:alpha="0.04"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Contacts block -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_profile_layout_in_app_calls"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_contacts">
-
-            <ImageView
-                android:id="@+id/fragment_profile_image_in_app_calls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@drawable/item_profile_menu_foreground_solid"
-                android:padding="6dp"
-                android:src="@drawable/ic_call"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_posts">
 
-            <TextView
-                android:id="@+id/fragment_profile_title_in_app_calls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="In-app Calls"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_in_app_calls"
-                app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_in_app_calls"
-                app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_in_app_calls" />
+                <ImageView
+                    android:id="@+id/fragment_profile_image_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/item_profile_menu_foreground_solid"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_shop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <Switch
-                android:id="@+id/fragment_profile_arrow_in_app_calls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:checked="true"
-                android:src="@drawable/item_profile_arrow_forward_gray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/fragment_profile_title_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Sent recommendations"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_sent"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_sent" />
 
-            <View
+                <TextView
+                    android:id="@+id/fragment_profile_description_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="216 sent, 8 under review"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primaryHint"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_sent"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_sent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_sent" />
+
+                <ImageView
+                    android:id="@+id/fragment_profile_arrow_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/item_arrow_forward_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:alpha="0.055"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Contacts block -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_profile_layout_contacts"
                 android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:alpha="0.025"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                android:layout_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_sent">
+
+                <ImageView
+                    android:id="@+id/fragment_profile_image_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/item_profile_menu_foreground_solid"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_person"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_profile_title_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Contacts"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_contacts"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_contacts" />
+
+                <TextView
+                    android:id="@+id/fragment_profile_description_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="248 contacts, 16 in Widr"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primaryHint"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_contacts"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_contacts"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_profile_title_contacts" />
+
+                <ImageView
+                    android:id="@+id/fragment_profile_arrow_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/item_arrow_forward_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:alpha="0.04"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Contacts block -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_profile_layout_in_app_calls"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_contacts">
+
+                <ImageView
+                    android:id="@+id/fragment_profile_image_in_app_calls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/item_profile_menu_foreground_solid"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_call"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_profile_title_in_app_calls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="In-app Calls"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_profile_image_in_app_calls"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_profile_image_in_app_calls"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_profile_image_in_app_calls" />
+
+                <Switch
+                    android:id="@+id/fragment_profile_arrow_in_app_calls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:checked="true"
+                    android:src="@drawable/item_arrow_forward_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:alpha="0.025"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!--
+            This should be always half the height,
+            can also be calculated and added programmatically
+         -->
+        <ImageView
+            android:id="@+id/fragment_profile_iv_user_image"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_above="@id/fragment_profile_layout_bottom"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="-55dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_image_preview_circle" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--
-        This should be always half the height,
-        can also be calculated and added programmatically
-     -->
-
-    <ImageView
-        android:id="@+id/fragment_profile_iv_user_image"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_above="@id/layoutBottom"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-55dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_image_preview_circle" />
+    </RelativeLayout>
 
 
 </RelativeLayout>

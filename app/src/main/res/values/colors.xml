@@ -22,6 +22,9 @@
     <color name="gradient_profile_start">#227998</color>
     <color name="gradient_profile_end">#229b56</color>
 
+    <color name="gradient_notifications_start">#5760ff</color>
+    <color name="gradient_notifications_end">#0018ff</color>
+
     <color name="error">#BE1405</color>
     <color name="inactive">#505a60</color>
     <color name="button_dark">#3a1d53</color>
@@ -35,6 +38,9 @@
     <color name="profile_menu_background">#dae2fe</color>
     <color name="profile_menu_foreground">#224ff3</color>
     <color name="profile_bottom_line">#e5e3e5</color>
+
+    <color name="notif_menu_foreground">#224ff3</color>
+    <color name="notif_menu_background">#dae2fe</color>
 
 
 </resources>

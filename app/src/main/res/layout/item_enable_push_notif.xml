@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_push_notif_layout_premium"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <FrameLayout
+        android:id="@+id/item_push_notif_image_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/item_notif_menu_foreground_solid"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/item_push_notif_image_premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_notif_menu_foreground_solid"
+            android:padding="2dp"
+            android:src="@drawable/ic_notification"
+
+            />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/item_push_notif_title_premium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Get more from Widr"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/item_push_notif_image_layout"
+        app:layout_constraintTop_toTopOf="@+id/item_push_notif_image_layout" />
+
+    <TextView
+        android:id="@+id/item_push_notif_description_premium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Enable Push notifications"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/primaryHint"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/item_push_notif_image_layout"
+        app:layout_constraintStart_toEndOf="@+id/item_push_notif_image_layout"
+        app:layout_constraintTop_toBottomOf="@+id/item_push_notif_title_premium" />
+
+    <FrameLayout
+        android:id="@+id/item_enable_push_notif_bubble_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_push_notif_arrow_premium"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/item_bubble" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/item_push_notif_arrow_premium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/item_arrow_forward_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
