@@ -61,7 +61,7 @@ class MainActivity : BaseActivity(),
 
     private fun setUpBottomNavigation() {
         activity_main_navigation.setOnNavigationItemSelectedListener(this)
-        activity_main_navigation.selectedItemId = R.id.navigation_profile
+        activity_main_navigation.selectedItemId = R.id.navigation_feed
         activity_main_navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
     }
 

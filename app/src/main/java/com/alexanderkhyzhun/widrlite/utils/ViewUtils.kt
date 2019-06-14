@@ -7,6 +7,7 @@ import android.util.TypedValue
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.app.WidrLiteApp
 
 fun TextView.underline() {
@@ -23,6 +24,7 @@ fun View.setVisible() {
     this.visibility = View.VISIBLE
 }
 
+
 fun View.smoothToShow() {
     startAnimation(AnimationUtils.loadAnimation(context, android.R.anim.fade_in))
     this.setVisible()
@@ -30,7 +32,7 @@ fun View.smoothToShow() {
 
 fun View.smoothToHide() {
     startAnimation(AnimationUtils.loadAnimation(context, android.R.anim.fade_out))
-    this.setGone()
+    this.setInvisible()
 }
 
 fun View.setInvisible() {
