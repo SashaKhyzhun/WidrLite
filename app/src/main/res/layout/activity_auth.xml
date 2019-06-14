@@ -157,7 +157,7 @@
         android:background="@drawable/item_round_solid"
         android:text="Sign Up"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

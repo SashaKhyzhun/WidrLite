@@ -1,12 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:text="Profile"
-        android:padding="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/item_profile_header_gradient"
+        >
 
-</LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_navigation_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/ic_bubble"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/layoutTop" >
+
+
+        <TextView
+            android:id="@+id/fragment_profile_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="16dp"
+            android:text="Alexander Maquin"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:lines="1"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_profile_proposal_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:background="@drawable/item_profile_proposal_background_solid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_profile_tv_name">
+
+            <ImageView
+                android:id="@+id/fragment_profile_iv_gift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_gift"
+                android:background="@drawable/item_profile_proposal_foreground_solid"
+                android:padding="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/profile_gift_text"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textColor="@color/profile_proposal_text"
+                android:textStyle="normal"
+                android:textAlignment="textStart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fragment_profile_iv_gift"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/item_profile_arrow_forward"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--
+        This should be always half the height,
+        can also be calculated and added programmatically
+     -->
+
+    <ImageView
+        android:id="@+id/fragment_profile_iv_user_image"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_above="@id/layoutBottom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-55dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_image_preview_circle" />
+
+
+</RelativeLayout>

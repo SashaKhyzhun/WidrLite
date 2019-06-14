@@ -7,8 +7,8 @@
 
     <stroke
         android:width="3dp"
-        android:color="@color/image_preview" />
+        android:color="@color/profile_image_preview" />
 
-    <solid android:color="@color/image_preview" />
+    <solid android:color="@color/profile_image_preview" />
 
 </shape>

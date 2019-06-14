@@ -19,5 +19,7 @@
     <string name="auth_error_phone_number">Please enter your phone number</string>
     <string name="auth_error_password">Password must be at least 6 characters</string>
 
+    <string name="profile_gift_text">Invite friends and \nget gifts and bonuses</string>
+
 
 </resources>

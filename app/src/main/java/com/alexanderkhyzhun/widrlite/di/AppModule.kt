@@ -58,7 +58,8 @@ class AppModule(val context: Context) {
         ////////////////////
         single { SplashUseCaseImpl() } bind (SplashUseCase::class)
         single { AuthUseCaseImpl(get(), get()) } bind (AuthUseCase::class)
-        single { ProfileUseCaseImpl() } bind (ProfileUseCase::class)
+        single { MainUseCaseImpl(get(), get()) } bind (MainUseCase::class)
+        single { ProfileUseCaseImpl(get(), get()) } bind (ProfileUseCase::class)
         single { NotificationsUseCaseImpl() } bind (NotificationsUseCase::class)
         single { MessagesUseCaseImpl() } bind (MessagesUseCase::class)
         single { NewsUseCaseImpl() } bind (NewsUseCase::class)

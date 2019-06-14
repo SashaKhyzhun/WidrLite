@@ -1,25 +1,47 @@
 package com.alexanderkhyzhun.widrlite.ui
 
+import android.Manifest
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.viewpager.widget.ViewPager
 import com.alexanderkhyzhun.widrlite.R
+import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.adapters.MainPagerAdapter
 import com.alexanderkhyzhun.widrlite.ui.feed.FeedFragment
 import com.alexanderkhyzhun.widrlite.ui.messages.MessagesFragment
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.ui.notifications.NotificationsFragment
 import com.alexanderkhyzhun.widrlite.ui.profile.ProfileFragment
+import com.arellomobile.mvp.presenter.InjectPresenter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 class MainActivity : BaseActivity(),
+    MainView,
     ViewPager.OnPageChangeListener,
-    BottomNavigationView.OnNavigationItemSelectedListener {
+    BottomNavigationView.OnNavigationItemSelectedListener,
+    ProfileFragment.Callback {
+
+    val schedulers: Schedulers by inject()
+
+    @InjectPresenter
+    lateinit var presenter: MainPresenter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +49,7 @@ class MainActivity : BaseActivity(),
 
         setUpBottomNavigation()
         setUpViewPager()
-        setTranslucentStatusBar()
+        //setTranslucentStatusBar()
     }
 
 
@@ -47,7 +69,6 @@ class MainActivity : BaseActivity(),
     override fun onPageScrollStateChanged(state: Int) {}
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-
 
     override fun onPageSelected(position: Int) {
         when (position) {
@@ -84,9 +105,82 @@ class MainActivity : BaseActivity(),
         return true
     }
 
+
+    override fun takePhoto() {
+
+    }
+
+
+    override fun importPhoto() {
+        if (checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(WRITE_EXTERNAL_STORAGE), MY_STORAGE_PERMISSION_CODE)
+        } else {
+            startActivityForResult(
+                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI),
+                STORAGE_REQUEST
+            )
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            CAMERA_REQUEST -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    val photo = data?.extras?.get("data") as Bitmap
+                    presenter.savePhotoFromCamera(photo)
+                }
+            }
+            STORAGE_REQUEST -> {
+
+                // todo: find and fix time delay.
+                if (resultCode == Activity.RESULT_OK) {
+                    val selectedImage = data?.data
+                    val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+                    val cursor = contentResolver.query(selectedImage, filePathColumn,
+                        null,
+                        null,
+                        null
+                    )
+                    cursor!!.moveToFirst()
+                    val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+                    val picturePath = cursor.getString(columnIndex)
+                    val photo = BitmapFactory.decodeFile(picturePath)
+                    cursor.close()
+
+
+                    presenter.savePhotoFromStorage(photo)
+                }
+            }
+        }
+    }
+
+
+    override fun renderError(throwable: Throwable) {
+
+    }
+
+    override fun renderMessage(text: String) {
+
+    }
+
+    override fun showLoader() {
+
+    }
+
+    override fun hideLoader() {
+
+    }
+
     companion object {
         private const val OFFSCREEN_PAGE_LIMIT = 4
         const val TAG = "MainActivity"
+
+        private const val CAMERA_REQUEST = 1888
+        private const val STORAGE_REQUEST = 1889
+        private const val MY_CAMERA_PERMISSION_CODE = 100
+        private const val MY_STORAGE_PERMISSION_CODE = 101
+
         fun getIntent(context: Context?) = Intent(context, MainActivity::class.java)
     }
 }

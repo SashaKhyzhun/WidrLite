@@ -4,7 +4,8 @@
     android:shape="rectangle">
 
     <gradient
-        android:startColor="@color/gradient_splash_start"
-        android:endColor="@color/gradient_splash_end"
-        android:angle="270" />
+        android:startColor="@color/gradient_profile_start"
+        android:endColor="@color/gradient_profile_end"
+        android:angle="0" />
+
 </shape>
