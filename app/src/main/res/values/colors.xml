@@ -18,12 +18,12 @@
     <!--    Gradients    -->
     <color name="gradient_splash_start">#5f3284</color>
     <color name="gradient_splash_end">#160824</color>
-
     <color name="gradient_profile_start">#227998</color>
     <color name="gradient_profile_end">#229b56</color>
-
     <color name="gradient_notifications_start">#5760ff</color>
     <color name="gradient_notifications_end">#0018ff</color>
+    <color name="gradient_messages_start">#7f3aa0</color>
+    <color name="gradient_messages_end">#421573</color>
 
     <color name="error">#BE1405</color>
     <color name="inactive">#505a60</color>
