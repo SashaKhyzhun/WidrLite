@@ -1,7 +1,7 @@
 package com.alexanderkhyzhun.widrlite.domain
 
 import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
-import com.alexanderkhyzhun.widrlite.data.models.UserItem
+import com.alexanderkhyzhun.widrlite.data.models.ChatItem
 import io.reactivex.Observable
 
 /**
@@ -12,6 +12,6 @@ interface ConversationUseCase {
 
     fun fetchConversations(): Observable<List<ConversationItem>>
 
-    fun updateSelectedConversation(userItem: UserItem)
+    fun updateSelectedChat(chatItem: ChatItem)
 
 }

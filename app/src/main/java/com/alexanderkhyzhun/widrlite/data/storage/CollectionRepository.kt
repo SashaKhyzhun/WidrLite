@@ -1,7 +1,7 @@
 package com.alexanderkhyzhun.widrlite.data.storage
 
 import com.alexanderkhyzhun.widrlite.data.models.MessageItem
-import com.alexanderkhyzhun.widrlite.data.models.UserItem
+import com.alexanderkhyzhun.widrlite.data.models.ChatItem
 import io.reactivex.Observable
 
 /**
@@ -10,7 +10,10 @@ import io.reactivex.Observable
  */
 interface CollectionRepository {
 
-    fun messages(): Observable<List<MessageItem>>
-    fun conversation(item: UserItem)
+    fun fetchMessages(): Observable<List<MessageItem>>
+    fun fetchChatDetails(): Observable<ChatItem>
+
+    fun updateChatDetails(item: ChatItem)
+    fun updateMessages(data: List<MessageItem>)
 
 }

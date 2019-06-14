@@ -35,7 +35,7 @@ fun generateRPNotifications() = listOf(
 )
 
 
-fun generateRPMessages() = listOf(
+fun generateRPConversations() = listOf(
     RPConversation("1",
         "https://p.djinni.co/1f/c1856a65504c4889dcd2df6d1b4bd3/200.jpg",
         "Yana Mandziuk", "Kyiv", "Recruiter",

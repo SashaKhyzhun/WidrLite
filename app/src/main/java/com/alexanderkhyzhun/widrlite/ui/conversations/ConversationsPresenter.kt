@@ -3,11 +3,10 @@ package com.alexanderkhyzhun.widrlite.ui.conversations
 import android.annotation.SuppressLint
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
-import com.alexanderkhyzhun.widrlite.data.models.UserItem
+import com.alexanderkhyzhun.widrlite.data.models.ChatItem
 import com.alexanderkhyzhun.widrlite.domain.ConversationUseCase
 import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
-import com.alexanderkhyzhun.widrlite.utils.empty
 import com.arellomobile.mvp.InjectViewState
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
@@ -41,8 +40,8 @@ class ConversationsPresenter : BasePresenter<ConversationsView>(), KoinComponent
         Timber.d("item = $item")
         item as ConversationItem
 
-        useCase.updateSelectedConversation(
-            UserItem(item.senderId, item.senderName, item.senderPhoto, emptyList())
+        useCase.updateSelectedChat(
+            ChatItem(item.senderId, item.senderName, item.senderPhoto, emptyList())
         )
 
         viewState.onClickedOpenChat()

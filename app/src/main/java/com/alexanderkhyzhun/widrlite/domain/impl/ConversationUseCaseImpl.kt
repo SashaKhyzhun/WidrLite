@@ -2,11 +2,11 @@ package com.alexanderkhyzhun.widrlite.domain.impl
 
 import com.alexanderkhyzhun.widrlite.data.Api
 import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
-import com.alexanderkhyzhun.widrlite.data.models.UserItem
+import com.alexanderkhyzhun.widrlite.data.models.ChatItem
 import com.alexanderkhyzhun.widrlite.data.storage.CollectionRepository
 import com.alexanderkhyzhun.widrlite.data.toConversationItem
 import com.alexanderkhyzhun.widrlite.domain.ConversationUseCase
-import com.alexanderkhyzhun.widrlite.utils.generateRPMessages
+import com.alexanderkhyzhun.widrlite.utils.generateRPConversations
 import io.reactivex.Observable
 
 /**
@@ -20,11 +20,11 @@ class ConversationUseCaseImpl(
 
     override fun fetchConversations(): Observable<List<ConversationItem>> {
         return Observable
-            .fromCallable { generateRPMessages() }
+            .fromCallable { generateRPConversations() }
             .map { messages -> messages.map { it.toConversationItem() } }
     }
 
-    override fun updateSelectedConversation(userItem: UserItem) {
-        collectionRepo.conversation(userItem)
+    override fun updateSelectedChat(chatItem: ChatItem) {
+        collectionRepo.updateChatDetails(chatItem)
     }
 }
