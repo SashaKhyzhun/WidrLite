@@ -263,7 +263,6 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
             .doOnError { viewState.hideLoader() }
             .doOnSubscribe { viewState.showLoader() }
             .subscribe({
-                val result = it
                 viewState.onAccountCreated()
             }, viewState::renderError)
 

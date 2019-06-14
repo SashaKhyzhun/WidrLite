@@ -1,17 +1,10 @@
 package com.alexanderkhyzhun.widrlite.ui.profile
 
-import android.Manifest
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.pm.PackageManager.*
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
-import androidx.core.content.ContextCompat.checkSelfPermission
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
@@ -60,7 +53,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fragment_profile_proposal_layout.clicks()
+        item_profile_proposal.clicks()
             .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
