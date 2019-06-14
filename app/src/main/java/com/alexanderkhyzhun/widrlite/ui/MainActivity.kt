@@ -1,26 +1,22 @@
 package com.alexanderkhyzhun.widrlite.ui
 
-import android.Manifest
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.MenuItem
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.viewpager.widget.ViewPager
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.adapters.MainPagerAdapter
 import com.alexanderkhyzhun.widrlite.ui.feed.FeedFragment
-import com.alexanderkhyzhun.widrlite.ui.messages.MessagesFragment
+import com.alexanderkhyzhun.widrlite.ui.conversations.ConversationsFragment
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.ui.notifications.NotificationsFragment
 import com.alexanderkhyzhun.widrlite.ui.profile.ProfileFragment
@@ -29,7 +25,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 class MainActivity : BaseActivity(),
     MainView,
@@ -77,7 +72,7 @@ class MainActivity : BaseActivity(),
             FeedFragment.PAGER_POSITION -> {
                 activity_main_navigation.selectedItemId = R.id.navigation_feed
             }
-            MessagesFragment.PAGER_POSITION -> {
+            ConversationsFragment.PAGER_POSITION -> {
                 activity_main_navigation.selectedItemId = R.id.navigation_messages
             }
             NotificationsFragment.PAGER_POSITION -> {
@@ -95,7 +90,7 @@ class MainActivity : BaseActivity(),
                 activity_main_pager.currentItem = FeedFragment.PAGER_POSITION
             }
             R.id.navigation_messages -> {
-                activity_main_pager.currentItem = MessagesFragment.PAGER_POSITION
+                activity_main_pager.currentItem = ConversationsFragment.PAGER_POSITION
             }
             R.id.navigation_notifications -> {
                 activity_main_pager.currentItem = NotificationsFragment.PAGER_POSITION

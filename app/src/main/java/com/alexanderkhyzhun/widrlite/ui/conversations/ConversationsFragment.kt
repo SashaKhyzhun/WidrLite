@@ -1,4 +1,4 @@
-package com.alexanderkhyzhun.widrlite.ui.messages
+package com.alexanderkhyzhun.widrlite.ui.conversations
 
 import android.os.Bundle
 import android.view.View
@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
-import com.alexanderkhyzhun.widrlite.data.models.MessageItem
+import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.DelegateAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.decoratos.LinearDecorator
 import com.alexanderkhyzhun.widrlite.ui.adapters.delegates.MessageDelegateAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.diffs.NotificationItemDiffUtilsCallback
+import com.alexanderkhyzhun.widrlite.ui.chat.ChatActivity
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
 import com.alexanderkhyzhun.widrlite.utils.dp
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -22,7 +23,7 @@ import org.koin.android.ext.android.inject
  * @author Alexander Khyzhun
  * Created on 14 June, 2019
  */
-class MessagesFragment : BaseFragment(R.layout.fragment_messages), MessagesView {
+class ConversationsFragment : BaseFragment(R.layout.fragment_messages), ConversationsView {
 
     val schedulers: Schedulers by inject()
 
@@ -31,7 +32,7 @@ class MessagesFragment : BaseFragment(R.layout.fragment_messages), MessagesView 
     }
 
     @InjectPresenter
-    lateinit var presenter: MessagesPresenter
+    lateinit var presenter: ConversationsPresenter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,13 +65,17 @@ class MessagesFragment : BaseFragment(R.layout.fragment_messages), MessagesView 
         }
     }
 
-    override fun renderMessages(data: List<MessageItem>) {
+    override fun renderConversations(data: List<ConversationItem>) {
         delegateAdapter.set(data) { old, new ->
             NotificationItemDiffUtilsCallback(
                 old,
                 new
             )
         }
+    }
+
+    override fun onClickedOpenChat() {
+        startActivity(ChatActivity.getIntent(context))
     }
 
     override fun renderError(throwable: Throwable) {
@@ -90,9 +95,9 @@ class MessagesFragment : BaseFragment(R.layout.fragment_messages), MessagesView 
     }
 
     companion object {
-        const val TAG = "MessagesFragment"
+        const val TAG = "ConversationsFragment"
         const val PAGER_POSITION = 1
-        fun newInstance() = MessagesFragment()
+        fun newInstance() = ConversationsFragment()
     }
 
 }

@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.alexanderkhyzhun.widrlite.ui.feed.FeedFragment
-import com.alexanderkhyzhun.widrlite.ui.messages.MessagesFragment
+import com.alexanderkhyzhun.widrlite.ui.conversations.ConversationsFragment
 import com.alexanderkhyzhun.widrlite.ui.notifications.NotificationsFragment
 import com.alexanderkhyzhun.widrlite.ui.profile.ProfileFragment
 
@@ -12,7 +12,7 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     private val fragments = listOf<Fragment>(
         FeedFragment(),
-        MessagesFragment(),
+        ConversationsFragment(),
         NotificationsFragment(),
         ProfileFragment()
     )

@@ -2,13 +2,11 @@ package com.alexanderkhyzhun.widrlite.ui.adapters.delegates
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.alexanderkhyzhun.widrlite.data.models.MessageItem
+import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.trello.rxlifecycle2.LifecycleTransformer
-import com.alexanderkhyzhun.widrlite.data.models.NotificationItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.viewholders.MessageViewHolder
-import com.alexanderkhyzhun.widrlite.ui.adapters.viewholders.NotificationViewHolder
 
 /**
  * @author Alexander Khyzhun
@@ -20,7 +18,7 @@ class MessageDelegateAdapter(
 ) : AdapterDelegate<List<DisplayableItem>>() {
 
     override fun isForViewType(items: List<DisplayableItem>, position: Int): Boolean =
-        items[position] is MessageItem
+        items[position] is ConversationItem
 
     override fun onBindViewHolder(
         items: List<DisplayableItem>,

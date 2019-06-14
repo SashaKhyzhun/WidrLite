@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
-import com.alexanderkhyzhun.widrlite.data.models.MessageItem
+import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.utils.setVisible
 import com.alexanderkhyzhun.widrlite.utils.threeDots
@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.item_location.view.*
 import kotlinx.android.synthetic.main.item_message.view.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
-import timber.log.Timber
 
 /**
  * @author Alexander Khyzhun
@@ -37,7 +36,7 @@ class MessageViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinCompone
         click: (DisplayableItem) -> Unit,
         dispose: () -> LifecycleTransformer<Any>
     ) {
-        (item as? MessageItem)?.let {
+        (item as? ConversationItem)?.let {
             with(itemView) {
                 this.clicks()
                     .compose(dispose.invoke())

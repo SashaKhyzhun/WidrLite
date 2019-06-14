@@ -1,6 +1,8 @@
 package com.alexanderkhyzhun.widrlite.ui.chat
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
@@ -43,5 +45,11 @@ class ChatActivity : BaseActivity(), ChatView {
 
     override fun hideLoader() {
 
+    }
+
+
+    companion object {
+        const val TAG = "ChatActivity"
+        fun getIntent(context: Context?) = Intent(context, ChatActivity::class.java)
     }
 }

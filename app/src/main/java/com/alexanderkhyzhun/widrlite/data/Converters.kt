@@ -1,8 +1,8 @@
 package com.alexanderkhyzhun.widrlite.data
 
-import com.alexanderkhyzhun.widrlite.data.models.MessageItem
+import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
 import com.alexanderkhyzhun.widrlite.data.models.NotificationItem
-import com.alexanderkhyzhun.widrlite.data.models.response.RPMessage
+import com.alexanderkhyzhun.widrlite.data.models.response.RPConversation
 import com.alexanderkhyzhun.widrlite.data.models.response.RPNotification
 
 /**
@@ -13,6 +13,6 @@ fun RPNotification.toNotificationItem(): NotificationItem
         = NotificationItem(id, image, name, message, `when`, isNew)
 
 
-fun RPMessage.toMessageItem(): MessageItem = MessageItem(
+fun RPConversation.toConversationItem(): ConversationItem = ConversationItem(
     senderId, senderPhoto, senderName, senderLocation, senderJob, body, date, amount, isNew
 )

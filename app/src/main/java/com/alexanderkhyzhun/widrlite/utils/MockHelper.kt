@@ -1,6 +1,6 @@
 package com.alexanderkhyzhun.widrlite.utils
 
-import com.alexanderkhyzhun.widrlite.data.models.response.RPMessage
+import com.alexanderkhyzhun.widrlite.data.models.response.RPConversation
 import com.alexanderkhyzhun.widrlite.data.models.response.RPNotification
 
 /**
@@ -36,49 +36,49 @@ fun generateRPNotifications() = listOf(
 
 
 fun generateRPMessages() = listOf(
-    RPMessage("1",
+    RPConversation("1",
         "https://p.djinni.co/1f/c1856a65504c4889dcd2df6d1b4bd3/200.jpg",
         "Yana Mandziuk", "Kyiv", "Recruiter",
         "Often said by the winner in poker, as the others 'weep' over the loss.",
         "11:24 AM", "12", true),
 
-    RPMessage("1",
+    RPConversation("1",
         "https://p.djinni.co/3a/2679f71b8e420786e3bbe9d14b75b7/200.jpg",
         "Jess Davie", "Algiers", "Manager",
         "Someone who isn't witty or sharp, but rather, they are ignorant, unintelligent, or senseless.",
         "12 Jan", "0", false),
 
-    RPMessage("1",
+    RPConversation("1",
         "https://p.djinni.co/46/5861903dab11e9a551f174f589ba88/200.jpg",
         "Iman Cornish", "Tokyo", "Taxi driver",
         "Someone that calls for help when it is not needed. Someone who is lying.",
         "12 Jan", "0", false),
 
-    RPMessage("1",
+    RPConversation("1",
         "https://p.djinni.co/1f/c1856a65504c4889dcd2df6d1b4bd3/200.jpg",
         "Kenan Bradford", "Turin", "Designer",
         "High quality, exceptional; something that's very valuable.",
         "12 Jan", "0", false),
 
-    RPMessage("1",
+    RPConversation("1",
         "https://p.djinni.co/69bbce6d51/200.jpg",
         "Bushra Andersen", "Incheon", "CTO",
         "To tolerate or endure through the unexpected mishappenings you may encounter from time to time.",
         "12 Jan", "0", false),
 
-    RPMessage("1",
+    RPConversation("1",
         "https://djinni.co/static/i/default-userpic@2x.png",
         "Jardel Humphrey", "Havana", "Developer",
         "Things that are fixed with great speed, but as a result, it's probably not going to work very well.",
         "21 Jan", "0", false),
 
-    RPMessage("1",
+    RPConversation("1",
         "https://p.djinni.co/6e/6236302d2911e9baf017c7e67cff32/200.jpg",
         "Alyce Lynch", "Paris", "Babysitter",
         "A situation that has gotten way more serious or interesting due to recent complexities or developments.",
         "11 Apr", "0", false),
 
-    RPMessage("1",
+    RPConversation("1",
         "https://p.djinni.co/95ba9011c2/200.jpg",
         "Lillie Ashley", "Amsterdam", "Recruiter",
         "Having confidence in a specific outcome; being almost sure about something.",

@@ -11,9 +11,11 @@ import com.alexanderkhyzhun.widrlite.data.impl.InterceptorFactory
 import com.alexanderkhyzhun.widrlite.data.impl.OkHttpFactory
 import com.alexanderkhyzhun.widrlite.data.impl.SchedulersImpl
 import com.alexanderkhyzhun.widrlite.data.storage.AuthRepository
+import com.alexanderkhyzhun.widrlite.data.storage.CollectionRepository
 import com.alexanderkhyzhun.widrlite.data.storage.SignUpRepository
 import com.alexanderkhyzhun.widrlite.data.storage.StorageRepository
 import com.alexanderkhyzhun.widrlite.data.storage.impl.AuthRepositoryImpl
+import com.alexanderkhyzhun.widrlite.data.storage.impl.CollectionRepositoryImpl
 import com.alexanderkhyzhun.widrlite.data.storage.impl.SignUpRepositoryImpl
 import com.alexanderkhyzhun.widrlite.data.storage.impl.StorageRepositoryImpl
 import com.alexanderkhyzhun.widrlite.domain.*
@@ -50,6 +52,7 @@ class AppModule(val context: Context) {
         // Repositories
         ////////////////////
         single { StorageRepositoryImpl(get()) } bind (StorageRepository::class)
+        single { CollectionRepositoryImpl() } bind (CollectionRepository::class)
         single { AuthRepositoryImpl(get(), get()) } bind (AuthRepository::class)
         single { SignUpRepositoryImpl(get()) } bind (SignUpRepository::class)
 
@@ -61,9 +64,9 @@ class AppModule(val context: Context) {
         single { MainUseCaseImpl(get(), get()) } bind (MainUseCase::class)
         single { ProfileUseCaseImpl(get(), get()) } bind (ProfileUseCase::class)
         single { NotificationsUseCaseImpl(get()) } bind (NotificationsUseCase::class)
-        single { MessagesUseCaseImpl(get()) } bind (MessagesUseCase::class)
+        single { ConversationUseCaseImpl(get(), get()) } bind (ConversationUseCase::class)
         single { NewsUseCaseImpl() } bind (NewsUseCase::class)
-        single { ChatUseCaseImpl() } bind (ChatUseCase::class)
+        single { ChatUseCaseImpl(get()) } bind (ChatUseCase::class)
 
     }
 

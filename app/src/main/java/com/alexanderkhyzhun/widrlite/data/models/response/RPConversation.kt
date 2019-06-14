@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
  * @author Alexander Khyzhun
  * Created on 14 June, 2019
  */
-data class RPMessage(
+data class RPConversation(
     @SerializedName("senderId")
     val senderId: String,
     @SerializedName("nodePhoto")

@@ -9,7 +9,7 @@ import java.util.*
  * Created on 14 June, 2019
  *
  *
- * Requesting a list of messages by user id
+ * Requesting a list of conversations by user id
  */
 data class NWMessage(
     @Expose
