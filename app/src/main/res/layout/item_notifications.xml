@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Notifications block -->
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/item_notif_layout_notifications"
     android:layout_width="match_parent"
@@ -25,9 +24,10 @@
 
     <TextView
         android:id="@+id/item_notif_description_notifications"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginTop="8dp"
         android:text="Manage notifications"
         android:textAlignment="textStart"
@@ -35,8 +35,22 @@
         android:textColor="@color/black"
         android:textSize="12sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/item_notif_image_notifications"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_notif_description_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="12 Jan"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/primary"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@+id/item_notif_image_notifications"
+        app:layout_constraintTop_toBottomOf="@+id/item_notif_description_notifications" />
 
     <ImageView
         android:id="@+id/item_notif_arrow_notifications"

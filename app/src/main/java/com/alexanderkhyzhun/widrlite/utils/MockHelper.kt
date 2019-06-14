@@ -10,9 +10,9 @@ fun generateRPNotifications() = listOf<RPNotification>(
     RPNotification(
         "0", "a", "1", "1", "https://p.djinni.co/4d/725b004e2411e99e0cd35f598479ff/200.jpg", "Alex Nikiforov", "is Looking for an osteopath in Paris", "12 jan", false),
     RPNotification(
-        "0", "a", "1", "1", "https://p.djinni.co/92/569b4059a711e8aecbe961dec56eeb/200.jpg", "Anastasia Kuchinska", "accepted your mutual contacts request", "12 jan", false),
+        "0", "a", "1", "1", "https://p.djinni.co/af/783bb0568d11e8b71765c89b1d2a6d/200.jpg", "Anastasia Kuchinska", "accepted your mutual contacts request", "12 jan", false),
     RPNotification(
-        "0", "a", "1", "1", "https://p.djinni.co/4b/d0ba80bc0c11e89b57b79c1f0446db/200.jpg", "Valentine Bosenko", "accepted your mutual contacts request", "12 jan", false),
+        "0", "a", "1", "1", "https://djinni.co/static/i/default-userpic@2x.png", "Valentine Bosenko", "accepted your mutual contacts request", "12 jan", false),
     RPNotification(
         "0", "a", "1", "1", "https://p.djinni.co/35/5853915fe14274beb368841c83a96c/200.jpg", "Alina Morozenko", "accepted your mutual contacts request", "12 jan", true),
     RPNotification(
@@ -30,7 +30,7 @@ fun generateRPNotifications() = listOf<RPNotification>(
     RPNotification(
         "0", "a", "1", "1", "https://p.djinni.co/r/983340dd/50.jpg", "Inna Pogorelaya", "accepted your mutual contacts request", "12 jan", false),
     RPNotification(
-        "0", "a", "1", "1", "https://p.djinni.co/28/78d14034f111e987f94fd82c30de21/200.jpg", "Alina Koval", "accepted your mutual contacts request", "12 jan", false)
+        "0", "a", "1", "1", "https://p.djinni.co/4d/725b004e2411e99e0cd35f598479ff/200.jpg", "Alina Koval", "accepted your mutual contacts request", "12 jan", false)
 
 
 )

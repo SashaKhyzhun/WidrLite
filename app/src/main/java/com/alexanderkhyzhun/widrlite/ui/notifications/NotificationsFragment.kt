@@ -45,7 +45,11 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
 
         with (fragment_notif_rv) {
             adapter = notifDelegateAdapter
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            layoutManager = LinearLayoutManager(
+                context,
+                RecyclerView.VERTICAL,
+                false
+            )
         }
     }
 

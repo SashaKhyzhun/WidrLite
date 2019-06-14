@@ -40,10 +40,10 @@
         android:layout_alignParentBottom="true">
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/fragment_profile_nested_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="56dp"
-            android:layout_marginBottom="16dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
@@ -79,7 +79,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/fragment_profile_layout_notifications"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +151,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/fragment_profile_layout_premium"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_notifications">
@@ -222,7 +222,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/fragment_profile_layout_posts"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_premium">
@@ -293,7 +293,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/fragment_profile_layout_sent"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_posts">
@@ -364,7 +364,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/fragment_profile_layout_contacts"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_sent">
@@ -435,7 +435,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/fragment_profile_layout_in_app_calls"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
