@@ -15,7 +15,7 @@ import org.koin.standalone.inject
  */
 @InjectViewState
 @SuppressLint("CheckResult")
-class NotificationPresenter : BasePresenter<NotificationView>(), KoinComponent {
+class NotificationsPresenter : BasePresenter<NotificationsView>(), KoinComponent {
 
     val schedulers: Schedulers by inject()
     val useCase: NotificationsUseCase by inject()

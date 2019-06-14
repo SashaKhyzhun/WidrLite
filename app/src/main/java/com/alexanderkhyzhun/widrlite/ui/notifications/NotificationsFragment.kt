@@ -20,21 +20,21 @@ import org.koin.android.ext.android.inject
  * @author Alexander Khyzhun
  * Created on 14 June, 2019
  */
-class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), NotificationView {
+class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), NotificationsView {
 
     val schedulers: Schedulers by inject()
 
-    private val notifDelegateAdapter by lazy {
+    private val delegateAdapter by lazy {
         DelegateAdapter<DisplayableItem>()
     }
 
     @InjectPresenter
-    lateinit var presenter: NotificationPresenter
+    lateinit var presenter: NotificationsPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        notifDelegateAdapter.delegatesManager.apply {
+        delegateAdapter.delegatesManager.apply {
             addDelegate(
                 NotificationDelegateAdapter(
                     presenter::onNotificationClick,
@@ -44,7 +44,7 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
         }
 
         with (fragment_notif_rv) {
-            adapter = notifDelegateAdapter
+            adapter = delegateAdapter
             layoutManager = LinearLayoutManager(
                 context,
                 RecyclerView.VERTICAL,
@@ -54,7 +54,7 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
     }
 
     override fun renderNotifications(data: List<NotificationItem>) {
-        notifDelegateAdapter.set(data) { old, new ->
+        delegateAdapter.set(data) { old, new ->
             NotificationItemDiffUtilsCallback(
                 old,
                 new

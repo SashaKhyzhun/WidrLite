@@ -7,7 +7,7 @@ import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 
-interface NotificationView : MvpView, ErrorView, LoadingView {
+interface NotificationsView : MvpView, ErrorView, LoadingView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun renderView()

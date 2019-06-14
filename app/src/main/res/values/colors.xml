@@ -28,19 +28,23 @@
     <color name="error">#BE1405</color>
     <color name="inactive">#505a60</color>
     <color name="button_dark">#3a1d53</color>
+    <color name="profile_bottom_line">#e5e3e5</color>
 
     <color name="profile_image_preview">#DDDDDD</color>
     <color name="profile_color_bubble">#ff322b</color>
-    <color name="profile_proposal_background">#ffe3d4</color>
-    <color name="profile_proposal_foreground">#ffceaf</color>
     <color name="profile_proposal_text">#fe5602</color>
     <color name="profile_proposal_icon">@color/profile_proposal_text</color>
+
+    <color name="profile_proposal_background">#ffe3d4</color>
+    <color name="profile_proposal_foreground">#ffceaf</color>
+
     <color name="profile_menu_background">#dae2fe</color>
     <color name="profile_menu_foreground">#224ff3</color>
-    <color name="profile_bottom_line">#e5e3e5</color>
 
     <color name="notif_menu_foreground">#224ff3</color>
     <color name="notif_menu_background">#dae2fe</color>
 
+    <color name="messages_menu_foreground">#224ff3</color>
+    <color name="messages_menu_background">#dae2fe</color>
 
 </resources>

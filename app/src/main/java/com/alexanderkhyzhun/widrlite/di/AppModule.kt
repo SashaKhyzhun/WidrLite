@@ -61,7 +61,7 @@ class AppModule(val context: Context) {
         single { MainUseCaseImpl(get(), get()) } bind (MainUseCase::class)
         single { ProfileUseCaseImpl(get(), get()) } bind (ProfileUseCase::class)
         single { NotificationsUseCaseImpl(get()) } bind (NotificationsUseCase::class)
-        single { MessagesUseCaseImpl() } bind (MessagesUseCase::class)
+        single { MessagesUseCaseImpl(get()) } bind (MessagesUseCase::class)
         single { NewsUseCaseImpl() } bind (NewsUseCase::class)
         single { ChatUseCaseImpl() } bind (ChatUseCase::class)
 
