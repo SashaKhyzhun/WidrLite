@@ -1,8 +1,9 @@
-package com.alexanderkhyzhun.widrlite
+package com.alexanderkhyzhun.widrlite.app
 
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import com.alexanderkhyzhun.widrlite.BuildConfig
 import com.alexanderkhyzhun.widrlite.di.AppModule
 import com.alexanderkhyzhun.widrlite.utils.ThreadAwareTree
 import org.koin.android.ext.android.startKoin

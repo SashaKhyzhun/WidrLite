@@ -10,8 +10,12 @@ import com.alexanderkhyzhun.widrlite.data.impl.ApiFactory
 import com.alexanderkhyzhun.widrlite.data.impl.InterceptorFactory
 import com.alexanderkhyzhun.widrlite.data.impl.OkHttpFactory
 import com.alexanderkhyzhun.widrlite.data.impl.SchedulersImpl
+import com.alexanderkhyzhun.widrlite.data.storage.AuthRepository
 import com.alexanderkhyzhun.widrlite.data.storage.StorageRepository
+import com.alexanderkhyzhun.widrlite.data.storage.impl.AuthRepositoryImpl
 import com.alexanderkhyzhun.widrlite.data.storage.impl.StorageRepositoryImpl
+import com.alexanderkhyzhun.widrlite.domain.*
+import com.alexanderkhyzhun.widrlite.domain.impl.*
 import com.bumptech.glide.Glide
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -44,19 +48,18 @@ class AppModule(val context: Context) {
         // Repositories
         ////////////////////
         single { StorageRepositoryImpl(get()) } bind (StorageRepository::class)
+        single { AuthRepositoryImpl(get(), get()) } bind (AuthRepository::class)
 
 
         /////////////////////
         // UseCases
         ////////////////////
-//        single { ProfileUseCaseImpl() } bind (ProfileUseCase::class)
-//        single { SplashUseCaseImpl(get()) } bind (SplashUseCase::class)
-//        single { SignUpPersonalUseCaseImpl(get(), get()) } bind (SignUpPersonalUseCase::class)
-//        single { SignUpCustomerUseCaseImpl(get(), get()) } bind (SignUpCustomerUseCase::class)
-//        single { SignUpBusinessUseCaseImpl(get(), get()) } bind (SignUpBusinessUseCase::class)
-//        single { ProfessionUseCaseImpl(get(), get()) } bind (ProfessionUseCase::class)
-//        single { ServicesUseCaseImpl(get(), get()) } bind (ServicesUseCase::class)
-//        single { ConfirmationUseCaseImpl(get()) } bind (ConfirmationUseCase::class)
+        single { SplashUseCaseImpl() } bind (SplashUseCase::class)
+        single { ProfileUseCaseImpl() } bind (ProfileUseCase::class)
+        single { NotificationsUseCaseImpl() } bind (NotificationsUseCase::class)
+        single { MessagesUseCaseImpl() } bind (MessagesUseCase::class)
+        single { NewsUseCaseImpl() } bind (NewsUseCase::class)
+        single { ChatUseCaseImpl() } bind (ChatUseCase::class)
 
     }
 

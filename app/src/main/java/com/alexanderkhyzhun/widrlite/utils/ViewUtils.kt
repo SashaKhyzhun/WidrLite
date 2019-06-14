@@ -1,16 +1,13 @@
 package com.alexanderkhyzhun.widrlite.utils
 
-import android.content.Intent
 import android.content.res.Resources
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
-import com.alexanderkhyzhun.widrlite.WidrLiteApp
+import com.alexanderkhyzhun.widrlite.app.WidrLiteApp
 
 fun TextView.underline() {
     val content = SpannableString(this.text)
