@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/activity_auth_iv_photo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@color/image_preview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/activity_auth_et_first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/item_round_border"
+        android:hint="First Name"
+        android:inputType="text"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:nextFocusDown="@+id/activity_auth_et_last_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_auth_iv_photo" />
+
+
+
+    <EditText
+        android:id="@+id/activity_auth_et_last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/item_round_border"
+        android:hint="Last Name"
+        android:inputType="text"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:nextFocusDown="@+id/activity_auth_et_phone_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_auth_et_first_name" />
+
+
+    <EditText
+        android:id="@+id/activity_auth_et_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/item_round_border"
+        android:hint="Phone number"
+        android:inputType="phone"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:nextFocusDown="@+id/activity_auth_et_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_auth_et_last_name" />
+
+
+    <EditText
+        android:id="@+id/activity_auth_et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/item_round_border"
+        android:hint="Your Email"
+        android:inputType="textEmailAddress"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:nextFocusDown="@+id/activity_auth_et_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_auth_et_phone_number" />
+
+
+    <EditText
+        android:id="@+id/activity_auth_et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/item_round_border"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:nextFocusDown="@+id/activity_auth_btn_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_auth_et_email" />
+
+
+    <TextView
+        android:id="@+id/activity_auth_tv_terms_and_privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="By continuing you are indicating that you have read and agree to the Terms of Service and Privacy Policy"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_auth_et_password" />
+
+    <TextView
+        android:id="@+id/activity_auth_tv_terms_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="You have to accept terms and privacy policy to continue"
+        android:textColor="@color/error"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_auth_tv_terms_and_privacy" />
+
+    <CheckBox
+        android:id="@+id/activity_auth_checked_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:checked="true"
+        android:text="I accept the terms and conditions"
+        android:textColor="@color/hint_color"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        android:nextFocusDown="@+id/activity_auth_btn_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_auth_tv_terms_error" />
+
+
+    <Button
+        android:id="@+id/activity_auth_btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/item_round_solid"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

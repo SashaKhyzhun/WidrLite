@@ -13,6 +13,11 @@
     <string name="default_error_no_internet">Please, check your internet connection</string>
     <string name="default_error_long_message">Maximum length of the message is 600 symbols</string>
 
+    <string name="auth_error_first_name">Please enter your first name</string>
+    <string name="auth_error_last_name">Please enter your last name</string>
+    <string name="auth_error_email">Please enter your email address</string>
+    <string name="auth_error_phone_number">Please enter your phone number</string>
+    <string name="auth_error_password">Password must be at least 6 characters</string>
 
 
 </resources>

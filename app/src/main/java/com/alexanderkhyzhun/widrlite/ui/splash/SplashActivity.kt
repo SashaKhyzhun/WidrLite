@@ -1,9 +1,12 @@
 package com.alexanderkhyzhun.widrlite.ui.splash
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.MainActivity
+import com.alexanderkhyzhun.widrlite.ui.auth.AuthActivity
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.coroutines.*
@@ -35,7 +38,7 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     override fun onRedirectToLoginPage() {
-        /* code implementation */
+        startActivity(AuthActivity.getIntent(this))
     }
 
     override fun showLoader() {
@@ -56,7 +59,7 @@ class SplashActivity : BaseActivity(), SplashView {
 
     companion object {
         const val TAG = "SplashActivity"
-        fun newInstance() = SplashActivity()
+        fun getIntent(context: Context?) = Intent(context, SplashActivity::class.java)
     }
 
 }
