@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/fragment_profile_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="181.2dp"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout

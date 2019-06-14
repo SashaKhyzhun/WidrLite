@@ -35,7 +35,8 @@ class MainActivity : BaseActivity(),
     MainView,
     ViewPager.OnPageChangeListener,
     BottomNavigationView.OnNavigationItemSelectedListener,
-    ProfileFragment.Callback {
+    ProfileFragment.Callback,
+    NotificationsFragment.Callback {
 
     val schedulers: Schedulers by inject()
 
@@ -51,11 +52,16 @@ class MainActivity : BaseActivity(),
         setUpViewPager()
     }
 
+    override fun updatePagerStatus(enabled: Boolean) {
+        Timber.d("updatePagerStatus = $enabled")
+        Timber.d("isNestedScrollingEnabled = ${activity_main_pager.isNestedScrollingEnabled}")
+
+        activity_main_pager.setPagingEnabled(enabled)
+    }
 
     private fun setUpViewPager() {
         activity_main_pager.offscreenPageLimit = OFFSCREEN_PAGE_LIMIT
         activity_main_pager.adapter = MainPagerAdapter(supportFragmentManager)
-        activity_main_navigation.selectedItemId = R.id.navigation_feed
         activity_main_pager.addOnPageChangeListener(this)
     }
 
@@ -91,7 +97,7 @@ class MainActivity : BaseActivity(),
             R.id.navigation_feed -> {
                 activity_main_pager.currentItem = FeedFragment.PAGER_POSITION
             }
-            R.id.navigation_messages-> {
+            R.id.navigation_messages -> {
                 activity_main_pager.currentItem = MessagesFragment.PAGER_POSITION
             }
             R.id.navigation_notifications -> {
@@ -136,7 +142,8 @@ class MainActivity : BaseActivity(),
                 if (resultCode == Activity.RESULT_OK) {
                     val selectedImage = data?.data
                     val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
-                    val cursor = contentResolver.query(selectedImage, filePathColumn,
+                    val cursor = contentResolver.query(
+                        selectedImage, filePathColumn,
                         null,
                         null,
                         null

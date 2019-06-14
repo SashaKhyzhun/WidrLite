@@ -130,4 +130,7 @@ dependencies {
     // Multiline-CollapsingToolbar
     implementation 'net.opacapp:multiline-collapsingtoolbar:27.1.1'
 
+    // Swipe Action
+    implementation 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0'
+
 }

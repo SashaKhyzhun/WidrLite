@@ -93,6 +93,10 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
             })
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        callback = null
+    }
 
     override fun renderName(userName: String) {
         fragment_profile_tv_name.text = userName
