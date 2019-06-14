@@ -53,9 +53,6 @@ class MainActivity : BaseActivity(),
     }
 
     override fun updatePagerStatus(enabled: Boolean) {
-        Timber.d("updatePagerStatus = $enabled")
-        Timber.d("isNestedScrollingEnabled = ${activity_main_pager.isNestedScrollingEnabled}")
-
         activity_main_pager.setPagingEnabled(enabled)
     }
 

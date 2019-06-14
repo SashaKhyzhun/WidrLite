@@ -31,17 +31,14 @@
                 app:layout_collapseMode="parallax">
 
                 <!-- add library for searching in fragments... -->
-                <TextView
-                    android:id="@+id/fragment_messages_tv_settings"
+                <ImageView
+                    android:id="@+id/fragment_messages_iv_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
                     android:padding="8dp"
-                    android:text="Settings"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    android:textStyle="normal"
+                    android:src="@drawable/ic_menu_search"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
