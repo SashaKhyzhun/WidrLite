@@ -25,7 +25,7 @@
                 android:id="@+id/fragment_notif_layout_header"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/item_notifications_header_gradient"
+                android:background="@drawable/item_gradient_notifications_header"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax">
 

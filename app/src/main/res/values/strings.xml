@@ -20,6 +20,9 @@
     <string name="auth_error_password">Password must be at least 6 characters</string>
 
     <string name="profile_gift_text">Invite friends and \nget gifts and bonuses</string>
+    <string name="fragment_feed_label_one">Toutes les annonces</string>
+    <string name="fragment_feed_label_two">Explorer les offres</string>
+    <string name="fragment_feed_label_three">Trouver on profile</string>
 
 
 </resources>

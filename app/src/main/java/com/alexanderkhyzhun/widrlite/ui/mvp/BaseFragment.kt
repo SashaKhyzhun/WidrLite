@@ -29,7 +29,6 @@ open class BaseFragment(@LayoutRes private val layoutResId: Int) : MvpAppCompatF
 
     private val subject: BehaviorSubject<Event> = BehaviorSubject.createDefault(Event.CREATE)
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

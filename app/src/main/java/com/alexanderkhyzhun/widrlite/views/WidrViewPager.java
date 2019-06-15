@@ -10,11 +10,11 @@ import androidx.viewpager.widget.ViewPager;
  * @author Alexander Khyzhun
  * Created on 15 June, 2019
  */
-public class OwnViewPager extends ViewPager {
+public class WidrViewPager extends ViewPager {
 
     private boolean enabled;
 
-    public OwnViewPager(Context context, AttributeSet attrs) {
+    public WidrViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.enabled = true;
     }

@@ -25,7 +25,7 @@ import org.koin.standalone.inject
  * @author Alexander Khyzhun
  * Created on 14 June, 2019
  */
-class MessageViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinComponent {
+class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinComponent {
 
     val glideManager: RequestManager by inject()
     val schedulers: Schedulers by inject()
@@ -43,16 +43,10 @@ class MessageViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinCompone
                     .observeOn(schedulers.mainThread())
                     .subscribe { click.invoke(item) }
 
-                item_message_tv_name.text = item.senderName
-                item_message_tv_body.text = item.body.threeDots(40)
-                item_message_tv_job.text = item.senderJob
-                item_location_tv_city.text = item.senderLocation
-
-                if (item.isNew) {
-                    item_message_layout_messages.setVisible()
-                    item_bubble_messages_tv_amount.text = item.amount
-                    item_message_tv_body.typeface = Typeface.DEFAULT_BOLD
-                }
+//                item_message_tv_name.text = item.senderName
+//                item_message_tv_body.text = item.body.threeDots(40)
+//                item_message_tv_job.text = item.senderJob
+//                item_location_tv_city.text = item.senderLocation
 
                 glideManager
                     .load(item.senderPhoto)
@@ -64,9 +58,9 @@ class MessageViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinCompone
     }
 
     companion object {
-        fun create(parent: ViewGroup) = MessageViewHolder(
+        fun create(parent: ViewGroup) = NewsViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_conversation,
+                R.layout.item_news,
                 parent,
                 false
             )

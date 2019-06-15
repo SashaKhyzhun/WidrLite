@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--    Primary     -->
+    <!-- Primary -->
     <color name="primary">#2196F3</color>
     <color name="primaryLight">#BBDEFB</color>
     <color name="primaryDark">#1976D2</color>
@@ -10,12 +10,11 @@
     <color name="primaryHint">#9aa1a6</color>
     <color name="primaryHintGray">#F1F1F1</color>
 
-
-    <!--    Navigation   -->
+    <!-- Navigation -->
     <color name="navigation_active_button">#8e24aa</color>
     <color name="navigation_inactive_button">#505a60</color>
 
-    <!--    Gradients    -->
+    <!-- Gradients -->
     <color name="gradient_splash_start">#5f3284</color>
     <color name="gradient_splash_end">#160824</color>
     <color name="gradient_profile_start">#227998</color>
@@ -24,27 +23,31 @@
     <color name="gradient_notifications_end">#0018ff</color>
     <color name="gradient_messages_start">#7f3aa0</color>
     <color name="gradient_messages_end">#421573</color>
+    <color name="gradient_feed_start">#7628f3</color>
+    <color name="gradient_feed_end">#274cf3</color>
 
-    <color name="error">#BE1405</color>
-    <color name="inactive">#505a60</color>
-    <color name="button_dark">#3a1d53</color>
-    <color name="profile_bottom_line">#e5e3e5</color>
-
+    <!-- Profile Page Colors -->
     <color name="profile_image_preview">#DDDDDD</color>
     <color name="profile_color_bubble">#ff322b</color>
     <color name="profile_proposal_text">#fe5602</color>
     <color name="profile_proposal_icon">@color/profile_proposal_text</color>
-
     <color name="profile_proposal_background">#ffe3d4</color>
     <color name="profile_proposal_foreground">#ffceaf</color>
-
     <color name="profile_menu_background">#dae2fe</color>
     <color name="profile_menu_foreground">#224ff3</color>
 
+    <!-- Notifications Page Colors -->
     <color name="notif_menu_foreground">#224ff3</color>
     <color name="notif_menu_background">#dae2fe</color>
 
+    <!-- Messages Page Colors -->
     <color name="messages_menu_foreground">#224ff3</color>
     <color name="messages_menu_background">#dae2fe</color>
+
+    <!-- Different -->
+    <color name="error">#BE1405</color>
+    <color name="inactive">#505a60</color>
+    <color name="button_dark">#3a1d53</color>
+    <color name="profile_bottom_line">#e5e3e5</color>
 
 </resources>

@@ -25,7 +25,7 @@
                 android:id="@+id/fragment_profile_layout_header"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/item_profile_header_gradient"
+                android:background="@drawable/item_gradient_profile_header"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
 

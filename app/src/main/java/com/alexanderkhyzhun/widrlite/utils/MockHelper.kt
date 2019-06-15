@@ -1,6 +1,8 @@
 package com.alexanderkhyzhun.widrlite.utils
 
+import com.alexanderkhyzhun.widrlite.app.WidrLiteApp.Companion.context
 import com.alexanderkhyzhun.widrlite.data.models.response.RPConversation
+import com.alexanderkhyzhun.widrlite.data.models.response.RPNewsItem
 import com.alexanderkhyzhun.widrlite.data.models.response.RPNotification
 
 /**
@@ -84,3 +86,13 @@ fun generateRPConversations() = listOf(
         "Having confidence in a specific outcome; being almost sure about something.",
         "22 May", "0", false)
     )
+
+
+fun generateRPNews() = listOf(
+    RPNewsItem("0", "0", "Sometimes this is the irony of promoting your bisuness product and services, becase...", "8:34 AM", "new", "0", "Anna Mendez", "https://p.djinni.co/47/56d6d09f9f11e89d3c215567043bfe/200.jpg", "Paris", "#5f3284"),
+    RPNewsItem("1", "1", "Sometimes this is the irony of promoting your bisuness product and services, becase...", "11:45 PM", "new", "1", "Sergey Dziupin", "https://p.djinni.co/83/fe15f38bb74e5388a8ed6491e447af/200.jpg", "Kyiv", "#160824"),
+    RPNewsItem("2", "2", "Sometimes this is the irony of promoting your bisuness product and services, becase...", "8:00 AM", "new", "2", "Elizabeth Bessonova", "https://p.djinni.co/f8/30137d3e564284a7ca7f0e1fae2a51/200.jpg", "London", "#227998"),
+    RPNewsItem("3", "3", "Sometimes this is the irony of promoting your bisuness product and services, becase...", "4:52 PM", "new", "3", "Valeria Riabko", "https://p.djinni.co/86/e0d060302e11e994cb017648c5e872/200.jpg", "Tokyo", "#229b56"),
+    RPNewsItem("4", "4", "Sometimes this is the irony of promoting your bisuness product and services, becase...", "0:04 AM", "new", "4", "Olga Kod", "https://djinni.co/static/i/default-userpic@2x.png", "Sacramento", "#5760ff"),
+    RPNewsItem("5", "5", "Sometimes this is the irony of promoting your bisuness product and services, becase...", "7:12 PM", "new", "5", "Khrystyna Pochynok", "https://p.djinni.co/6e/6236302d2911e9baf017c7e67cff32/200.jpg", "Moscow", "#0018ff")
+)
