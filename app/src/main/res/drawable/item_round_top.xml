@@ -7,6 +7,6 @@
         android:topRightRadius="30.0dp"
         />
 
-    <solid android:color="@color/primaryHintGray" />
+    <solid android:color="@android:color/white" />
 
 </shape>

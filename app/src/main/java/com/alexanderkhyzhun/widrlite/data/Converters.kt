@@ -20,4 +20,4 @@ fun RPConversation.toConversationItem(): ConversationItem = ConversationItem(
 )
 
 fun RPNewsItem.toNewsItem(): NewsItem =
-    NewsItem(postId, postBody, postTime, senderPhoto, senderName, bgColor)
+    NewsItem(postId, postBody, postTime, postTitle, postLocation, senderPhoto, senderName, bgColor)

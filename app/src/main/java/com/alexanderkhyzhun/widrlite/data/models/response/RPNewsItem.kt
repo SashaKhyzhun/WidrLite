@@ -13,6 +13,10 @@ data class RPNewsItem(
     val postTime: String,
     @SerializedName("postStatus")
     val postStatus: String,
+    @SerializedName("postStatus")
+    val postTitle: String,
+    @SerializedName("postStatus")
+    val postLocation: String,
     @SerializedName("senderId")
     val senderId: String,
     @SerializedName("senderName")

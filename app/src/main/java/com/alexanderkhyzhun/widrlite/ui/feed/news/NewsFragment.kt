@@ -2,7 +2,6 @@ package com.alexanderkhyzhun.widrlite.ui.feed.news
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alexanderkhyzhun.widrlite.R
@@ -16,7 +15,10 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.diffs.NewsItemDiffUtilsCallback
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
 import com.alexanderkhyzhun.widrlite.utils.dp
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kotlinx.android.synthetic.main.fragment_news.*
+import org.jetbrains.anko.support.v4.share
+import org.jetbrains.anko.support.v4.toast
 import org.koin.android.ext.android.inject
 
 /**
@@ -41,7 +43,11 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
         delegateAdapter.delegatesManager.apply {
             addDelegate(
                 NewsDelegateAdapter(
-                    presenter::onMessageClick,
+                    presenter::onPostClick,
+                    presenter::onMutualClick,
+                    presenter::onCommentClick,
+                    presenter::onShareClick,
+                    presenter::onOfferClick,
                     ::bindUntilDestroy
                 )
             )
@@ -63,6 +69,12 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
                 )
             )
         }
+
+
+        //item_news_iv_bg.setBackgroundColor(Color.parseColor(item.bgColor))
+        //item_news_view_pager.offscreenPageLimit = 3
+        //item_news_view_pager.adapter = NewsPagerAdapter(childFragmentManager)
+        //item_news_view_pager.addOnPageChangeListener(this)
     }
 
     override fun renderView(data: List<NewsItem>) {
@@ -72,6 +84,27 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
                 new
             )
         }
+    }
+
+    override fun onClickedShowMutual() {
+        toast("show mutual")
+    }
+
+    override fun onClickedComment() {
+        toast("comment")
+    }
+
+    override fun onClickedShare(postTitle: String, postDescription: String) {
+        share(postTitle, postDescription)
+    }
+
+    override fun onClickedOffer(newsItem: NewsItem) {
+
+        fragment_services_parent_sliding_up_panel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
+    }
+
+    override fun onPanelClose() {
+        fragment_services_parent_sliding_up_panel.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
     }
 
     override fun showLoader() {

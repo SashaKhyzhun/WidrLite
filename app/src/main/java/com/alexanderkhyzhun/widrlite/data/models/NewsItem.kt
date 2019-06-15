@@ -6,6 +6,8 @@ data class NewsItem(
     val postId: String,
     val postDescription: String,
     val postDate: String,
+    val postTitle: String,
+    val postLocation: String,
     val authorImage: String,
     val authorName: String,
     val bgColor: String

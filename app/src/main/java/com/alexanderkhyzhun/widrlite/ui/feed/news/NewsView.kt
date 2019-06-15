@@ -12,4 +12,19 @@ interface NewsView : MvpView, ErrorView, LoadingView {
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun renderView(data: List<NewsItem>)
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onClickedShowMutual()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onClickedComment()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onClickedShare(postTitle: String, postDescription: String)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onClickedOffer(newsItem: NewsItem)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onPanelClose()
+
 }

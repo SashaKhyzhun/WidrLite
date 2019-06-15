@@ -34,12 +34,42 @@ class NewsPresenter : BasePresenter<NewsView>(), KoinComponent {
     }
 
 
-    fun onMessageClick(item: DisplayableItem) {
+    fun onPostClick(item: DisplayableItem) {
         item as NewsItem
         Timber.d("news item = $item")
-
     }
 
+    fun onMutualClick(item: DisplayableItem) {
+        viewState.onClickedShowMutual()
+    }
 
+    fun onCommentClick(item: DisplayableItem) {
+        viewState.onClickedComment()
+    }
+
+    fun onShareClick(item: DisplayableItem) {
+        item as NewsItem
+        viewState.onClickedShare(item.postTitle, item.postDescription)
+    }
+
+    fun onOfferClick(item: DisplayableItem) {
+        viewState.onClickedOffer(item as NewsItem)
+    }
+
+    fun onPanelShareClicked() {
+        viewState.onPanelClose()
+    }
+
+    fun onPanelFacebookClicked() {
+        viewState.onPanelClose()
+    }
+
+    fun onPanelSendClicked() {
+        viewState.onPanelClose()
+    }
+
+    fun onPanelMutualClicked() {
+        viewState.onPanelClose()
+    }
 
 }

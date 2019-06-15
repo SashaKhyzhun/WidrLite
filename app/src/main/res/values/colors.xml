@@ -44,10 +44,17 @@
     <color name="messages_menu_foreground">#224ff3</color>
     <color name="messages_menu_background">#dae2fe</color>
 
+    <!-- Slide Up panel -->
+    <color name="slide_up_panel_button">#224ff3</color>
+    <color name="slide_up_panel_gray">#f5f3f5</color>
+    <color name="slide_up_panel_facebook">#2d5ea3</color>
+
     <!-- Different -->
     <color name="error">#BE1405</color>
     <color name="inactive">#505a60</color>
     <color name="button_dark">#3a1d53</color>
+    <color name="button_light">#B27E6FF7</color>
     <color name="profile_bottom_line">#e5e3e5</color>
+
 
 </resources>

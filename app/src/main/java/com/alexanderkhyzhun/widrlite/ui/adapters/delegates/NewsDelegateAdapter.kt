@@ -16,6 +16,10 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.viewholders.NewsViewHolder
  */
 class NewsDelegateAdapter(
     private val click: (DisplayableItem) -> Unit,
+    private val mutualClick: (DisplayableItem) -> Unit,
+    private val commentClick: (DisplayableItem) -> Unit,
+    private val shareClick: (DisplayableItem) -> Unit,
+    private val offerClick: (DisplayableItem) -> Unit,
     private val dispose: () -> LifecycleTransformer<Any>
 ) : AdapterDelegate<List<DisplayableItem>>() {
 
@@ -28,7 +32,16 @@ class NewsDelegateAdapter(
         holder: RecyclerView.ViewHolder,
         payloads: MutableList<Any>
     ) {
-        (holder as NewsViewHolder).bind(items[position], position, click, dispose)
+        (holder as NewsViewHolder).bind(
+            items[position],
+            position,
+            click,
+            mutualClick,
+            commentClick,
+            shareClick,
+            offerClick,
+            dispose
+        )
     }
 
     override fun onCreateViewHolder(parent: ViewGroup) = NewsViewHolder.create(parent)
