@@ -45,6 +45,7 @@ class MainActivity : BaseActivity(),
 
         setUpBottomNavigation()
         setUpViewPager()
+        //setTranslucentStatusBar()
     }
 
     override fun updatePagerStatus(enabled: Boolean) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_message_layout_notifications"
+    android:background="@drawable/ic_shadow"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
@@ -128,6 +128,7 @@
             app:layout_constraintTop_toBottomOf="@+id/item_news_tv_description" />
 
         <TextView
+            android:id="@+id/item_news_tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="16dp"

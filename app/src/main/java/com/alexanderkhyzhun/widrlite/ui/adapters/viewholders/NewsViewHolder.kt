@@ -1,5 +1,6 @@
 package com.alexanderkhyzhun.widrlite.ui.adapters.viewholders
 
+import android.graphics.Color
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
+import com.alexanderkhyzhun.widrlite.data.models.NewsItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.utils.setVisible
 import com.alexanderkhyzhun.widrlite.utils.threeDots
@@ -18,6 +20,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer
 import kotlinx.android.synthetic.main.item_bubble_messages.view.*
 import kotlinx.android.synthetic.main.item_location.view.*
 import kotlinx.android.synthetic.main.item_conversation.view.*
+import kotlinx.android.synthetic.main.item_news.view.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 
@@ -36,22 +39,23 @@ class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view), KoinComponent 
         click: (DisplayableItem) -> Unit,
         dispose: () -> LifecycleTransformer<Any>
     ) {
-        (item as? ConversationItem)?.let {
+        (item as? NewsItem)?.let {
             with(itemView) {
                 this.clicks()
                     .compose(dispose.invoke())
                     .observeOn(schedulers.mainThread())
                     .subscribe { click.invoke(item) }
 
-//                item_message_tv_name.text = item.senderName
-//                item_message_tv_body.text = item.body.threeDots(40)
-//                item_message_tv_job.text = item.senderJob
-//                item_location_tv_city.text = item.senderLocation
+                item_news_author_name.text = item.authorName
+                item_news_tv_description.text = item.postDescription.threeDots(100)
+                item_news_tv_date.text = item.postDate
+
+                item_news_iv_bg.setBackgroundColor(Color.parseColor(item.bgColor))
 
                 glideManager
-                    .load(item.senderPhoto)
+                    .load(item.authorImage)
                     .apply(RequestOptions().circleCrop())
-                    .into(item_message_iv_photo)
+                    .into(item_news_author_photo)
 
             }
         }

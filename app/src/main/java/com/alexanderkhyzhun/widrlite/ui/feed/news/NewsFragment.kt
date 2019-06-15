@@ -56,8 +56,8 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
             )
             addItemDecoration(
                 LinearDecorator(
-                    8.dp(),
-                    8.dp(),
+                    0.dp(),
+                    0.dp(),
                     8.dp(),
                     0.dp()
                 )
