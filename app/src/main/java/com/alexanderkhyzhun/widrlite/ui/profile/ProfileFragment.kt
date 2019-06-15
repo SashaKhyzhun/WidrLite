@@ -9,15 +9,13 @@ import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
-import com.alexanderkhyzhun.widrlite.utils.smoothToHide
-import com.alexanderkhyzhun.widrlite.utils.smoothToShow
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.appbar.AppBarLayout
 import com.jakewharton.rxbinding2.view.clicks
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.item_burger_icon.*
+import kotlinx.android.synthetic.main.item_profile_header.*
 import org.jetbrains.anko.support.v4.toast
 import org.koin.android.ext.android.inject
 import java.util.concurrent.TimeUnit
@@ -73,24 +71,6 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
             .observeOn(schedulers.mainThread())
             .subscribe { presenter.onClickBurger() }
 
-
-        fragment_profile_app_bar.addOnOffsetChangedListener(
-            AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-                when {
-                    Math.abs(verticalOffset) == appBarLayout?.totalScrollRange -> {
-                        // If collapsed, then do this
-                        fragment_profile_iv_user_image.smoothToHide()
-                    }
-                    verticalOffset == 0 -> {
-                        // If expanded, then do this
-                        fragment_profile_iv_user_image.smoothToShow()
-                    }
-                    else -> {
-                        // Somewhere in between
-                        // Do according to your requirement
-                    }
-                }
-            })
     }
 
     override fun onDetach() {

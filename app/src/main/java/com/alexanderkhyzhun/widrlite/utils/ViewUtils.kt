@@ -25,6 +25,14 @@ fun View.setVisible() {
 }
 
 
+fun View.smoothToSmall() {
+    startAnimation(AnimationUtils.loadAnimation(context, R.anim.zoom_to_small))
+}
+
+fun View.smoothToFull() {
+    startAnimation(AnimationUtils.loadAnimation(context, R.anim.zoom_to_full))
+}
+
 fun View.smoothToShow() {
     startAnimation(AnimationUtils.loadAnimation(context, android.R.anim.fade_in))
     this.setVisible()
