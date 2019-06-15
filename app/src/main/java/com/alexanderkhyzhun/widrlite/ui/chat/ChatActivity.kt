@@ -41,20 +41,20 @@ class ChatActivity : BaseActivity(), ChatView {
         activity_chat_tv_user_name.text = chat.userName
     }
 
-    override fun renderError(throwable: Throwable) {
-        showSnack(throwable.message)
+    override fun showLoader() {
+        /* code implementation */
+    }
+
+    override fun hideLoader() {
+        /* code implementation */
     }
 
     override fun renderMessage(text: String) {
         showSnack(text)
     }
 
-    override fun showLoader() {
-
-    }
-
-    override fun hideLoader() {
-
+    override fun renderError(throwable: Throwable) {
+        showSnack(throwable.message)
     }
 
 

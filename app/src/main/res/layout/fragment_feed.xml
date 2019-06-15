@@ -26,6 +26,7 @@
         app:tabIndicatorColor="@android:color/white"
         app:tabIndicatorHeight="2dp"
         app:tabIndicatorGravity="bottom"
+        app:tabIndicatorFullWidth="false"
         >
 
         <com.google.android.material.tabs.TabItem

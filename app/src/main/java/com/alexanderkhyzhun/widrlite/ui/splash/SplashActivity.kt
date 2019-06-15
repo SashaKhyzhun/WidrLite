@@ -4,13 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.alexanderkhyzhun.widrlite.R
-import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.MainActivity
 import com.alexanderkhyzhun.widrlite.ui.auth.AuthActivity
-import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
-import kotlinx.coroutines.*
-import org.koin.android.ext.android.inject
+import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
 
 /**
  * @author SashaKhyzhun
@@ -28,7 +30,7 @@ class SplashActivity : BaseActivity(), SplashView {
 
 
         CoroutineScope(Dispatchers.Main).launch {
-            delay(1500L / 2)
+            delay(500)
             presenter.handleUserAuthStatus()
         }
     }

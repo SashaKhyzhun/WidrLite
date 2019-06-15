@@ -39,3 +39,5 @@ fun String.isValidPhoneNumber() = Patterns.PHONE.matcher(this).matches()
 fun String.threeDots(n: Int): String {
     return if (this.length >= n) "${this.substring(0, n)}..." else this
 }
+
+fun getEmojiByUnicode(unicode: Int): String = String(Character.toChars(unicode))

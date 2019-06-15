@@ -127,20 +127,20 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
 
     }
 
-    override fun renderError(throwable: Throwable) {
-
-    }
-
-    override fun renderMessage(text: String) {
-
-    }
-
     override fun showLoader() {
-
+        /* code implementation */
     }
 
     override fun hideLoader() {
+        /* code implementation */
+    }
 
+    override fun renderMessage(text: String) {
+        showSnack(text)
+    }
+
+    override fun renderError(throwable: Throwable) {
+        showSnack(throwable.message)
     }
 
     companion object {
