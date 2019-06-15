@@ -1,39 +1,59 @@
 package com.alexanderkhyzhun.widrlite.ui
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
 import android.view.MenuItem
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.viewpager.widget.ViewPager
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
+import com.alexanderkhyzhun.widrlite.data.models.NewsItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.MainPagerAdapter
-import com.alexanderkhyzhun.widrlite.ui.feed.FeedFragment
+import com.alexanderkhyzhun.widrlite.ui.chat.ChatActivity
 import com.alexanderkhyzhun.widrlite.ui.conversations.ConversationsFragment
+import com.alexanderkhyzhun.widrlite.ui.feed.FeedFragment
+import com.alexanderkhyzhun.widrlite.ui.feed.news.NewsFragment
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.ui.notifications.NotificationsFragment
 import com.alexanderkhyzhun.widrlite.ui.profile.ProfileFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.jakewharton.rxbinding2.view.clicks
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_slide_up_panel.*
+import kotlinx.android.synthetic.main.item_slide_up_panel_header.*
+import org.jetbrains.anko.share
+import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
+import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity(),
     MainView,
     ViewPager.OnPageChangeListener,
     BottomNavigationView.OnNavigationItemSelectedListener,
     ProfileFragment.Callback,
-    NotificationsFragment.Callback {
+    NotificationsFragment.Callback,
+    NewsFragment.Callback {
 
     val schedulers: Schedulers by inject()
+    val glideManager: RequestManager by inject()
 
     @InjectPresenter
     lateinit var presenter: MainPresenter
@@ -103,11 +123,75 @@ class MainActivity : BaseActivity(),
         return true
     }
 
+    @SuppressLint("CheckResult")
+    override fun showSlideUp(newsItem: NewsItem) {
+        Timber.d("show slide up = $newsItem")
+
+        item_slide_up_tv_description.text = newsItem.postDescription
+        item_slide_up_tv_date.text = newsItem.postDate
+        item_slide_up_author_name.text = newsItem.authorName
+
+        glideManager
+            .load(newsItem.authorImage)
+            .apply(RequestOptions().circleCrop())
+            .load(item_slide_up_author_photo)
+
+
+        item_slide_up_layout_facebook.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe {
+                presenter.onPanelClickFacebook(newsItem)
+            }
+
+        item_slide_up_layout_share.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe {
+                presenter.onPanelClickShare(newsItem)
+            }
+
+        item_slide_up_button_send.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe {
+                presenter.onPanelClickSendRecommendation(newsItem)
+            }
+
+        fragment_services_parent_sliding_up_panel.panelState =
+            SlidingUpPanelLayout.PanelState.EXPANDED
+    }
+
+
+    override fun onPanelClose() {
+        fragment_services_parent_sliding_up_panel.panelState =
+            SlidingUpPanelLayout.PanelState.COLLAPSED
+    }
+
+    override fun openConversation() {
+        Handler().postDelayed({
+            startActivity(ChatActivity.getIntent(this))
+        }, CLICK_DEBOUNCE)
+    }
+
+    override fun onPanelClickedFacebook() {
+        toast("Facebook")
+    }
+
+    override fun onPanelClickedSendRecommendation() {
+        toast("Recommendation")
+    }
+
+    override fun onPanelClickedShare(postTitle: String, postDescription: String) {
+        share(postTitle, postDescription)
+    }
 
     override fun takePhoto() {
 
     }
-
 
     override fun importPhoto() {
         if (checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {

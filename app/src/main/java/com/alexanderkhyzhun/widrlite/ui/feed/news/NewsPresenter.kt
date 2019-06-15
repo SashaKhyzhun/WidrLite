@@ -56,20 +56,6 @@ class NewsPresenter : BasePresenter<NewsView>(), KoinComponent {
         viewState.onClickedOffer(item as NewsItem)
     }
 
-    fun onPanelShareClicked() {
-        viewState.onPanelClose()
-    }
 
-    fun onPanelFacebookClicked() {
-        viewState.onPanelClose()
-    }
-
-    fun onPanelSendClicked() {
-        viewState.onPanelClose()
-    }
-
-    fun onPanelMutualClicked() {
-        viewState.onPanelClose()
-    }
 
 }

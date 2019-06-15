@@ -6,7 +6,6 @@ import androidx.viewpager.widget.ViewPager
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.adapters.FeedPagerAdapter
-import com.alexanderkhyzhun.widrlite.ui.feed.news.NewsFragment
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.google.android.material.tabs.TabLayout

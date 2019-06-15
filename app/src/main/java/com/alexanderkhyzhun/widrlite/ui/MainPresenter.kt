@@ -1,6 +1,7 @@
 package com.alexanderkhyzhun.widrlite.ui
 
 import android.graphics.Bitmap
+import com.alexanderkhyzhun.widrlite.data.models.NewsItem
 import com.alexanderkhyzhun.widrlite.data.storage.SignUpRepository
 import com.alexanderkhyzhun.widrlite.domain.MainUseCase
 import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
@@ -23,6 +24,23 @@ class MainPresenter : BasePresenter<MainView>(), KoinComponent {
 
     fun savePhotoFromStorage(photo: Bitmap) {
         useCase.storeUserPhoto(photo)
+    }
+
+
+    fun onPanelClickFacebook(item: NewsItem) {
+        viewState.onPanelClickedFacebook()
+        viewState.onPanelClose()
+    }
+
+    fun onPanelClickShare(item: NewsItem) {
+        viewState.onPanelClickedShare(item.postTitle, item.postDescription)
+        viewState.onPanelClose()
+    }
+
+    fun onPanelClickSendRecommendation(item: NewsItem) {
+        useCase.updateSelectedConversation(item)
+        viewState.onPanelClose()
+        viewState.openConversation()
     }
 
 }

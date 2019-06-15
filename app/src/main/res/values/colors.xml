@@ -48,6 +48,7 @@
     <color name="slide_up_panel_button">#224ff3</color>
     <color name="slide_up_panel_gray">#f5f3f5</color>
     <color name="slide_up_panel_facebook">#2d5ea3</color>
+    <color name="slide_up_panel_close">#d3d2d3</color>
 
     <!-- Different -->
     <color name="error">#BE1405</color>

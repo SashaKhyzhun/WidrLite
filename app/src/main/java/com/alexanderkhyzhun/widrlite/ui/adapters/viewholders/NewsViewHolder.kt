@@ -15,7 +15,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.jakewharton.rxbinding2.view.clicks
 import com.trello.rxlifecycle2.LifecycleTransformer
 import kotlinx.android.synthetic.main.item_news.view.*
-import kotlinx.android.synthetic.main.item_news_post.view.*
+import kotlinx.android.synthetic.main.item_news_post_body.view.*
+import kotlinx.android.synthetic.main.item_news_post_header.view.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 

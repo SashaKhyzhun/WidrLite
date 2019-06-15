@@ -1,30 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main_container"
-    android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_services_parent_sliding_up_panel"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:gravity="bottom"
+    app:umanoDragView="@id/item_slide_up_layout_parent"
+    app:umanoPanelHeight="0dp"
+    app:umanoOverlay="true"
+    app:umanoParallaxOffset="10dp"
+    app:umanoShadowHeight="4dp">
 
-    <com.alexanderkhyzhun.widrlite.views.WidrViewPager
-        android:id="@+id/activity_main_pager"
+    <RelativeLayout
+        android:id="@+id/activity_main_container"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/activity_main_navigation" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/activity_main_navigation"
+        <com.alexanderkhyzhun.widrlite.views.WidrViewPager
+            android:id="@+id/activity_main_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/activity_main_navigation" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/activity_main_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="?android:attr/windowBackground"
+            android:visibility="visible"
+            app:elevation="4dp"
+            app:itemIconTint="@color/selector_navigation_buttons"
+            app:itemTextColor="@color/selector_navigation_buttons"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/navigation" />
+
+    </RelativeLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        android:visibility="visible"
-        app:elevation="4dp"
-        app:itemIconTint="@color/selector_navigation_buttons"
-        app:itemTextColor="@color/selector_navigation_buttons"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/navigation" />
+        android:id="@+id/drag_view"
+        android:focusable="false"
+        android:clickable="true"
+        android:orientation="vertical">
 
+        <include layout="@layout/item_slide_up_panel" />
 
-</RelativeLayout>
+    </FrameLayout>
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+

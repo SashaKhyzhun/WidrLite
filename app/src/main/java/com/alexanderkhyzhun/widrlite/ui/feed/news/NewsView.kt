@@ -24,7 +24,5 @@ interface NewsView : MvpView, ErrorView, LoadingView {
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun onClickedOffer(newsItem: NewsItem)
 
-    @StateStrategyType(OneExecutionStateStrategy::class)
-    fun onPanelClose()
 
 }

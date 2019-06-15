@@ -11,18 +11,25 @@
     android:background="@drawable/item_round_top"
     >
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <FrameLayout
         android:id="@+id/item_slide_up_layout_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <include layout="@layout/item_news_post_header" />
+        <include layout="@layout/item_slide_up_panel_header" />
 
     </FrameLayout>
 
@@ -54,8 +61,9 @@
         app:layout_constraintTop_toBottomOf="@+id/item_slide_up_layout_privacy" />
 
     <LinearLayout
+        android:id="@+id/item_slide_up_layout_buttons"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -66,15 +74,16 @@
         app:layout_constraintTop_toBottomOf="@+id/item_slide_up_button_send">
 
         <LinearLayout
-            android:layout_weight="50"
+            android:id="@+id/item_slide_up_layout_share"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginEnd="4dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
+            android:layout_weight="50"
             android:background="@drawable/item_round_solid_gray"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -88,27 +97,87 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="50"
+            android:id="@+id/item_slide_up_layout_facebook"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginStart="4dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
+            android:layout_weight="50"
             android:background="@drawable/item_round_solid_gray"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
 
             <ImageView
-                android:src="@drawable/ic_facebook"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_facebook" />
+
             <TextView
-                android:text="Share to Facebook"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Share to Facebook" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_slide_up_tv_description_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Description"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textAlignment="viewStart"
+        app:layout_constraintTop_toBottomOf="@+id/item_slide_up_layout_buttons" />
+
+    <TextView
+        android:id="@+id/item_slide_up_tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="12dp"
+        android:text="If you own an Android, you've probably already worded out how much fun it is to use it watch movies-it has that nice big screen, and the sound quility is surorisingly good to. Now imagine if you knew how to download Android movies without having to pay."
+        android:textColor="@android:color/black"
+        android:textStyle="normal"
+        android:textSize="14sp"
+        android:textAlignment="viewStart"
+        android:maxLines="5"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@+id/item_slide_up_tv_description_label" />
+
+    <TextView
+        android:id="@+id/item_slide_up_tv_contribution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Post has 12 contributions"
+        android:textAlignment="viewStart"
+        android:textColor="@color/hint_color"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/item_slide_up_tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="today, 8:44 AM"
+        android:textAlignment="viewStart"
+        android:textColor="@color/hint_color"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 
