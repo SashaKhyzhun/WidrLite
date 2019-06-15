@@ -11,9 +11,10 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
-import android.text.Html
 import android.view.MenuItem
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager.widget.ViewPager
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
@@ -31,6 +32,7 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.navigation.NavigationView
 import com.jakewharton.rxbinding2.view.clicks
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -63,7 +65,7 @@ class MainActivity : BaseActivity(),
 
         setUpBottomNavigation()
         setUpViewPager()
-        //setTranslucentStatusBar()
+        setUpNavigationDrawer()
     }
 
     override fun updatePagerStatus(enabled: Boolean) {
@@ -80,6 +82,21 @@ class MainActivity : BaseActivity(),
         activity_main_navigation.setOnNavigationItemSelectedListener(this)
         activity_main_navigation.selectedItemId = R.id.navigation_feed
         activity_main_navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+    }
+
+    private fun setUpNavigationDrawer() {
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            drawer_layout.closeDrawers()
+            //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            when (menuItem.itemId) {
+                R.id.nav_profile -> toast("Profile")
+                R.id.nav_settings -> toast("Settings")
+                R.id.nav_terms -> toast("Terms")
+            }
+            true
+        }
     }
 
     override fun onPageScrollStateChanged(state: Int) {}
@@ -156,14 +173,7 @@ class MainActivity : BaseActivity(),
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe {
-
                 presenter.onPanelClickSendRecommendation(newsItem)
-//                val startingLocation = intArrayOf(0,0)
-//                item_slide_up_button_send.getLocationOnScreen(startingLocation)
-//                startingLocation[0] += item_slide_up_button_send.width / 2
-//                ChatActivity.startUserProfileFromLocation(startingLocation, this)
-//                overridePendingTransition(0,0)
-//                presenter.slideUpPanelHide()
             }
 
 
@@ -194,6 +204,11 @@ class MainActivity : BaseActivity(),
 
     override fun onPanelClickedShare(postTitle: String, postDescription: String) {
         share(postTitle, postDescription)
+    }
+
+    override fun onClickedBurger() {
+        //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED) // check it.
+        drawer_layout.openDrawer(GravityCompat.END)
     }
 
     override fun takePhoto() {

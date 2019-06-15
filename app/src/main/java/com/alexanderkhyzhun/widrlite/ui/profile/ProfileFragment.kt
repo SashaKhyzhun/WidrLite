@@ -30,6 +30,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
     interface Callback {
         fun takePhoto()
         fun importPhoto()
+        fun onClickedBurger()
     }
 
     val schedulers: Schedulers by inject()
@@ -70,6 +71,12 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe { presenter.onClickBurger() }
+
+        fragment_profile_layout_burger.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { callback?.onClickedBurger() }
 
     }
 

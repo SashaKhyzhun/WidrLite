@@ -2,7 +2,6 @@
 <com.sothree.slidinguppanel.SlidingUpPanelLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_services_parent_sliding_up_panel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,33 +13,45 @@
     app:umanoParallaxOffset="10dp"
     app:umanoShadowHeight="4dp">
 
-    <RelativeLayout
-        android:id="@+id/activity_main_container"
-        android:fitsSystemWindows="true"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-        <com.alexanderkhyzhun.widrlite.views.WidrViewPager
-            android:id="@+id/activity_main_pager"
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.alexanderkhyzhun.widrlite.views.WidrViewPager
+                android:id="@+id/activity_main_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/activity_main_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="?android:attr/windowBackground"
+                android:visibility="visible"
+                app:elevation="4dp"
+                app:itemIconTint="@color/selector_navigation_buttons"
+                app:itemTextColor="@color/selector_navigation_buttons"
+                app:labelVisibilityMode="unlabeled"
+                app:menu="@menu/navigation_bottom" />
+        </FrameLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_above="@+id/activity_main_navigation" />
+            android:layout_gravity="end"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/navigation_drawer" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/activity_main_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:background="?android:attr/windowBackground"
-            android:visibility="visible"
-            app:elevation="4dp"
-            app:itemIconTint="@color/selector_navigation_buttons"
-            app:itemTextColor="@color/selector_navigation_buttons"
-            app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/navigation" />
-
-    </RelativeLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -55,4 +66,3 @@
     </FrameLayout>
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-
