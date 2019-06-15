@@ -20,5 +20,4 @@ class FeedPresenter : BasePresenter<FeedView>(), KoinComponent {
 
 
 
-
 }

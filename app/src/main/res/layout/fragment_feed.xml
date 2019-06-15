@@ -1,84 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@drawable/item_gradient_feed_header"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <include layout="@layout/item_current_location" />
-
-        </FrameLayout>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_menu_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.alexanderkhyzhun.widrlite.views.WidrTabLayout
-        android:background="@drawable/item_gradient_feed_header"
-        android:id="@+id/fragment_feed_tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textAlignment="center"
-        app:tabMode="scrollable"
-        app:tabTextColor="@android:color/white"
-        app:tabIndicatorColor="@android:color/white"
-        app:tabIndicatorHeight="2dp"
-        app:tabIndicatorGravity="bottom"
-        app:tabIndicatorFullWidth="false"
-        >
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/fragment_feed_tab_one"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fragment_feed_label_one" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/fragment_feed_tab_two"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fragment_feed_label_two" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/fragment_feed_tab_three"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fragment_feed_label_three" />
-
-    </com.alexanderkhyzhun.widrlite.views.WidrTabLayout>
-
-    <com.alexanderkhyzhun.widrlite.views.WidrViewPager
-        android:id="@+id/fragment_feed_view_pager"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/item_gradient_feed_header"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include layout="@layout/item_current_location" />
+
+            </FrameLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_menu_search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.alexanderkhyzhun.widrlite.views.WidrTabLayout
+            android:background="@drawable/item_gradient_feed_header"
+            android:id="@+id/fragment_feed_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textAlignment="center"
+            app:tabMode="scrollable"
+            app:tabTextColor="@android:color/white"
+            app:tabIndicatorColor="@android:color/white"
+            app:tabIndicatorHeight="2dp"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorFullWidth="false"
+            >
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/fragment_feed_tab_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_feed_label_one" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/fragment_feed_tab_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_feed_label_two" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/fragment_feed_tab_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_feed_label_three" />
+
+        </com.alexanderkhyzhun.widrlite.views.WidrTabLayout>
+
+        <com.alexanderkhyzhun.widrlite.views.WidrViewPager
+            android:id="@+id/fragment_feed_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -43,4 +43,8 @@ class MainPresenter : BasePresenter<MainView>(), KoinComponent {
         viewState.openConversation()
     }
 
+    fun slideUpPanelHide() {
+        viewState.onPanelClose()
+    }
+
 }

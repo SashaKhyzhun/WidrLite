@@ -8,11 +8,10 @@ import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
+import android.text.Html
 import android.view.MenuItem
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.viewpager.widget.ViewPager
@@ -28,7 +27,6 @@ import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.ui.notifications.NotificationsFragment
 import com.alexanderkhyzhun.widrlite.ui.profile.ProfileFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -158,8 +156,17 @@ class MainActivity : BaseActivity(),
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe {
+
                 presenter.onPanelClickSendRecommendation(newsItem)
+//                val startingLocation = intArrayOf(0,0)
+//                item_slide_up_button_send.getLocationOnScreen(startingLocation)
+//                startingLocation[0] += item_slide_up_button_send.width / 2
+//                ChatActivity.startUserProfileFromLocation(startingLocation, this)
+//                overridePendingTransition(0,0)
+//                presenter.slideUpPanelHide()
             }
+
+
 
         fragment_services_parent_sliding_up_panel.panelState =
             SlidingUpPanelLayout.PanelState.EXPANDED

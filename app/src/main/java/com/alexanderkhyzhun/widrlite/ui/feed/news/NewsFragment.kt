@@ -14,21 +14,15 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.decoratos.LinearDecorator
 import com.alexanderkhyzhun.widrlite.ui.adapters.delegates.NewsDelegateAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.diffs.NewsItemDiffUtilsCallback
-import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
 import com.alexanderkhyzhun.widrlite.utils.dp
+import com.alexanderkhyzhun.widrlite.utils.setGone
+import com.alexanderkhyzhun.widrlite.utils.setVisible
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.bumptech.glide.RequestManager
-import com.bumptech.glide.request.RequestOptions
-import com.jakewharton.rxbinding2.view.clicks
-import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kotlinx.android.synthetic.main.fragment_news.*
-import kotlinx.android.synthetic.main.item_news_post_header.*
-import kotlinx.android.synthetic.main.item_slide_up_panel.*
 import org.jetbrains.anko.support.v4.share
 import org.jetbrains.anko.support.v4.toast
 import org.koin.android.ext.android.inject
-import java.util.concurrent.TimeUnit
 
 /**
  * @author Alexander Khyzhun
@@ -49,7 +43,6 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
 
     @InjectPresenter
     lateinit var presenter: NewsPresenter
-
 
 
     override fun onAttach(context: Context) {
@@ -129,11 +122,11 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
     }
 
     override fun showLoader() {
-        /* code implementation */
+        preloader_layout.setVisible()
     }
 
     override fun hideLoader() {
-        /* code implementation */
+        preloader_layout.setGone()
     }
 
     override fun renderMessage(text: String) {

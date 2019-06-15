@@ -24,11 +24,7 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
             .compose(bindUntilDestroy())
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.mainThread())
-            .doOnComplete { viewState.hideLoader() }
-            .doOnError { viewState.hideLoader() }
-            .doOnSubscribe { viewState.showLoader() }
             .subscribe(viewState::renderView, viewState::renderError)
-
 
         useCase.fetchMessages()
             .compose(bindUntilDestroy())

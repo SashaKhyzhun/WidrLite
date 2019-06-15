@@ -54,8 +54,9 @@
         android:background="@drawable/item_round_solid_blue"
         android:text="Send recommendation \nopen a chat"
         android:textColor="@android:color/white"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textStyle="normal"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/item_slide_up_layout_privacy" />
