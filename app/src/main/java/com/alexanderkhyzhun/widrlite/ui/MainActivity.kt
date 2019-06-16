@@ -154,7 +154,7 @@ class MainActivity : BaseActivity(),
         glideManager
             .load(newsItem.authorImage)
             .apply(RequestOptions().circleCrop())
-            .load(item_slide_up_author_photo)
+            .into(item_slide_up_author_photo)
 
 
         item_slide_up_layout_facebook.clicks()

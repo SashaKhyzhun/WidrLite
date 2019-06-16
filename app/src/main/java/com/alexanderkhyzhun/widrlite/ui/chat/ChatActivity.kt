@@ -190,7 +190,10 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
     override fun onMessage(room: Room, receivedMessage: com.scaledrone.lib.Message) {
         val mapper = ObjectMapper()
         try {
-            val data = mapper.treeToValue(receivedMessage.member.clientData, MemberData::class.java)
+            val data = mapper.treeToValue(
+                receivedMessage.member.clientData,
+                MemberData::class.java
+            )
             val belongsToCurrentUser = receivedMessage.clientID == scaledrone.clientID
             val message = Message(receivedMessage.data.asText(), data, belongsToCurrentUser)
 
