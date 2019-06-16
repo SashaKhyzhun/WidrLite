@@ -48,5 +48,16 @@
     <string name="item_push_notifications_title">Get more from Widr</string>
     <string name="item_push_notifications_body">Enable Push notifications</string>
     <string name="item_notifications_button_text">Read</string>
+    <string name="fragment_profile_title_notif">Manage notifications</string>
+    <string name="fragment_profile_body_notif">4 filters saved</string>
+    <string name="fragment_profile_title_premium">Premium</string>
+    <string name="fragment_profile_body_premium">You are using Free plan</string>
+    <string name="fragment_profile_title_posts">My posts</string>
+    <string name="fragment_profile_body_posts">4 active, 12 archived</string>
+    <string name="fragment_profile_title_sent">Sent recommendations</string>
+    <string name="fragment_profile_body_sent">216 sent, 8 under review</string>
+    <string name="fragment_profile_title_contacts">Contacts</string>
+    <string name="fragment_profile_body_contacts">248 contacts, 16 in Widr</string>
+    <string name="fragment_profile_title_calls">In-app Calls</string>
 
 </resources>

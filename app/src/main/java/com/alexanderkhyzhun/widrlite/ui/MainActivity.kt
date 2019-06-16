@@ -1,10 +1,12 @@
 package com.alexanderkhyzhun.widrlite.ui
 
+import android.Manifest
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -211,7 +213,12 @@ class MainActivity : BaseActivity(),
     }
 
     override fun takePhoto() {
-
+        if (checkSelfPermission(Manifest.permission.CAMERA) != PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(Manifest.permission.CAMERA), MY_CAMERA_PERMISSION_CODE)
+        } else {
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(cameraIntent, CAMERA_REQUEST)
+        }
     }
 
     override fun importPhoto() {
@@ -255,6 +262,31 @@ class MainActivity : BaseActivity(),
 
                     presenter.savePhotoFromStorage(photo)
                 }
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == MY_CAMERA_PERMISSION_CODE) {
+            if (grantResults[0] == PERMISSION_GRANTED) {
+                val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(cameraIntent, CAMERA_REQUEST)
+            }
+        }
+        if (requestCode == MY_STORAGE_PERMISSION_CODE) {
+            if (grantResults[0] == PERMISSION_GRANTED) {
+                startActivityForResult(
+                    Intent(
+                        Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                    ),
+                    STORAGE_REQUEST)
             }
         }
     }

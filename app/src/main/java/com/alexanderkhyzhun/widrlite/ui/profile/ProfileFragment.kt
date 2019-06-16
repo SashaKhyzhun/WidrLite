@@ -64,7 +64,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
             .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
-            .subscribe { presenter.onClickImport() }
+            .subscribe { presenter.onClickTakePhoto() }
 
         fragment_profile_iv_burger.clicks()
             .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
@@ -104,7 +104,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
     }
 
     override fun onClickedTakePhoto() {
-
+        callback?.takePhoto()
     }
 
     override fun onClickedImport() {

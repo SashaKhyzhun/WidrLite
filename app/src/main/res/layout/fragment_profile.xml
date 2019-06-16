@@ -2,14 +2,14 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ContentDescription"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
     <androidx.core.widget.NestedScrollView
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -41,10 +41,10 @@
             <!-- Notifications block -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_profile_layout_notifications"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="16dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_profile_proposal">
@@ -59,14 +59,15 @@
                     android:src="@drawable/ic_profile_notifications"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <TextView
                     android:id="@+id/fragment_profile_title_notifications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Manage notifications"
+                    android:text="@string/fragment_profile_title_notif"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
@@ -80,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="4 filters saved"
+                    android:text="@string/fragment_profile_body_notif"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/primaryHint"
@@ -114,9 +115,9 @@
             <!-- Premium block -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_profile_layout_premium"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_notifications">
@@ -138,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Premium"
+                    android:text="@string/fragment_profile_title_premium"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
@@ -152,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="You are using Free plan"
+                    android:text="@string/fragment_profile_body_premium"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/primaryHint"
@@ -186,9 +187,9 @@
             <!-- My posts block -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_profile_layout_posts"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_premium">
@@ -210,7 +211,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="My posts"
+                    android:text="@string/fragment_profile_title_posts"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
@@ -224,7 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="4 active, 12 archived"
+                    android:text="@string/fragment_profile_body_posts"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/primaryHint"
@@ -258,9 +259,9 @@
             <!-- Sent recommendations block -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_profile_layout_sent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_posts">
@@ -282,7 +283,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Sent recommendations"
+                    android:text="@string/fragment_profile_title_sent"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
@@ -296,7 +297,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="216 sent, 8 under review"
+                    android:text="@string/fragment_profile_body_sent"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/primaryHint"
@@ -330,9 +331,9 @@
             <!-- Contacts block -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_profile_layout_contacts"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_profile_layout_sent">
@@ -354,7 +355,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Contacts"
+                    android:text="@string/fragment_profile_title_contacts"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
@@ -368,7 +369,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="248 contacts, 16 in Widr"
+                    android:text="@string/fragment_profile_body_contacts"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/primaryHint"
@@ -402,9 +403,9 @@
             <!-- Contacts block -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_profile_layout_in_app_calls"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -427,7 +428,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="In-app Calls"
+                    android:text="@string/fragment_profile_title_calls"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
