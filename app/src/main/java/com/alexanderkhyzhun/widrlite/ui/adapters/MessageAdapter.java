@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.alexanderkhyzhun.widrlite.R;
 import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message;
 import com.alexanderkhyzhun.widrlite.ui.adapters.viewholders.ChatMessageViewHolder;
-import com.alexanderkhyzhun.widrlite.ui.adapters.viewholders.MessageViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +23,8 @@ import java.util.List;
  */
 public class MessageAdapter extends BaseAdapter {
 
-    List<Message> messages = new ArrayList<Message>();
-    Context context;
+    private List<Message> messages = new ArrayList<Message>();
+    private Context context;
 
     public MessageAdapter(Context context) {
         this.context = context;
@@ -60,14 +59,14 @@ public class MessageAdapter extends BaseAdapter {
 
         if (message.isBelongsToCurrentUser()) {
             convertView = messageInflater.inflate(R.layout.my_message, null);
-            holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
+            holder.messageBody = convertView.findViewById(R.id.message_body);
             convertView.setTag(holder);
             holder.messageBody.setText(message.getText());
         } else {
             convertView = messageInflater.inflate(R.layout.their_message, null);
-            holder.avatar = (View) convertView.findViewById(R.id.avatar);
-            holder.name = (TextView) convertView.findViewById(R.id.name);
-            holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
+            holder.avatar = convertView.findViewById(R.id.avatar);
+            holder.name = convertView.findViewById(R.id.name);
+            holder.messageBody = convertView.findViewById(R.id.message_body);
             convertView.setTag(holder);
 
             holder.name.setText(message.getMemberData().getName());

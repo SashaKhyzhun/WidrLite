@@ -62,17 +62,12 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
         inputFocusChangesSubject.onNext(focused)
     }
 
-
-    fun onClickSendOrCall() {
-        useCase.messageText()
-            .map { it.trim() }
-            .subscribe {
-                Timber.d("onClickSendOrCall=$it")
-                when (it.length) {
-                    0 -> viewState.onClickedCall()
-                    else -> viewState.onClickedSend(it.toString())
-                }
-            }
+    fun onClickSendOrCall(text: String) {
+        text.trim()
+        when (text.length) {
+            0 -> viewState.onClickedCall()
+            else -> viewState.onClickedSend(text)
+        }
     }
 
 

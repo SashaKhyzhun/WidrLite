@@ -14,14 +14,12 @@ import android.provider.MediaStore
 import android.view.MenuItem
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager.widget.ViewPager
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.data.models.NewsItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.MainPagerAdapter
 import com.alexanderkhyzhun.widrlite.ui.chat.ChatActivity
-import com.alexanderkhyzhun.widrlite.ui.chat2.ChatActivtiy2
 import com.alexanderkhyzhun.widrlite.ui.conversations.ConversationsFragment
 import com.alexanderkhyzhun.widrlite.ui.feed.FeedFragment
 import com.alexanderkhyzhun.widrlite.ui.feed.news.NewsFragment
@@ -191,7 +189,7 @@ class MainActivity : BaseActivity(),
 
     override fun openConversation() {
         Handler().postDelayed({
-            startActivity(Intent(this, ChatActivtiy2::class.java))
+            startActivity(Intent(this, ChatActivity::class.java))
         }, CLICK_DEBOUNCE)
     }
 

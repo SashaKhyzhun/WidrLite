@@ -3,6 +3,9 @@ package com.alexanderkhyzhun.widrlite.ui.adapters.models;
 /**
  * @author Alexander Khyzhun
  * Created on 16 June, 2019
+ * <p>
+ * Should be in Java because service for real-time chatting has bugs with serialization,
+ * didn't tried appent serialization on Kotlin to check it it will be working.
  */
 public class MemberData {
 
@@ -25,12 +28,5 @@ public class MemberData {
         return color;
     }
 
-    @Override
-    public String toString() {
-        return "MemberData{" +
-                "name='" + name + '\'' +
-                ", color='" + color + '\'' +
-                '}';
-    }
 }
 

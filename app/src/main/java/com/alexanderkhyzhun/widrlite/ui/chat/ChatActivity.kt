@@ -4,16 +4,29 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ListView
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.data.models.ChatItem
+import com.alexanderkhyzhun.widrlite.ui.adapters.MessageAdapter
+import com.alexanderkhyzhun.widrlite.ui.adapters.models.MemberData
+import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
+import com.alexanderkhyzhun.widrlite.utils.getRandomColor
+import com.alexanderkhyzhun.widrlite.utils.getRandomName
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
+import com.fasterxml.jackson.core.JsonProcessingException
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.jakewharton.rxbinding2.view.clicks
 import com.jakewharton.rxbinding2.view.focusChanges
 import com.jakewharton.rxbinding2.widget.textChanges
+import com.scaledrone.lib.Listener
+import com.scaledrone.lib.Room
+import com.scaledrone.lib.RoomListener
+import com.scaledrone.lib.Scaledrone
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.item_chat_bottom_panel.*
 import org.jetbrains.anko.toast
@@ -24,7 +37,7 @@ import java.util.concurrent.TimeUnit
  * @author Alexander Khyzhun
  * Created on 14 June, 2019
  */
-class ChatActivity : BaseActivity(), ChatView {
+class ChatActivity : BaseActivity(), ChatView, RoomListener {
 
     val schedulers: Schedulers by inject()
     val glideManager: RequestManager by inject()
@@ -32,6 +45,9 @@ class ChatActivity : BaseActivity(), ChatView {
     @InjectPresenter
     lateinit var presenter: ChatPresenter
 
+    private lateinit var scaledrone: Scaledrone
+    private lateinit var messageAdapter: MessageAdapter
+    private lateinit var messagesView: ListView
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,11 +94,68 @@ class ChatActivity : BaseActivity(), ChatView {
             .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
-            .subscribe { presenter.onClickSendOrCall() }
+            .subscribe {
+                presenter.onClickSendOrCall(item_chat_bottom_panel_et_input.text.toString())
+            }
+
+
+        messageAdapter = MessageAdapter(this)
+        messagesView = findViewById<View>(R.id.activity_chat_list_view) as ListView
+        messagesView.adapter = messageAdapter
+
+        val data = MemberData(getRandomName(), getRandomColor())
+
+        scaledrone = Scaledrone(channelID, data)
+        scaledrone.connect(object : Listener {
+            override fun onOpen() {
+                println("Scaledrone connection open")
+                scaledrone.subscribe(roomName, this@ChatActivity)
+            }
+
+            override fun onOpenFailure(ex: Exception) {
+                System.err.println(ex)
+            }
+
+            override fun onFailure(ex: Exception) {
+                System.err.println(ex)
+            }
+
+            override fun onClosed(reason: String) {
+                System.err.println(reason)
+            }
+        })
+
     }
 
     override fun onClickedSend(text: String) {
-        //...
+        scaledrone.publish(roomName, text)
+        item_chat_bottom_panel_et_input.text.clear()
+    }
+
+    override fun onOpen(room: Room) {
+        println("Conneted to room")
+    }
+
+    override fun onOpenFailure(room: Room, ex: Exception) {
+        System.err.println(ex)
+    }
+
+    override fun onMessage(room: Room, receivedMessage: com.scaledrone.lib.Message) {
+        val mapper = ObjectMapper()
+        try {
+            val data = mapper.treeToValue(receivedMessage.member.clientData, MemberData::class.java)
+            val belongsToCurrentUser = receivedMessage.clientID == scaledrone.clientID
+            val message = Message(receivedMessage.data.asText(), data, belongsToCurrentUser)
+
+            runOnUiThread {
+                messageAdapter.add(message)
+                messagesView.setSelection(messagesView.count - 1)
+            }
+
+        } catch (e: JsonProcessingException) {
+            e.printStackTrace()
+        }
+
     }
 
     override fun renderView(chat: ChatItem) {
@@ -126,7 +199,6 @@ class ChatActivity : BaseActivity(), ChatView {
         const val TAG = "ChatActivity"
         private const val channelID = "xLrhvoc0sDBIzbgf"
         private const val roomName = "observable-room"
-
         fun getIntent(context: Context?) = Intent(context, ChatActivity::class.java)
     }
 }

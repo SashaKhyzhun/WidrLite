@@ -37,10 +37,12 @@ class SplashActivity : BaseActivity(), SplashView {
 
     override fun onRedirectToMainPage() {
         startActivity(MainActivity.getIntent(this))
+        finish()
     }
 
     override fun onRedirectToLoginPage() {
         startActivity(AuthActivity.getIntent(this))
+        finish()
     }
 
     override fun showLoader() {
