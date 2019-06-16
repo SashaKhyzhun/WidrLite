@@ -133,6 +133,9 @@ class MainActivity : BaseActivity(),
             R.id.navigation_messages -> {
                 activity_main_pager.currentItem = ConversationsFragment.PAGER_POSITION
             }
+            R.id.navigation_create -> {
+                toast("Create new post")
+            }
             R.id.navigation_notifications -> {
                 activity_main_pager.currentItem = NotificationsFragment.PAGER_POSITION
             }
@@ -240,6 +243,7 @@ class MainActivity : BaseActivity(),
         when (requestCode) {
             CAMERA_REQUEST -> {
                 if (resultCode == Activity.RESULT_OK) {
+                    // I know about the 90 degrees
                     val photo = data?.extras?.get("data") as Bitmap
                     presenter.savePhotoFromCamera(photo)
                 }

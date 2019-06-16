@@ -72,6 +72,36 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
             .observeOn(schedulers.mainThread())
             .subscribe { presenter.onClickBurger() }
 
+        fragment_profile_layout_notifications.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Notifications") }
+
+        fragment_profile_layout_premium.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Premium") }
+
+        fragment_profile_layout_posts.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("My Posts") }
+
+        fragment_profile_layout_sent.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Sent recommendations") }
+
+        fragment_profile_layout_contacts.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Contacts") }
+
     }
 
     override fun onDetach() {
