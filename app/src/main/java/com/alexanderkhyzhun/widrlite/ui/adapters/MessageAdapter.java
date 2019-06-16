@@ -1,5 +1,6 @@
 package com.alexanderkhyzhun.widrlite.ui.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -51,28 +52,30 @@ public class MessageAdapter extends BaseAdapter {
         return i;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
         ChatMessageViewHolder holder = new ChatMessageViewHolder();
         LayoutInflater messageInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         Message message = messages.get(i);
 
-        if (message.isBelongsToCurrentUser()) {
-            convertView = messageInflater.inflate(R.layout.my_message, null);
-            holder.messageBody = convertView.findViewById(R.id.message_body);
-            convertView.setTag(holder);
-            holder.messageBody.setText(message.getText());
-        } else {
-            convertView = messageInflater.inflate(R.layout.their_message, null);
-            holder.avatar = convertView.findViewById(R.id.avatar);
-            holder.name = convertView.findViewById(R.id.name);
-            holder.messageBody = convertView.findViewById(R.id.message_body);
-            convertView.setTag(holder);
+        if (messageInflater != null) {
 
-            holder.name.setText(message.getMemberData().getName());
-            holder.messageBody.setText(message.getText());
-            GradientDrawable drawable = (GradientDrawable) holder.avatar.getBackground();
-            drawable.setColor(Color.parseColor(message.getMemberData().getColor()));
+            if (message.isBelongsToCurrentUser()) {
+                convertView = messageInflater.inflate(R.layout.item_message_owner, null);
+                holder.messageBody = convertView.findViewById(R.id.item_message_owner_tv);
+                convertView.setTag(holder);
+                holder.messageBody.setText(message.getText());
+            } else {
+                convertView = messageInflater.inflate(R.layout.item_message_sender, null);
+                holder.messageBody = convertView.findViewById(R.id.item_message_sender_tv);
+                convertView.setTag(holder);
+
+                holder.name.setText(message.getMemberData().getName());
+                holder.messageBody.setText(message.getText());
+                GradientDrawable drawable = (GradientDrawable) holder.avatar.getBackground();
+                drawable.setColor(Color.parseColor(message.getMemberData().getColor()));
+            }
         }
 
         return convertView;

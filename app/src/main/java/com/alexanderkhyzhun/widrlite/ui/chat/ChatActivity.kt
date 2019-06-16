@@ -54,30 +54,63 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        /**
+         * Back button
+         */
         activity_chat_layout_back.clicks()
             .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe { finish() }
 
+        /**
+         * Contact button
+         */
         item_chat_bottom_panel_layout_contact.clicks()
             .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe { toast("Contact") }
 
+        item_chat_bottom_panel_iv_contact.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("contact") }
+
+        /**
+         * Image button
+         */
         item_chat_bottom_panel_layout_image.clicks()
             .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe { toast("Image") }
 
-        item_chat_bottom_panel_layout_contact.clicks()
+        item_chat_bottom_panel_iv_image.clicks()
             .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
-            .subscribe { toast("contact") }
+            .subscribe { toast("Image") }
 
+        /**
+         * Make a photo image
+         */
+        item_chat_bottom_panel_layout_photo.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Make a photo") }
+
+        item_chat_bottom_panel_iv_photo.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Make a photo") }
+
+        /**
+         * Edit Text
+         */
         item_chat_bottom_panel_et_input.focusChanges()
             .skipInitialValue()
             .compose(bindUntilDestroy())
@@ -90,6 +123,17 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener {
             .observeOn(schedulers.mainThread())
             .subscribe(presenter::onMessageTextChanges)
 
+        /**
+         * Send a message or make a call button
+         */
+        item_chat_bottom_panel_layout_call_send.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe {
+                presenter.onClickSendOrCall(item_chat_bottom_panel_et_input.text.toString())
+            }
+
         item_chat_bottom_panel_iv_call_send.clicks()
             .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
@@ -97,6 +141,38 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener {
             .subscribe {
                 presenter.onClickSendOrCall(item_chat_bottom_panel_et_input.text.toString())
             }
+
+        /**
+         * User Photo
+         */
+        activity_chat_iv_user_photo.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Profile") }
+
+        /**
+         * Mutual friends
+         */
+        activity_chat_tv_display_mutual_contact.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Show mutual contacts") }
+
+        /**
+         * Terms or premium
+         */
+        activity_chat_layout_premium.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Droit des sociétés") }
+
+
+
+
+
 
 
         messageAdapter = MessageAdapter(this)

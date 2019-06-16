@@ -26,20 +26,21 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="16dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_arrow_back_black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"
                 android:gravity="center"
-                android:layout_marginStart="4dp"
-                android:text="Return"
+                android:text="Retour"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="normal" />
 
         </LinearLayout>
@@ -124,6 +125,10 @@
         android:id="@+id/activity_chat_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal"
         android:layout_below="@+id/activity_chat_layout_premium"
         android:layout_above="@+id/activity_chat_layout_bottom"
         >

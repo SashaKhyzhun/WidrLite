@@ -9,6 +9,9 @@
     android:paddingBottom="4dp"
     android:orientation="vertical">
 
+    <!--
+    android:background="@android:color/white"
+    -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -133,10 +136,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@android:color/white"
-        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
         android:paddingTop="10dp"
         android:paddingBottom="8dp"
-        android:paddingRight="8dp"
+        android:paddingEnd="16dp"
         android:scaleType="fitCenter"
         android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
@@ -146,8 +149,10 @@
         <ImageButton
             android:id="@+id/item_chat_bottom_panel_iv_call_send"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/ic_call"
+            android:layout_marginStart="4dp"
             android:padding="8dp" />
 
     </FrameLayout>
