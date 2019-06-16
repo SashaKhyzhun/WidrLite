@@ -134,4 +134,7 @@ dependencies {
     // Swipe Action
     implementation 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0'
 
+    // Chat
+    implementation 'com.scaledrone:scaledrone-java:0.6.0'
+
 }

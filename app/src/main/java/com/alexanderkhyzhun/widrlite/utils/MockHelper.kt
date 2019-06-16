@@ -4,11 +4,16 @@ import com.alexanderkhyzhun.widrlite.app.WidrLiteApp.Companion.context
 import com.alexanderkhyzhun.widrlite.data.models.response.RPConversation
 import com.alexanderkhyzhun.widrlite.data.models.response.RPNewsItem
 import com.alexanderkhyzhun.widrlite.data.models.response.RPNotification
+import java.util.*
 
 /**
  * @author Alexander Khyzhun
  * Created on 14 June, 2019
+ *
+ * This is file only to fill the data with mocked values.
  */
+
+
 fun generateRPNotifications() = listOf(
     RPNotification(
         "0", "a", "1", "1", "https://p.djinni.co/4d/725b004e2411e99e0cd35f598479ff/200.jpg", "Alex Nikiforov", "is Looking for an osteopath in Paris", "12 jan", false),
@@ -96,3 +101,38 @@ fun generateRPNews() = listOf(
     RPNewsItem("4", "4", "Sometimes this is the irony of promoting your bisuness product and services, becase...", "0:04 AM", "new", "Avocat d'affaired", "à Rennes, France","4", "Olga Kod", "https://djinni.co/static/i/default-userpic@2x.png", "Sacramento", "#5760ff"),
     RPNewsItem("5", "5", "Sometimes this is the irony of promoting your bisuness product and services, becase...", "7:12 PM", "new", "Avocat d'affaired", "à Rennes, France","5", "Khrystyna Pochynok", "https://p.djinni.co/6e/6236302d2911e9baf017c7e67cff32/200.jpg", "Moscow", "#0018ff")
 )
+
+
+fun getRandomName(): String {
+    val adjs = arrayOf(
+        "autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark", "summer", "icy",
+        "delicate", "quiet", "white", "cool", "spring", "winter", "patient", "twilight", "dawn",
+        "crimson", "wispy", "weathered", "blue", "billowing", "broken", "cold", "damp", "falling",
+        "frosty", "green", "long", "late", "lingering", "bold", "little", "morning", "muddy",
+        "old", "red", "rough", "still", "small", "sparkling", "throbbing", "shy", "wandering",
+        "withered", "wild", "black", "young", "holy", "solitary", "fragrant", "aged", "snowy",
+        "proud", "floral", "restless", "divine", "polished", "ancient", "purple", "lively"
+    )
+    val nouns = arrayOf(
+        "waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning", "snow", "lake",
+        "sunset", "pine", "shadow", "leaf", "dawn", "glitter", "forest", "hill", "cloud", "meadow",
+        "sun", "glade", "bird", "brook", "butterfly", "bush", "dew", "dust", "field", "fire",
+        "flower", "firefly", "feather", "grass", "haze", "mountain", "night", "pond", "darkness",
+        "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder", "violet", "water",
+        "wildflower", "wave", "water", "resonance", "sun", "wood", "dream", "cherry", "tree",
+        "fog", "frost", "voice", "paper", "frog", "smoke", "star"
+    )
+
+    return adjs[Math.floor(Math.random() * adjs.size).toInt()] +
+            "_" +
+            nouns[Math.floor(Math.random() * nouns.size).toInt()]
+}
+
+fun getRandomColor(): String {
+    val r = Random()
+    val sb = StringBuffer("#")
+    while (sb.length < 7) {
+        sb.append(Integer.toHexString(r.nextInt()))
+    }
+    return sb.toString().substring(0, 7)
+}

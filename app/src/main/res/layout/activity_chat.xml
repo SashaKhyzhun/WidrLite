@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,7 +110,7 @@
 
 
     <FrameLayout
-        android:id="@+id/fragment_profile_layout_premium"
+        android:id="@+id/activity_chat_layout_premium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/activity_chat_header">
@@ -121,7 +120,19 @@
     </FrameLayout>
 
 
+    <ListView
+        android:id="@+id/activity_chat_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_chat_layout_premium"
+        android:layout_above="@+id/activity_chat_layout_bottom"
+        >
+
+    </ListView>
+
+
     <FrameLayout
+        android:id="@+id/activity_chat_layout_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">

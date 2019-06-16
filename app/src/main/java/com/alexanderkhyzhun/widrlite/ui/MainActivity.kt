@@ -21,6 +21,7 @@ import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.data.models.NewsItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.MainPagerAdapter
 import com.alexanderkhyzhun.widrlite.ui.chat.ChatActivity
+import com.alexanderkhyzhun.widrlite.ui.chat2.ChatActivtiy2
 import com.alexanderkhyzhun.widrlite.ui.conversations.ConversationsFragment
 import com.alexanderkhyzhun.widrlite.ui.feed.FeedFragment
 import com.alexanderkhyzhun.widrlite.ui.feed.news.NewsFragment
@@ -190,7 +191,7 @@ class MainActivity : BaseActivity(),
 
     override fun openConversation() {
         Handler().postDelayed({
-            startActivity(ChatActivity.getIntent(this))
+            startActivity(Intent(this, ChatActivtiy2::class.java))
         }, CLICK_DEBOUNCE)
     }
 

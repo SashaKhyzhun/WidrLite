@@ -8,6 +8,7 @@ import com.arellomobile.mvp.InjectViewState
 import io.reactivex.subjects.PublishSubject
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
+import timber.log.Timber
 
 /**
  * @author Alexander Khyzhun
@@ -61,17 +62,15 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
         inputFocusChangesSubject.onNext(focused)
     }
 
-    private fun sendMessage(text: CharSequence) {
-        //...
-    }
 
     fun onClickSendOrCall() {
         useCase.messageText()
             .map { it.trim() }
             .subscribe {
+                Timber.d("onClickSendOrCall=$it")
                 when (it.length) {
                     0 -> viewState.onClickedCall()
-                    else -> sendMessage(it)
+                    else -> viewState.onClickedSend(it.toString())
                 }
             }
     }

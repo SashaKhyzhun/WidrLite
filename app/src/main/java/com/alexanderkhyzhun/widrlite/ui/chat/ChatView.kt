@@ -22,4 +22,7 @@ interface ChatView : MvpView, ErrorView, LoadingView {
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun onClickedCall()
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onClickedSend(text: String)
+
 }
