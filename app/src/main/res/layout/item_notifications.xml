@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -17,10 +18,11 @@
             android:id="@+id/item_notif_layout_read"
             android:layout_width="@dimen/swipe_width"
             android:layout_height="match_parent"
-            android:background="@color/primaryAccept"
+            android:background="@color/primaryDark"
             android:clickable="true"
             android:focusable="true"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,25 +30,26 @@
                 android:layout_centerInParent="true"
                 android:background="?android:selectableItemBackground"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:src="@drawable/ic_person"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    tools:ignore="ContentDescription" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="4dp"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="Accept"
+                    android:text="@string/item_notifications_button_text"
                     android:textColor="@android:color/white"
                     android:textSize="12sp"/>
 
@@ -85,7 +88,8 @@
                 android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/item_notif_description_notifications"
@@ -94,7 +98,7 @@
                 android:layout_marginStart="74dp"
                 android:layout_marginEnd="48dp"
                 android:layout_marginTop="8dp"
-                android:text="Manage notifications"
+                android:text=""
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
@@ -108,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="12 Jan"
+                android:text=""
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/primary"
@@ -127,7 +131,8 @@
                 android:src="@drawable/item_arrow_forward_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <View
                 android:background="@color/profile_bottom_line"

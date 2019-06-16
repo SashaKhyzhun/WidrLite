@@ -1,5 +1,6 @@
 package com.alexanderkhyzhun.widrlite.ui.conversations
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,11 +14,15 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.decoratos.LinearDecorator
 import com.alexanderkhyzhun.widrlite.ui.adapters.delegates.MessageDelegateAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.diffs.NotificationItemDiffUtilsCallback
 import com.alexanderkhyzhun.widrlite.ui.chat.ChatActivity
+import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
 import com.alexanderkhyzhun.widrlite.utils.dp
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.jakewharton.rxbinding2.view.clicks
 import kotlinx.android.synthetic.main.fragment_messages.*
+import org.jetbrains.anko.support.v4.toast
 import org.koin.android.ext.android.inject
+import java.util.concurrent.TimeUnit
 
 /**
  * @author Alexander Khyzhun
@@ -35,6 +40,7 @@ class ConversationsFragment : BaseFragment(R.layout.fragment_messages), Conversa
     lateinit var presenter: ConversationsPresenter
 
 
+    @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,7 +53,7 @@ class ConversationsFragment : BaseFragment(R.layout.fragment_messages), Conversa
             )
         }
 
-        with (fragment_messages_rv) {
+        with(fragment_messages_rv) {
             adapter = delegateAdapter
             layoutManager = LinearLayoutManager(
                 context,
@@ -63,6 +69,12 @@ class ConversationsFragment : BaseFragment(R.layout.fragment_messages), Conversa
                 )
             )
         }
+
+        fragment_messages_iv_search.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Search") }
     }
 
     override fun renderConversations(data: List<ConversationItem>) {

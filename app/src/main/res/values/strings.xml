@@ -43,5 +43,10 @@
     <string name="activity_auth_terms_part_four">and</string>
     <string name="activity_auth_terms_part_five">Privacy Policy</string>
     <string name="activity_auth_terms_part_six">Privacy Policy</string>
+    <string name="fragment_notification_header_button_text">Settings</string>
+    <string name="fragment_notification_header_title">Notifications</string>
+    <string name="item_push_notifications_title">Get more from Widr</string>
+    <string name="item_push_notifications_body">Enable Push notifications</string>
+    <string name="item_notifications_button_text">Read</string>
 
 </resources>

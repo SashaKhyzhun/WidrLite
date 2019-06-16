@@ -57,7 +57,6 @@ class AuthActivity : BaseActivity(), AuthView {
             .subscribe(presenter::onFirstNameFocusChanges)
 
 
-
         activity_auth_et_last_name.textChanges()
             .skipInitialValue()
             .compose(bindUntilDestroy())

@@ -2,8 +2,8 @@ package com.alexanderkhyzhun.widrlite.ui.conversations
 
 import android.annotation.SuppressLint
 import com.alexanderkhyzhun.widrlite.data.Schedulers
-import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
 import com.alexanderkhyzhun.widrlite.data.models.ChatItem
+import com.alexanderkhyzhun.widrlite.data.models.ConversationItem
 import com.alexanderkhyzhun.widrlite.domain.ConversationUseCase
 import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
@@ -37,7 +37,6 @@ class ConversationsPresenter : BasePresenter<ConversationsView>(), KoinComponent
     }
 
     fun onMessageClick(item: DisplayableItem) {
-        Timber.d("item = $item")
         item as ConversationItem
 
         useCase.updateSelectedChat(

@@ -26,8 +26,7 @@
             android:background="@drawable/item_notif_menu_foreground_solid"
             android:padding="2dp"
             android:src="@drawable/ic_notification"
-
-            />
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 
     <TextView
@@ -35,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Get more from Widr"
+        android:text="@string/item_push_notifications_title"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black"
@@ -49,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Enable Push notifications"
+        android:text="@string/item_push_notifications_body"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/primaryHint"
@@ -82,7 +81,8 @@
         android:src="@drawable/item_arrow_forward_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

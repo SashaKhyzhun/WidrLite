@@ -1,5 +1,6 @@
 package com.alexanderkhyzhun.widrlite.ui.notifications
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.MotionEvent
@@ -13,12 +14,16 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.DelegateAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.delegates.NotificationDelegateAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.diffs.NotificationItemDiffUtilsCallback
+import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.jakewharton.rxbinding2.view.clicks
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener
 import kotlinx.android.synthetic.main.fragment_notifications.*
 import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
+import java.util.concurrent.TimeUnit
 
 /**
  * @author Alexander Khyzhun
@@ -52,6 +57,7 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
         }
     }
 
+    @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -64,7 +70,7 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
             )
         }
 
-        with (fragment_notif_rv) {
+        with(fragment_notif_rv) {
             adapter = delegateAdapter
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             isNestedScrollingEnabled = true
@@ -76,7 +82,7 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
                 MotionEvent.ACTION_DOWN -> {
                     callback?.updatePagerStatus(false)
                 }
-                MotionEvent.ACTION_MOVE-> {
+                MotionEvent.ACTION_MOVE -> {
                     callback?.updatePagerStatus(false)
                 }
                 MotionEvent.ACTION_UP -> {
@@ -90,13 +96,18 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
         onTouchIncomingListener = RecyclerTouchListener(activity, fragment_notif_rv)
         onTouchIncomingListener
             .setSwipeOptionViews(R.id.item_notif_layout_read)
-            .setSwipeable(R.id.rowFG, R.id.rowBG) { viewID, position ->
+            .setSwipeable(R.id.rowFG, R.id.rowBG) { viewID, _ ->
                 when (viewID) {
-                    R.id.item_notif_layout_read -> {
-                        toast("Read!")
-                    }
+                    R.id.item_notif_layout_read -> toast("Read!")
                 }
             }
+
+
+        fragment_notif_tv_settings.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Settings") }
     }
 
     override fun onResume() {

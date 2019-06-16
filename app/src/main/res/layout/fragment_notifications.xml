@@ -19,7 +19,7 @@
             android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="Notifications">
+            app:title="@string/fragment_notification_header_title">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_notif_layout_header"
@@ -36,7 +36,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:padding="8dp"
-                    android:text="Settings"
+                    android:text="@string/fragment_notification_header_button_text"
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:textStyle="normal"
