@@ -23,20 +23,22 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_arrow_back_black" />
+                android:src="@drawable/ic_arrow_back_black"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
-                android:text="Retour"
+                android:text="@string/activity_chat_button_text_return"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/black"
@@ -55,13 +57,14 @@
             android:src="@drawable/ic_image_preview_circle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/activity_chat_tv_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Anna Mendez"
+            android:text=""
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -85,7 +88,7 @@
             android:gravity="center_horizontal"
             android:src="@color/profile_image_preview"
             android:background="@drawable/item_chat_menu_foreground_solid"
-            android:text="Display mutual contact"
+            android:text="@string/activity_chat_text_mutual_contacts"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:paddingStart="8dp"

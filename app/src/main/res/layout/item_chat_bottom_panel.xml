@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_chat_bottom_panel_parent"
-    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
     android:paddingBottom="4dp"
-    android:orientation="vertical">
+    tools:ignore="ContentDescription">
 
     <!--
     android:background="@android:color/white"
@@ -19,24 +20,23 @@
         android:background="@color/profile_bottom_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-    />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/item_chat_bottom_panel_layout_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="4dp"
         android:background="@android:color/white"
         android:paddingLeft="8dp"
         android:paddingTop="10dp"
-        android:paddingBottom="8dp"
         android:paddingRight="8dp"
+        android:paddingBottom="8dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/item_chat_bottom_panel_iv_contact"
@@ -58,13 +58,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="4dp"
         android:background="@android:color/white"
         android:paddingLeft="8dp"
         android:paddingTop="10dp"
-        android:paddingBottom="8dp"
         android:paddingRight="8dp"
+        android:paddingBottom="8dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
         app:layout_constraintStart_toEndOf="@+id/item_chat_bottom_panel_layout_contact"
         app:layout_constraintTop_toTopOf="parent">
@@ -73,9 +73,9 @@
             android:id="@+id/item_chat_bottom_panel_iv_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
             android:layout_gravity="center"
-            android:background="@drawable/ic_image" />
+            android:background="@drawable/ic_image"
+            android:padding="8dp" />
     </FrameLayout>
 
 
@@ -84,13 +84,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="4dp"
         android:background="@android:color/white"
         android:paddingLeft="8dp"
         android:paddingTop="10dp"
-        android:paddingBottom="8dp"
         android:paddingRight="8dp"
+        android:paddingBottom="8dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
         app:layout_constraintStart_toEndOf="@+id/item_chat_bottom_panel_layout_image"
         app:layout_constraintTop_toTopOf="parent">
@@ -99,8 +99,8 @@
             android:id="@+id/item_chat_bottom_panel_iv_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/ic_camera" />
+            android:background="@drawable/ic_camera"
+            android:padding="8dp" />
     </FrameLayout>
 
 
@@ -109,9 +109,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="4dp"
         android:background="@drawable/item_round_chat_input"
         android:padding="8dp"
-        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toStartOf="@+id/item_chat_bottom_panel_layout_call_send"
         app:layout_constraintStart_toEndOf="@+id/item_chat_bottom_panel_layout_photo"
         app:layout_constraintTop_toTopOf="parent">
@@ -124,8 +124,9 @@
             android:layout_gravity="center"
             android:background="@color/transparent"
             android:ems="10"
-            android:hint="Message"
-            android:inputType="text" />
+            android:hint="@string/item_chat_edit_text_hint"
+            android:inputType="text"
+            tools:ignore="Autofill" />
 
     </FrameLayout>
 
@@ -135,13 +136,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="4dp"
         android:background="@android:color/white"
         android:paddingStart="8dp"
         android:paddingTop="10dp"
-        android:paddingBottom="8dp"
         android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -151,17 +152,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/ic_call"
             android:layout_marginStart="4dp"
+            android:background="@drawable/ic_call"
             android:padding="8dp" />
 
     </FrameLayout>
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

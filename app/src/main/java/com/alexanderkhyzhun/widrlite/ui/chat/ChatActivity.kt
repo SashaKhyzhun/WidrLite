@@ -225,6 +225,10 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
         scaledrone.subscribe(roomName, this@ChatActivity)
     }
 
+    override fun clearEditText() {
+        item_chat_bottom_panel_et_input.text.clear()
+    }
+
     override fun onOpen(room: Room) {
         Timber.d("Connected to room")
     }

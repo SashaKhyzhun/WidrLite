@@ -64,7 +64,10 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
         text.trim()
         when (text.length) {
             0 -> viewState.onClickedCall()
-            else -> viewState.onClickedSend(text)
+            else -> {
+                viewState.onClickedSend(text)
+                viewState.clearEditText()
+            }
         }
     }
 

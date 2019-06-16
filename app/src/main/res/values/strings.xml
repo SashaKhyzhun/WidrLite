@@ -23,5 +23,10 @@
     <string name="fragment_feed_label_one">Toutes les annonces</string>
     <string name="fragment_feed_label_two">Explorer les offres</string>
     <string name="fragment_feed_label_three">Trouver on profile</string>
+    <string name="activity_chat_button_text_return">Retour</string>
+    <string name="activity_chat_text_mutual_contacts">Display mutual contact</string>
+    <string name="item_privaty_title">Droit des sociétés</string>
+    <string name="item_privacy_body">Aix-end-Provence</string>
+    <string name="item_chat_edit_text_hint">Message</string>
 
 </resources>

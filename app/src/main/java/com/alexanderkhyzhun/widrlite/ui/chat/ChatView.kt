@@ -25,4 +25,7 @@ interface ChatView : MvpView, ErrorView, LoadingView {
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun onClickedSend(text: String)
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun clearEditText()
+
 }
