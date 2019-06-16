@@ -13,10 +13,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
 import android.view.MenuItem
-import android.view.Window
-import android.view.WindowManager
 import androidx.core.content.ContextCompat.checkSelfPermission
-import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
@@ -34,7 +31,6 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
-import com.google.android.material.navigation.NavigationView
 import com.jakewharton.rxbinding2.view.clicks
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -72,7 +68,7 @@ class MainActivity : BaseActivity(),
         setUpBottomNavigation()
         setUpViewPager()
         setUpNavigationDrawer()
-        setTranslucentStatusBar()
+
     }
 
     override fun updatePagerStatus(enabled: Boolean) {

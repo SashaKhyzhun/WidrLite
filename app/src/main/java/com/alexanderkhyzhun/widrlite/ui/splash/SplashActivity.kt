@@ -3,6 +3,7 @@ package com.alexanderkhyzhun.widrlite.ui.splash
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.ui.MainActivity
 import com.alexanderkhyzhun.widrlite.ui.auth.AuthActivity
@@ -28,6 +29,10 @@ class SplashActivity : BaseActivity(), SplashView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
 
         CoroutineScope(Dispatchers.Main).launch {
             delay(500L)
