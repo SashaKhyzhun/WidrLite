@@ -92,6 +92,11 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
             false
         }
 
+        fragment_notifications_swipe.setOnRefreshListener {
+            presenter.fetchNotifications()
+            fragment_notifications_swipe.isRefreshing = false
+        }
+
         onTouchIncomingListener = RecyclerTouchListener(activity, fragment_notif_rv)
         onTouchIncomingListener
             .setSwipeOptionViews(R.id.item_notif_layout_read)

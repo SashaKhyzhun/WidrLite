@@ -24,6 +24,11 @@ class ConversationsPresenter : BasePresenter<ConversationsView>(), KoinComponent
     val useCase: ConversationUseCase by inject()
 
     init {
+        loadConversations()
+    }
+
+
+    fun loadConversations() {
         useCase.fetchConversations()
             .compose(bindUntilDestroy())
             .subscribeOn(schedulers.io())

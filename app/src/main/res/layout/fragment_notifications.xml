@@ -67,12 +67,18 @@
             android:id="@+id/item_enable_push_notif"
             layout="@layout/item_enable_push_notif" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_notif_rv"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/fragment_notifications_swipe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_notif_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 

@@ -15,6 +15,8 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
 import com.alexanderkhyzhun.widrlite.utils.getRandomColor
 import com.alexanderkhyzhun.widrlite.utils.getRandomName
+import com.alexanderkhyzhun.widrlite.utils.setGone
+import com.alexanderkhyzhun.widrlite.utils.setVisible
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
@@ -46,21 +48,18 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
     @InjectPresenter
     lateinit var presenter: ChatPresenter
 
-    private val scaledrone: Scaledrone by lazy {
-        Scaledrone(channelID, MemberData(getRandomName(), getRandomColor()))
-            .also { it.connect(this) }
-    }
-
-    private val messageAdapter: MessageAdapter by lazy {
-        MessageAdapter(this)
-    }
-
-
+    private lateinit var scaledrone: Scaledrone
+    private lateinit var messageAdapter: MessageAdapter
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+        scaledrone = Scaledrone(channelID, MemberData(getRandomName(), getRandomColor()))
+        scaledrone.connect(this)
+
+        messageAdapter = MessageAdapter(this)
         activity_chat_list_view.adapter = messageAdapter
 
         /**
@@ -234,6 +233,7 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
 
     override fun onOpen(room: Room) {
         Timber.d("Connected to room")
+        presenter.onConnectedToRoom(true)
     }
 
     override fun onOpenFailure(room: Room, ex: Exception) {
@@ -257,11 +257,11 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
     }
 
     override fun showLoader() {
-        /* code implementation */
+        preloader_layout.setVisible()
     }
 
     override fun hideLoader() {
-        /* code implementation */
+        preloader_layout.setGone()
     }
 
     override fun renderMessage(text: String) {

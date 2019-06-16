@@ -22,8 +22,21 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
     val useCase: ChatUseCase by inject()
 
     private val inputFocusChangesSubject = PublishSubject.create<Boolean>()
+    private val isConnectedSubj = PublishSubject.create<Boolean>()
 
     init {
+        onConnectedToRoom(false)
+
+        isConnectedSubj
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe {
+                when (it) {
+                    true -> viewState.hideLoader()
+                    else -> viewState.showLoader()
+                }
+        }
+
         useCase.fetchChatData()
             .compose(bindUntilDestroy())
             .subscribeOn(schedulers.io())
@@ -40,6 +53,8 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
             .subscribe({
                 //...
             }, viewState::renderError)
+
+
 
 
 
@@ -69,6 +84,10 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
                 viewState.clearEditText()
             }
         }
+    }
+
+    fun onConnectedToRoom(isConnected: Boolean) {
+        isConnectedSubj.onNext(isConnected)
     }
 
 

@@ -8,6 +8,7 @@ import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
 import com.arellomobile.mvp.InjectViewState
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
+import timber.log.Timber
 
 /**
  * @author Alexander Khyzhun
@@ -22,6 +23,11 @@ class NotificationsPresenter : BasePresenter<NotificationsView>(), KoinComponent
 
 
     init {
+        fetchNotifications()
+    }
+
+
+    fun fetchNotifications() {
         useCase.fetchNotification()
             .compose(bindUntilDestroy())
             .subscribeOn(schedulers.io())
@@ -32,11 +38,11 @@ class NotificationsPresenter : BasePresenter<NotificationsView>(), KoinComponent
             .subscribe({
                 viewState.renderNotifications(it)
             }, viewState::renderError)
+
     }
 
-
     fun onNotificationClick(item: DisplayableItem) {
-
+        Timber.d("item=$item")
     }
 
 

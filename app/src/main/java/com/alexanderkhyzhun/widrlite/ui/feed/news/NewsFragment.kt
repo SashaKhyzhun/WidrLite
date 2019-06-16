@@ -18,6 +18,7 @@ import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
 import com.alexanderkhyzhun.widrlite.utils.dp
 import com.alexanderkhyzhun.widrlite.utils.setGone
 import com.alexanderkhyzhun.widrlite.utils.setVisible
+import com.alexanderkhyzhun.widrlite.views.WidrLinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_news.*
 import org.jetbrains.anko.support.v4.share
@@ -38,6 +39,10 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
 
     private val delegateAdapter by lazy {
         DelegateAdapter<DisplayableItem>()
+    }
+
+    private val mLayoutManager by lazy {
+        WidrLinearLayoutManager(context!!)
     }
 
     private var callback: Callback? = null
@@ -71,13 +76,10 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
             )
         }
 
+
         with(fragment_news_list) {
             adapter = delegateAdapter
-            layoutManager = LinearLayoutManager(
-                context,
-                RecyclerView.VERTICAL,
-                false
-            )
+            layoutManager = mLayoutManager
             addItemDecoration(
                 LinearDecorator(
                     0.dp(),
@@ -136,6 +138,14 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
 
     override fun renderError(throwable: Throwable) {
         showSnack(throwable.message)
+    }
+
+    fun enableScroll() {
+        mLayoutManager.setScrollEnabled(true)
+    }
+
+    fun disableScroll() {
+        mLayoutManager.setScrollEnabled(false)
     }
 
     companion object {

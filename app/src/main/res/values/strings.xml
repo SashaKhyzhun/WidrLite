@@ -88,7 +88,7 @@
     <string name="item_notifications_button_text">Read</string>
 
     <!-- Item Slide Up Panel -->
-    <string name="item_slide_up_button_rec_text">Send recommendation  open a chat</string>
+    <string name="item_slide_up_button_rec_text">Send recommendation \nopen a chat</string>
     <string name="item_slide_up_button_share">Share</string>
     <string name="item_slide_up_button_share_fb">Share to Facebook</string>
     <string name="item_slide_up_title_description">Description</string>

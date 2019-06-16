@@ -212,8 +212,6 @@ class MainActivity : BaseActivity(),
     }
 
     override fun onClickedBurger() {
-        //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED) // check it.
-        //drawer_layout.openDrawer(GravityCompat.END)
         drawer_layout.openDrawer(GravityCompat.END)
     }
 

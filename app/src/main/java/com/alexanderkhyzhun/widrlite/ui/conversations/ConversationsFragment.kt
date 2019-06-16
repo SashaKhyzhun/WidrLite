@@ -12,6 +12,7 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.DelegateAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.DisplayableItem
 import com.alexanderkhyzhun.widrlite.ui.adapters.decoratos.LinearDecorator
 import com.alexanderkhyzhun.widrlite.ui.adapters.delegates.MessageDelegateAdapter
+import com.alexanderkhyzhun.widrlite.ui.adapters.diffs.ConversationItemDiffUtilsCallback
 import com.alexanderkhyzhun.widrlite.ui.adapters.diffs.NotificationItemDiffUtilsCallback
 import com.alexanderkhyzhun.widrlite.ui.chat.ChatActivity
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
@@ -22,6 +23,7 @@ import com.jakewharton.rxbinding2.view.clicks
 import kotlinx.android.synthetic.main.fragment_messages.*
 import org.jetbrains.anko.support.v4.toast
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -70,6 +72,11 @@ class ConversationsFragment : BaseFragment(R.layout.fragment_messages), Conversa
             )
         }
 
+        fragment_messages_swipe.setOnRefreshListener {
+            presenter.loadConversations()
+            fragment_messages_swipe.isRefreshing = false
+        }
+
         fragment_messages_iv_search.clicks()
             .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
@@ -79,7 +86,7 @@ class ConversationsFragment : BaseFragment(R.layout.fragment_messages), Conversa
 
     override fun renderConversations(data: List<ConversationItem>) {
         delegateAdapter.set(data) { old, new ->
-            NotificationItemDiffUtilsCallback(
+            ConversationItemDiffUtilsCallback(
                 old,
                 new
             )
@@ -103,6 +110,7 @@ class ConversationsFragment : BaseFragment(R.layout.fragment_messages), Conversa
     }
 
     override fun renderError(throwable: Throwable) {
+        Timber.e(throwable)
         showSnack(throwable.message)
     }
 
