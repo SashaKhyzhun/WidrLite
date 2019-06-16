@@ -19,7 +19,7 @@ class ProfileUseCaseImpl(
 ) : ProfileUseCase {
 
     override fun fetchUserName(): String? {
-        return storage.getFirstName()?.let { it } + storage.getLastName()?.let { it }
+        return "${storage.getFirstName()?.let { it }} ${storage.getLastName()?.let { it }}"
     }
 
     override fun fetchUserImage(): Bitmap? {

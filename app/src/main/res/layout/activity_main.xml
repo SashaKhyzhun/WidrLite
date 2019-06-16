@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_services_parent_sliding_up_panel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
+    android:fitsSystemWindows="true"
     android:gravity="bottom"
     app:umanoDragView="@id/item_slide_up_layout_parent"
     app:umanoOverlay="true"
@@ -18,7 +20,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -26,7 +28,9 @@
             <com.alexanderkhyzhun.widrlite.views.WidrViewPager
                 android:id="@+id/activity_main_pager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_above="@+id/activity_main_navigation"
+                />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/activity_main_navigation"
@@ -35,12 +39,13 @@
                 android:layout_gravity="bottom"
                 android:background="?android:attr/windowBackground"
                 android:visibility="visible"
+                android:layout_alignParentBottom="true"
                 app:elevation="4dp"
                 app:itemIconTint="@color/selector_navigation_buttons"
                 app:itemTextColor="@color/selector_navigation_buttons"
                 app:labelVisibilityMode="unlabeled"
                 app:menu="@menu/navigation_bottom" />
-        </FrameLayout>
+        </RelativeLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
@@ -58,7 +63,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="false"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="KeyboardInaccessibleWidget">
 
         <include layout="@layout/item_slide_up_panel" />
 

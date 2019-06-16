@@ -13,6 +13,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
 import android.view.MenuItem
+import android.view.Window
+import android.view.WindowManager
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
@@ -70,6 +72,7 @@ class MainActivity : BaseActivity(),
         setUpBottomNavigation()
         setUpViewPager()
         setUpNavigationDrawer()
+        setTranslucentStatusBar()
     }
 
     override fun updatePagerStatus(enabled: Boolean) {
@@ -89,18 +92,18 @@ class MainActivity : BaseActivity(),
     }
 
     private fun setUpNavigationDrawer() {
-        val navigationView: NavigationView = findViewById(R.id.nav_view)
-
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            drawer_layout.closeDrawers()
-            //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-            when (menuItem.itemId) {
-                R.id.nav_profile -> toast("Profile")
-                R.id.nav_settings -> toast("Settings")
-                R.id.nav_terms -> toast("Terms")
-            }
-            true
-        }
+//        val navigationView: NavigationView = findViewById(R.id.nav_view)
+//
+//        navigationView.setNavigationItemSelectedListener { menuItem ->
+//            drawer_layout.closeDrawers()
+//            //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+//            when (menuItem.itemId) {
+//                R.id.nav_profile -> toast("Profile")
+//                R.id.nav_settings -> toast("Settings")
+//                R.id.nav_terms -> toast("Terms")
+//            }
+//            true
+//        }
     }
 
     override fun onPageScrollStateChanged(state: Int) {}
@@ -212,7 +215,7 @@ class MainActivity : BaseActivity(),
 
     override fun onClickedBurger() {
         //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED) // check it.
-        drawer_layout.openDrawer(GravityCompat.END)
+        //drawer_layout.openDrawer(GravityCompat.END)
     }
 
     override fun takePhoto() {

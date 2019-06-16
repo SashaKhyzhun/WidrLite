@@ -30,7 +30,9 @@ class ProfilePresenter : BasePresenter<ProfileView>(), KoinComponent {
     }
 
     private fun fetchUserName() {
-        useCase.fetchUserImage()
+        useCase.fetchUserName()?.let {
+            viewState.renderName(it)
+        }
     }
 
     private fun fetchUserImage() {
