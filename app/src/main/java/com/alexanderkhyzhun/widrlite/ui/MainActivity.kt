@@ -202,22 +202,6 @@ class MainActivity : BaseActivity(),
         }, CLICK_DEBOUNCE)
     }
 
-    override fun onPanelClickedFacebook() {
-        toast("Facebook")
-    }
-
-    override fun onPanelClickedSendRecommendation() {
-        toast("Recommendation")
-    }
-
-    override fun onPanelClickedShare(postTitle: String, postDescription: String) {
-        share(postTitle, postDescription)
-    }
-
-    override fun onClickedBurger() {
-        drawer_layout.openDrawer(GravityCompat.END)
-    }
-
     override fun takePhoto() {
         if (checkSelfPermission(Manifest.permission.CAMERA) != PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.CAMERA), MY_CAMERA_PERMISSION_CODE)
@@ -297,6 +281,23 @@ class MainActivity : BaseActivity(),
                 )
             }
         }
+    }
+
+
+    override fun onPanelClickedFacebook() {
+        toast("Facebook")
+    }
+
+    override fun onPanelClickedSendRecommendation() {
+        toast("Recommendation")
+    }
+
+    override fun onPanelClickedShare(postTitle: String, postDescription: String) {
+        share(postTitle, postDescription)
+    }
+
+    override fun onClickedBurger() {
+        drawer_layout.openDrawer(GravityCompat.END)
     }
 
 

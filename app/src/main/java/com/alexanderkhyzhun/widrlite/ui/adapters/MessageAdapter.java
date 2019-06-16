@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import com.alexanderkhyzhun.widrlite.R;
 import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message;
@@ -25,15 +24,30 @@ import java.util.List;
 public class MessageAdapter extends BaseAdapter {
 
     private List<Message> messages = new ArrayList<Message>();
+    private Callback callback;
     private Context context;
 
-    public MessageAdapter(Context context) {
+    public interface Callback {
+        void onLongClicked(String text);
+    }
+
+    public MessageAdapter(Context context, Callback callback) {
         this.context = context;
+        this.callback = callback;
     }
 
 
     public void add(Message message) {
         this.messages.add(message);
+        notifyDataSetChanged();
+    }
+
+    public void remove(String text) {
+        for (int i = 0; i < messages.size(); i++) {
+            if (messages.get(i).getText().equals(text)) {
+                messages.remove(messages.get(i));
+            }
+        }
         notifyDataSetChanged();
     }
 
@@ -77,6 +91,12 @@ public class MessageAdapter extends BaseAdapter {
                 drawable.setColor(Color.parseColor(message.getMemberData().getColor()));
             }
         }
+
+        convertView.setOnLongClickListener(view -> {
+
+            callback.onLongClicked(holder.messageBody.getText().toString());
+            return false;
+        });
 
         return convertView;
     }

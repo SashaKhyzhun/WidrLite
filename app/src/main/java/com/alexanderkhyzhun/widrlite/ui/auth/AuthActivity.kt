@@ -195,6 +195,7 @@ class AuthActivity : BaseActivity(), AuthView {
 
     override fun onAccountCreated() {
         startActivity(SplashActivity.getIntent(this))
+        finish()
     }
 
     override fun showLoader() {

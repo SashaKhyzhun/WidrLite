@@ -1,12 +1,12 @@
 package com.alexanderkhyzhun.widrlite.ui.chat
 
-import android.Manifest
 import android.Manifest.permission.READ_CONTACTS
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
+import android.provider.ContactsContract
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.data.models.ChatItem
@@ -14,6 +14,7 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.MessageAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.models.MemberData
 import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
+import com.alexanderkhyzhun.widrlite.utils.*
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
@@ -32,18 +33,13 @@ import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
-import android.provider.ContactsContract
-import android.net.Uri
-import android.provider.MediaStore
-import com.alexanderkhyzhun.widrlite.utils.*
-import java.lang.NullPointerException
 
 
 /**
  * @author Alexander Khyzhun
  * Created on 14 June, 2019
  */
-class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
+class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener, MessageAdapter.Callback {
 
     val schedulers: Schedulers by inject()
     val glideManager: RequestManager by inject()
@@ -63,7 +59,7 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
         scaledrone = Scaledrone(channelID, MemberData(getRandomName(), getRandomColor()))
         scaledrone.connect(this)
 
-        messageAdapter = MessageAdapter(this)
+        messageAdapter = MessageAdapter(this, this)
         activity_chat_list_view.adapter = messageAdapter
 
         /**
@@ -185,43 +181,6 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
     }
 
 
-    override fun onClickedContact() {
-        if (checkSelfPermission(READ_CONTACTS) != PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(READ_CONTACTS), MY_CONTACTS_PERMISSION_CODE)
-        } else {
-            requestContactData()
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_PICK_CONTACTS && resultCode == RESULT_OK) {
-
-            try {
-                val name = retrieveContactName(data?.data!!)
-                presenter.handleContactData(name)
-            } catch (ex: Exception) {
-                Timber.e(ex)
-            }
-
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if (requestCode == MY_CONTACTS_PERMISSION_CODE) {
-            if (grantResults[0] == PERMISSION_GRANTED) {
-                requestContactData()
-            }
-        }
-
-    }
-
     override fun onClickedSend(text: String) {
         scaledrone.publish(roomName, text)
         item_chat_bottom_panel_et_input.text.clear()
@@ -312,6 +271,55 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
 
     override fun renderError(throwable: Throwable) {
         showSnack(throwable.message)
+    }
+
+    override fun onLongClicked(text: String?) {
+        createAlertDialog(
+            schedulers,
+            getString(R.string.activity_chat_dialog_remote_title),
+            getString(R.string.activity_chat_dialog_remote_body),
+            getString(R.string.activity_chat_dialog_positive),
+            getString(R.string.activity_chat_dialog_negative),
+            { Timber.d("canceled") },
+            { messageAdapter.remove(text) }
+        ).show()
+    }
+
+    override fun onClickedContact() {
+        if (checkSelfPermission(READ_CONTACTS) != PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(READ_CONTACTS), MY_CONTACTS_PERMISSION_CODE)
+        } else {
+            requestContactData()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_PICK_CONTACTS && resultCode == RESULT_OK) {
+
+            try {
+                val name = retrieveContactName(data?.data!!)
+                presenter.handleContactData(name)
+            } catch (ex: Exception) {
+                Timber.e(ex)
+            }
+
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == MY_CONTACTS_PERMISSION_CODE) {
+            if (grantResults[0] == PERMISSION_GRANTED) {
+                requestContactData()
+            }
+        }
+
     }
 
     private fun requestContactData() {
