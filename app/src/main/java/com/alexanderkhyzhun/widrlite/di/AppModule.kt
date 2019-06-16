@@ -27,8 +27,8 @@ import org.koin.android.logger.AndroidLogger
 import org.koin.log.EmptyLogger
 
 /**
- * @author SashaKhyzhun
- * Created on 4/26/19.
+ * @author Alexander Khyzhun
+ * Created on 14 June, 2019
  */
 class AppModule(val context: Context) {
 

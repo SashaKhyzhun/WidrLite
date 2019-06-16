@@ -10,12 +10,7 @@ import org.koin.standalone.inject
 @InjectViewState
 class PeoplePresenter : BasePresenter<PeopleView>(), KoinComponent {
 
-
     val schedulers: Schedulers by inject()
     val useCase: PeopleUseCase by inject()
-
-    init {
-
-    }
 
 }

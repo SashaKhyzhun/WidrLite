@@ -4,7 +4,10 @@ import com.alexanderkhyzhun.widrlite.data.Schedulers
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 
-
+/**
+ * @author Alexander Khyzhun
+ * Created on 14 June, 2019
+ */
 class SchedulersImpl : Schedulers {
 
     override fun single(): Scheduler {

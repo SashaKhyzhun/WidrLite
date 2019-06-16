@@ -3,14 +3,12 @@ package com.alexanderkhyzhun.widrlite.ui.feed.explore
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment
 import com.alexanderkhyzhun.widrlite.utils.getEmojiByUnicode
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_explore.*
-import kotlinx.android.synthetic.main.fragment_people.*
 import org.koin.android.ext.android.inject
 
 /**

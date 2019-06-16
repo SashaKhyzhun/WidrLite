@@ -11,5 +11,4 @@ interface FeedView : MvpView, ErrorView, LoadingView {
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun renderView()
 
-
 }

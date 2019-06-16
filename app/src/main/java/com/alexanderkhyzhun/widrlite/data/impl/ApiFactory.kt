@@ -7,8 +7,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
- * @author SashaKhyzhun
- * Created on 4/26/19.
+ * @author Alexander Khyzhun
+ * Created on 14 June, 2019
  */
 class ApiFactory {
 

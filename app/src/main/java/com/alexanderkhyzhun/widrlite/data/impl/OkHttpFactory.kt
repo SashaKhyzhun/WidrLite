@@ -4,6 +4,10 @@ import com.alexanderkhyzhun.widrlite.BuildConfig
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
+/**
+ * @author Alexander Khyzhun
+ * Created on 14 June, 2019
+ */
 class OkHttpFactory(private val interceptorFactory: InterceptorFactory) {
 
     fun buildClient(): OkHttpClient.Builder {

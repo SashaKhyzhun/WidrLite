@@ -3,7 +3,6 @@ package com.alexanderkhyzhun.widrlite.ui.feed.people
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseFragment

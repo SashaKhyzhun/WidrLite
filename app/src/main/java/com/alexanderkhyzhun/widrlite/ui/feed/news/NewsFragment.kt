@@ -36,10 +36,11 @@ class NewsFragment : BaseFragment(R.layout.fragment_news), NewsView {
 
     val schedulers: Schedulers by inject()
 
+    private val delegateAdapter by lazy {
+        DelegateAdapter<DisplayableItem>()
+    }
 
-    private val delegateAdapter by lazy { DelegateAdapter<DisplayableItem>() }
     private var callback: Callback? = null
-
 
     @InjectPresenter
     lateinit var presenter: NewsPresenter

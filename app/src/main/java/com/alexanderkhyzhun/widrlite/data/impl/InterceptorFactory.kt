@@ -7,7 +7,10 @@ import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.*
 
-
+/**
+ * @author Alexander Khyzhun
+ * Created on 14 June, 2019
+ */
 class InterceptorFactory(
     private val gson: Gson,
     private val storage: StorageRepository

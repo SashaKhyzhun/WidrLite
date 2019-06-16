@@ -36,7 +36,7 @@ class NewsPresenter : BasePresenter<NewsView>(), KoinComponent {
 
     fun onPostClick(item: DisplayableItem) {
         item as NewsItem
-        Timber.d("news item = $item")
+        //...
     }
 
     fun onMutualClick(item: DisplayableItem) {
@@ -55,7 +55,6 @@ class NewsPresenter : BasePresenter<NewsView>(), KoinComponent {
     fun onOfferClick(item: DisplayableItem) {
         viewState.onClickedOffer(item as NewsItem)
     }
-
 
 
 }

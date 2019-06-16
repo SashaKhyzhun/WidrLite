@@ -13,7 +13,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 
 interface MainView : MvpView, ErrorView, LoadingView {
 
-
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun onPanelClickedShare(postTitle: String, postDescription: String)
 

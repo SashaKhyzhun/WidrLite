@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/item_gradient_feed_header"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/item_gradient_feed_header">
 
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -35,31 +35,31 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:padding="8dp"
                 android:src="@drawable/ic_menu_search"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.alexanderkhyzhun.widrlite.views.WidrTabLayout
-            android:background="@drawable/item_gradient_feed_header"
             android:id="@+id/fragment_feed_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
+            android:background="@drawable/item_gradient_feed_header"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
+            android:paddingBottom="8dp"
             android:textAlignment="center"
-            app:tabMode="scrollable"
-            app:tabTextColor="@android:color/white"
             app:tabIndicatorColor="@android:color/white"
-            app:tabIndicatorHeight="2dp"
-            app:tabIndicatorGravity="bottom"
             app:tabIndicatorFullWidth="false"
-            >
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="scrollable"
+            app:tabTextColor="@android:color/white">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/fragment_feed_tab_one"
@@ -84,8 +84,7 @@
         <com.alexanderkhyzhun.widrlite.views.WidrViewPager
             android:id="@+id/fragment_feed_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </RelativeLayout>

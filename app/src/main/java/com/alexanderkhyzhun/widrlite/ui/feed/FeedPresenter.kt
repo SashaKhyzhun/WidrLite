@@ -19,5 +19,4 @@ class FeedPresenter : BasePresenter<FeedView>(), KoinComponent {
     val useCase: FeedUseCase by inject()
 
 
-
 }

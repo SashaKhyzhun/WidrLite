@@ -2,7 +2,6 @@ package com.alexanderkhyzhun.widrlite.ui
 
 import android.graphics.Bitmap
 import com.alexanderkhyzhun.widrlite.data.models.NewsItem
-import com.alexanderkhyzhun.widrlite.data.storage.SignUpRepository
 import com.alexanderkhyzhun.widrlite.domain.MainUseCase
 import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
 import com.arellomobile.mvp.InjectViewState

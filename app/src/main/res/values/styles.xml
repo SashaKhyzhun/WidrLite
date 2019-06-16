@@ -10,9 +10,11 @@
     </style>
 
 
-
+    <!-- Auth borderless button -->
     <style name="BorderlessButton" parent="Widget.AppCompat.Button.Borderless" />
 
+
+    <!-- Text Input Style-->
     <style name="TextInputLayoutStyle">
         <item name="android:textColorHint">@color/primaryHint</item>
         <item name="colorAccent">@color/primaryAccept</item>

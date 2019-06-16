@@ -6,7 +6,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -45,6 +44,10 @@ import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
+/**
+ * @author Alexander Khyzhun
+ * Created on 14 June, 2019
+ */
 class MainActivity : BaseActivity(),
     MainView,
     ViewPager.OnPageChangeListener,
@@ -286,7 +289,8 @@ class MainActivity : BaseActivity(),
                         Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                     ),
-                    STORAGE_REQUEST)
+                    STORAGE_REQUEST
+                )
             }
         }
     }
