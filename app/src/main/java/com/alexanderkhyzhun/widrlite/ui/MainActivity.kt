@@ -14,6 +14,7 @@ import android.os.Handler
 import android.provider.MediaStore
 import android.view.MenuItem
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
@@ -31,6 +32,7 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.navigation.NavigationView
 import com.jakewharton.rxbinding2.view.clicks
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -88,18 +90,18 @@ class MainActivity : BaseActivity(),
     }
 
     private fun setUpNavigationDrawer() {
-//        val navigationView: NavigationView = findViewById(R.id.nav_view)
-//
-//        navigationView.setNavigationItemSelectedListener { menuItem ->
-//            drawer_layout.closeDrawers()
-//            //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-//            when (menuItem.itemId) {
-//                R.id.nav_profile -> toast("Profile")
-//                R.id.nav_settings -> toast("Settings")
-//                R.id.nav_terms -> toast("Terms")
-//            }
-//            true
-//        }
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            drawer_layout.closeDrawers()
+            //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            when (menuItem.itemId) {
+                R.id.nav_profile -> toast("Make a call")
+                R.id.nav_settings -> toast("Send photo")
+                R.id.nav_terms -> toast("Make photo")
+            }
+            true
+        }
     }
 
     override fun onPageScrollStateChanged(state: Int) {}
@@ -212,6 +214,7 @@ class MainActivity : BaseActivity(),
     override fun onClickedBurger() {
         //drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED) // check it.
         //drawer_layout.openDrawer(GravityCompat.END)
+        drawer_layout.openDrawer(GravityCompat.END)
     }
 
     override fun takePhoto() {

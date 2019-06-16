@@ -69,9 +69,9 @@
     <string name="fragment_profile_proposal_gift_text">Invite friends and \nget gifts and bonuses</string>
 
     <!-- Navigation Drawer -->
-    <string name="navigation_drawer_item_profile">Profile</string>
-    <string name="navigation_drawer_item_settings">Settings</string>
-    <string name="navigation_drawer_item_terms">Terms</string>
+    <string name="navigation_drawer_item_call">Make Call</string>
+    <string name="navigation_drawer_item_send">Send photo</string>
+    <string name="navigation_drawer_item_photo">Make Photo</string>
 
     <!-- Item Privacy -->
     <string name="item_privacy_title">Droit des sociétés</string>

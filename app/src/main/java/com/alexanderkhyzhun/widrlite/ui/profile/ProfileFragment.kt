@@ -66,17 +66,11 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
             .observeOn(schedulers.mainThread())
             .subscribe { presenter.onClickTakePhoto() }
 
-        fragment_profile_iv_burger.clicks()
-            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+        fragment_profile_layout_burger.clicks()
+            //.debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe { presenter.onClickBurger() }
-
-        fragment_profile_layout_burger.clicks()
-            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
-            .compose(bindUntilDestroy())
-            .observeOn(schedulers.mainThread())
-            .subscribe { callback?.onClickedBurger() }
 
     }
 
@@ -121,6 +115,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile), ProfileView {
 
     override fun onClickedBurger() {
         toast("Burger")
+        callback?.onClickedBurger()
     }
 
     override fun savePhotoFromCamera(photo: Bitmap) {
