@@ -30,7 +30,7 @@ class SplashActivity : BaseActivity(), SplashView {
 
 
         CoroutineScope(Dispatchers.Main).launch {
-            delay(500)
+            delay(500L)
             presenter.handleUserAuthStatus()
         }
     }

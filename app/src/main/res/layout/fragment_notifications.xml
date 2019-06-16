@@ -50,6 +50,7 @@
                 android:id="@+id/fragment_notif_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:layout_marginEnd="2dp"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="pin" />
 

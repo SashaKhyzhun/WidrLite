@@ -21,7 +21,6 @@ import com.jakewharton.rxbinding2.view.clicks
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener
 import kotlinx.android.synthetic.main.fragment_notifications.*
 import org.jetbrains.anko.support.v4.toast
-import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
 import java.util.concurrent.TimeUnit
 
@@ -108,6 +107,12 @@ class NotificationsFragment : BaseFragment(R.layout.fragment_notifications), Not
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
             .subscribe { toast("Settings") }
+
+        item_enable_push_notif.clicks()
+            .debounce(BaseActivity.CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { toast("Enable push notifications") }
     }
 
     override fun onResume() {
