@@ -16,4 +16,10 @@ interface ChatView : MvpView, ErrorView, LoadingView {
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun renderView(chat: ChatItem)
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun renderCallSendIcon(text: CharSequence)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun onClickedCall()
+
 }

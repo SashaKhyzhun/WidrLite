@@ -5,6 +5,7 @@ import com.alexanderkhyzhun.widrlite.data.models.ChatItem
 import com.alexanderkhyzhun.widrlite.data.storage.CollectionRepository
 import com.alexanderkhyzhun.widrlite.domain.ChatUseCase
 import io.reactivex.Observable
+import io.reactivex.subjects.BehaviorSubject
 
 /**
  * @author Alexander Khyzhun
@@ -13,6 +14,8 @@ import io.reactivex.Observable
 class ChatUseCaseImpl(
     private val collectionRepo: CollectionRepository
 ) : ChatUseCase {
+
+    private val messageChangesSubject = BehaviorSubject.create<CharSequence>()
 
     override fun fetchChatData(): Observable<ChatItem> {
         return collectionRepo.fetchChatDetails()
@@ -30,4 +33,6 @@ class ChatUseCaseImpl(
     override fun updateMessages(data: List<MessageItem>) {
         collectionRepo.updateMessages(data)
     }
+
+    override fun messageText(): BehaviorSubject<CharSequence> = messageChangesSubject
 }

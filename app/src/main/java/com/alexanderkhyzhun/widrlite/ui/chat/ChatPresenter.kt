@@ -5,6 +5,7 @@ import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.domain.ChatUseCase
 import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
 import com.arellomobile.mvp.InjectViewState
+import io.reactivex.subjects.PublishSubject
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 
@@ -18,6 +19,8 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
 
     val schedulers: Schedulers by inject()
     val useCase: ChatUseCase by inject()
+
+    private val inputFocusChangesSubject = PublishSubject.create<Boolean>()
 
     init {
         useCase.fetchChatData()
@@ -38,10 +41,40 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
                 //viewState.onAccountCreated()
 
             }, viewState::renderError)
+
+
+
+        useCase.messageText()
+            .compose(bindUntilDestroy())
+            .map { it.trim() }
+            .subscribeOn(schedulers.computation())
+            .observeOn(schedulers.mainThread())
+            .subscribe(viewState::renderCallSendIcon, viewState::renderError)
+
     }
 
+    fun onMessageTextChanges(text: CharSequence) {
+        useCase.messageText().onNext(text)
+    }
 
+    fun onMessageFocusChanges(focused: Boolean) {
+        inputFocusChangesSubject.onNext(focused)
+    }
 
+    private fun sendMessage(text: CharSequence) {
+        //...
+    }
+
+    fun onClickSendOrCall() {
+        useCase.messageText()
+            .map { it.trim() }
+            .subscribe {
+                when (it.length) {
+                    0 -> viewState.onClickedCall()
+                    else -> sendMessage(it)
+                }
+            }
+    }
 
 
 }

@@ -53,6 +53,8 @@
     <!-- Chat Page colors-->
     <color name="chat_image_color">#224ff3</color>
     <color name="chat_background">#f5f3f5</color>
+    <color name="chat_message_owner">#dae2fe</color>
+    <color name="chat_message_text">#2e58f3</color>
 
     <!-- Different -->
     <color name="error">#BE1405</color>
