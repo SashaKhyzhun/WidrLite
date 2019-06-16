@@ -3,8 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_chat_bottom_panel_parent"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="4dp"
     android:orientation="vertical">
 
@@ -29,7 +30,7 @@
         android:paddingBottom="8dp"
         android:paddingRight="8dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
@@ -60,7 +61,7 @@
         android:paddingBottom="8dp"
         android:paddingRight="8dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
         app:layout_constraintStart_toEndOf="@+id/item_chat_bottom_panel_layout_contact"
         app:layout_constraintTop_toTopOf="parent">
@@ -86,7 +87,7 @@
         android:paddingBottom="8dp"
         android:paddingRight="8dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
         app:layout_constraintStart_toEndOf="@+id/item_chat_bottom_panel_layout_image"
         app:layout_constraintTop_toTopOf="parent">
@@ -105,25 +106,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/item_round_chat_input"
         android:padding="8dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/item_round_chat_input"
         app:layout_constraintEnd_toStartOf="@+id/item_chat_bottom_panel_layout_call_send"
         app:layout_constraintStart_toEndOf="@+id/item_chat_bottom_panel_layout_photo"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <EditText
             android:id="@+id/item_chat_bottom_panel_et_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:background="@color/transparent"
             android:ems="10"
             android:hint="Message"
-            android:inputType="text"
-            />
+            android:inputType="text" />
 
     </FrameLayout>
 
@@ -139,7 +138,7 @@
         android:paddingBottom="8dp"
         android:paddingRight="8dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_chat_bottom_panel_layout_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
