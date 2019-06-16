@@ -59,5 +59,8 @@
     <string name="fragment_profile_title_contacts">Contacts</string>
     <string name="fragment_profile_body_contacts">248 contacts, 16 in Widr</string>
     <string name="fragment_profile_title_calls">In-app Calls</string>
+    <string name="navigation_drawer_item_profile">Profile</string>
+    <string name="navigation_drawer_item_settings">Settings</string>
+    <string name="navigation_drawer_item_terms">Terms</string>
 
 </resources>
