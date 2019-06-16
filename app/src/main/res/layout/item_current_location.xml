@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:ignore="UseCompoundDrawables">
 
     <ImageView
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginStart="4dp"
-        android:src="@drawable/ic_location_white" />
+        android:src="@drawable/ic_location_white"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/item_current_location_tv_city"
@@ -26,7 +29,8 @@
         android:textStyle="bold"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toStartOf="@+id/item_message_layout_messages"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
 
 

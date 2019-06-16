@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_mutual_contacts_parent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -12,14 +13,14 @@
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:src="@drawable/ic_account"
-        />
+        tools:ignore="ContentDescription" />
 
 
     <TextView
         android:id="@+id/item_mutual_contacts_tv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Request to show 18 mutual contacts"
+        android:text="@string/item_mutual_contacts_text_example"
         android:textAllCaps="false"
         android:textColor="@color/primaryDark"
         android:textSize="12sp"
@@ -38,7 +39,7 @@
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
         android:src="@drawable/item_arrow_forward_gray"
         />
 

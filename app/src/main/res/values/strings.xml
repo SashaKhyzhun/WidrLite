@@ -87,4 +87,34 @@
     <!-- Item Notifications -->
     <string name="item_notifications_button_text">Read</string>
 
+    <!-- Item Slide Up Panel -->
+    <string name="item_slide_up_button_rec_text">Send recommendation  open a chat</string>
+    <string name="item_slide_up_button_share">Share</string>
+    <string name="item_slide_up_button_share_fb">Share to Facebook</string>
+    <string name="item_slide_up_title_description">Description</string>
+    <string name="item_slide_up_text_description_example">If you own an Android, you\'ve probably already worded out how much fun it is to use it watch movies-it has that nice big screen, and the sound quility is surorisingly good to. Now imagine if you knew how to download Android movies without having to pay.</string>
+    <string name="item_slide_up_text_contributions_example">Post has 12 contributions</string>
+    <string name="item_slide_up_text_date_example">today, 8:44 AM</string>
+
+    <!-- Item News Post -->
+    <string name="item_news_post_text_offer">Offre</string>
+    <string name="item_news_post_text_job">Avocat d\'affaires</string>
+    <string name="item_news_post_text_location">à Rennes, France</string>
+    <string name="item_news_post_text_description">Sometimes this is the irony of promoting your business product and services, because…</string>
+
+    <!-- Item Mutual Contacts -->
+    <string name="item_mutual_contacts_text_example">Request to show 18 mutual contacts</string>
+
+    <!-- Item Location -->
+    <string name="item_location_text_example">Algiers</string>
+
+    <!-- Item Conversation -->
+    <string name="item_conversation_text_title">Jason Jackson</string>
+    <string name="item_conversation_text_body">There are millions of users, and there will…</string>
+    <string name="item_conversation_text_job">Graphic Designer - 2D Artist</string>
+    <string name="item_conversation_text_date">11:24 AM</string>
+
+    <!-- Activity Splash -->
+    <string name="activity_splash_text_welcome">Welcome to Widr Lite</string>
+
 </resources>

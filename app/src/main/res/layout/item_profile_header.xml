@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_profile_header"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -24,7 +25,8 @@
             android:layout_alignParentEnd="true"
             android:layout_gravity="end"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp">
+            android:layout_marginEnd="8dp"
+            tools:ignore="UselessParent">
 
             <include layout="@layout/item_burger_icon" />
 
@@ -48,7 +50,8 @@
         android:src="@drawable/ic_image_preview_circle"
         app:layout_constraintBottom_toBottomOf="@+id/item_profile_header_anchor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
 
 
     <TextView
@@ -61,7 +64,7 @@
         android:paddingBottom="8dp"
         android:ellipsize="end"
         android:lines="1"
-        android:text="Alexander Maquin"
+        android:text=""
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/black"

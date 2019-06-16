@@ -20,7 +20,8 @@
         app:layout_constraintBottom_toTopOf="@+id/item_news_post_tv_offer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/item_news_post_tv_offer"
@@ -34,7 +35,7 @@
         android:paddingTop="4dp"
         android:paddingRight="22dp"
         android:paddingBottom="4dp"
-        android:text="Offre"
+        android:text="@string/item_news_post_text_offer"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
@@ -56,7 +57,7 @@
         android:paddingLeft="22dp"
         android:paddingTop="4dp"
         android:paddingRight="22dp"
-        android:text="Avocat d'affaires"
+        android:text="@string/item_news_post_text_job"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
@@ -75,7 +76,7 @@
         android:layout_marginEnd="16dp"
         android:paddingLeft="22dp"
         android:paddingRight="22dp"
-        android:text="à Rennes, France"
+        android:text="@string/item_news_post_text_location"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/white"

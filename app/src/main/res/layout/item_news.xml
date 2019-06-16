@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_message_layout_notifications"
     android:background="@drawable/ic_shadow"
     android:layout_width="match_parent"
@@ -44,7 +45,7 @@
             android:paddingEnd="16dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="Sometimes this is the irony of promoting your bisuness product and services, becase..."
+            android:text="@string/item_news_post_text_description"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
@@ -61,10 +62,11 @@
             android:paddingStart="16dp"
             android:paddingTop="16dp"
             android:paddingBottom="8dp"
-            android:paddingRight="8dp"
+            android:paddingEnd="8dp"
             android:src="@drawable/ic_message"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_news_tv_description" />
+            app:layout_constraintTop_toBottomOf="@+id/item_news_tv_description"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/item_news_iv_share"
@@ -76,7 +78,8 @@
             android:paddingEnd="16dp"
             android:src="@drawable/ic_share"
             app:layout_constraintStart_toEndOf="@+id/item_news_iv_comment"
-            app:layout_constraintTop_toBottomOf="@+id/item_news_tv_description" />
+            app:layout_constraintTop_toBottomOf="@+id/item_news_tv_description"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/item_news_tv_date"
@@ -85,11 +88,11 @@
             android:paddingStart="16dp"
             android:paddingTop="16dp"
             android:paddingEnd="16dp"
-            android:text="today, 8:44 AM"
+            android:text="@string/item_slide_up_text_date_example"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/hint_color"
-            android:textSize="12dp"
+            android:textSize="12sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="@+id/item_news_iv_share"
             app:layout_constraintEnd_toEndOf="parent"
