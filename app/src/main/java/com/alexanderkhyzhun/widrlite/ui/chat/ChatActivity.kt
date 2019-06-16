@@ -1,5 +1,6 @@
 package com.alexanderkhyzhun.widrlite.ui.chat
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -20,6 +21,8 @@ import android.view.ViewTreeObserver
 import com.alexanderkhyzhun.widrlite.utils.setGone
 import com.alexanderkhyzhun.widrlite.utils.setVisible
 import com.alexanderkhyzhun.widrlite.views.RevealBackgroundView
+import com.jakewharton.rxbinding2.view.clicks
+import java.util.concurrent.TimeUnit
 
 /**
  * @author Alexander Khyzhun
@@ -34,37 +37,18 @@ class ChatActivity : BaseActivity(), ChatView {
     lateinit var presenter: ChatPresenter
 
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-//        setupRevealBackground(savedInstanceState)
+        activity_chat_layout_back.clicks()
+            .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
+            .compose(bindUntilDestroy())
+            .observeOn(schedulers.mainThread())
+            .subscribe { finish() }
+
     }
-
-//    private fun setupRevealBackground(savedInstanceState: Bundle?) {
-//        vRevealBackground.setOnStateChangeListener(this)
-//        if (savedInstanceState == null) {
-//            val startingLocation = intent.getIntArrayExtra(ARG_REVEAL_START_LOCATION)
-//            vRevealBackground.viewTreeObserver
-//                .addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-//                    override fun onPreDraw(): Boolean {
-//                        vRevealBackground.viewTreeObserver.removeOnPreDrawListener(this)
-//                        vRevealBackground.startFromLocation(startingLocation)
-//                        return false
-//                    }
-//                })
-//        } else {
-//            vRevealBackground.setToFinishedFrame()
-//        }
-//    }
-
-//    override fun onStateChange(state: Int) {
-//        if (RevealBackgroundView.STATE_FINISHED == state) {
-//            activity_chat_layout_content.setVisible()
-//        } else {
-//            activity_chat_layout_content.setGone()
-//        }
-//    }
 
     override fun renderView(chat: ChatItem) {
         glideManager

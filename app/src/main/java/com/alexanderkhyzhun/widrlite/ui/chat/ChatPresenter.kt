@@ -34,7 +34,9 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
             .doOnError { viewState.hideLoader() }
             .doOnSubscribe { viewState.showLoader() }
             .subscribe({
+
                 //viewState.onAccountCreated()
+
             }, viewState::renderError)
     }
 

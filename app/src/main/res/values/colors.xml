@@ -50,6 +50,10 @@
     <color name="slide_up_panel_facebook">#2d5ea3</color>
     <color name="slide_up_panel_close">#d3d2d3</color>
 
+    <!-- Chat Page colors-->
+    <color name="chat_image_color">#224ff3</color>
+    <color name="chat_background">#f5f3f5</color>
+
     <!-- Different -->
     <color name="error">#BE1405</color>
     <color name="inactive">#505a60</color>
