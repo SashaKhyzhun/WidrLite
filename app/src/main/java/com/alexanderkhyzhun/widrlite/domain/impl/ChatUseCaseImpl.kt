@@ -1,9 +1,9 @@
 package com.alexanderkhyzhun.widrlite.domain.impl
 
-import com.alexanderkhyzhun.widrlite.data.models.MessageItem
 import com.alexanderkhyzhun.widrlite.data.models.ChatItem
 import com.alexanderkhyzhun.widrlite.data.storage.CollectionRepository
 import com.alexanderkhyzhun.widrlite.domain.ChatUseCase
+import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 
@@ -26,11 +26,11 @@ class ChatUseCaseImpl(
     }
 
 
-    override fun fetchMessages(): Observable<List<MessageItem>> {
+    override fun fetchMessages(): Observable<List<Message>> {
         return collectionRepo.fetchMessages()
     }
 
-    override fun updateMessages(data: List<MessageItem>) {
+    override fun updateMessages(data: List<Message>) {
         collectionRepo.updateMessages(data)
     }
 

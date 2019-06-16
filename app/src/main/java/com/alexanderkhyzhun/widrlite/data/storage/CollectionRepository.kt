@@ -1,9 +1,8 @@
 package com.alexanderkhyzhun.widrlite.data.storage
 
-import com.alexanderkhyzhun.widrlite.data.models.MessageItem
 import com.alexanderkhyzhun.widrlite.data.models.ChatItem
 import com.alexanderkhyzhun.widrlite.data.models.NewsItem
-import com.alexanderkhyzhun.widrlite.data.models.response.RPNewsItem
+import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message
 import io.reactivex.Observable
 
 /**
@@ -12,11 +11,11 @@ import io.reactivex.Observable
  */
 interface CollectionRepository {
 
-    fun fetchMessages(): Observable<List<MessageItem>>
+    fun fetchMessages(): Observable<List<Message>>
     fun fetchChatDetails(): Observable<ChatItem>
 
     fun updateChatDetails(item: ChatItem)
-    fun updateMessages(data: List<MessageItem>)
+    fun updateMessages(data: List<Message>)
 
 
     fun fetchNewsFeed(): Observable<List<NewsItem>>

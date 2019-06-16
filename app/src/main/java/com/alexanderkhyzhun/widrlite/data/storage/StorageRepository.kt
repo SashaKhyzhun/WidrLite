@@ -1,6 +1,5 @@
 package com.alexanderkhyzhun.widrlite.data.storage
 
-import android.graphics.Bitmap
 import com.alexanderkhyzhun.widrlite.enums.Account
 
 

@@ -6,6 +6,7 @@ package com.alexanderkhyzhun.widrlite.ui.adapters.models;
  * <p>
  * Should be in Java because service for real-time chatting has bugs with serialization,
  * didn't tried appent serialization on Kotlin to check it it will be working.
+ * </p>
  */
 public class MemberData {
 

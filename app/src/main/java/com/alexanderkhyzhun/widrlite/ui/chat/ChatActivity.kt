@@ -31,13 +31,14 @@ import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.item_chat_bottom_panel.*
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
  * @author Alexander Khyzhun
  * Created on 14 June, 2019
  */
-class ChatActivity : BaseActivity(), ChatView, RoomListener {
+class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
 
     val schedulers: Schedulers by inject()
     val glideManager: RequestManager by inject()
@@ -45,14 +46,22 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener {
     @InjectPresenter
     lateinit var presenter: ChatPresenter
 
-    private lateinit var scaledrone: Scaledrone
-    private lateinit var messageAdapter: MessageAdapter
-    private lateinit var messagesView: ListView
+    private val scaledrone: Scaledrone by lazy {
+        Scaledrone(channelID, MemberData(getRandomName(), getRandomColor()))
+            .also { it.connect(this) }
+    }
+
+    private val messageAdapter: MessageAdapter by lazy {
+        MessageAdapter(this)
+    }
+
+
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+        activity_chat_list_view.adapter = messageAdapter
 
         /**
          * Back button
@@ -169,52 +178,14 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener {
             .observeOn(schedulers.mainThread())
             .subscribe { toast("Droit des sociétés") }
 
-
-
-
-
-
-
-        messageAdapter = MessageAdapter(this)
-        messagesView = findViewById<View>(R.id.activity_chat_list_view) as ListView
-        messagesView.adapter = messageAdapter
-
-        val data = MemberData(getRandomName(), getRandomColor())
-
-        scaledrone = Scaledrone(channelID, data)
-        scaledrone.connect(object : Listener {
-            override fun onOpen() {
-                println("Scaledrone connection open")
-                scaledrone.subscribe(roomName, this@ChatActivity)
-            }
-
-            override fun onOpenFailure(ex: Exception) {
-                System.err.println(ex)
-            }
-
-            override fun onFailure(ex: Exception) {
-                System.err.println(ex)
-            }
-
-            override fun onClosed(reason: String) {
-                System.err.println(reason)
-            }
-        })
-
     }
+
 
     override fun onClickedSend(text: String) {
         scaledrone.publish(roomName, text)
         item_chat_bottom_panel_et_input.text.clear()
     }
 
-    override fun onOpen(room: Room) {
-        println("Conneted to room")
-    }
-
-    override fun onOpenFailure(room: Room, ex: Exception) {
-        System.err.println(ex)
-    }
 
     override fun onMessage(room: Room, receivedMessage: com.scaledrone.lib.Message) {
         val mapper = ObjectMapper()
@@ -225,7 +196,7 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener {
 
             runOnUiThread {
                 messageAdapter.add(message)
-                messagesView.setSelection(messagesView.count - 1)
+                activity_chat_list_view.setSelection(activity_chat_list_view.count - 1)
             }
 
         } catch (e: JsonProcessingException) {
@@ -248,6 +219,30 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener {
             0 -> item_chat_bottom_panel_iv_call_send.setBackgroundResource(R.drawable.ic_call)
             else -> item_chat_bottom_panel_iv_call_send.setBackgroundResource(R.drawable.ic_send)
         }
+    }
+
+    override fun onOpen() {
+        scaledrone.subscribe(roomName, this@ChatActivity)
+    }
+
+    override fun onOpen(room: Room) {
+        Timber.d("Connected to room")
+    }
+
+    override fun onOpenFailure(room: Room, ex: Exception) {
+        Timber.e(ex)
+    }
+
+    override fun onOpenFailure(ex: Exception) {
+        Timber.e(ex)
+    }
+
+    override fun onFailure(ex: Exception) {
+        Timber.e(ex)
+    }
+
+    override fun onClosed(reason: String) {
+        Timber.d(reason)
     }
 
     override fun onClickedCall() {

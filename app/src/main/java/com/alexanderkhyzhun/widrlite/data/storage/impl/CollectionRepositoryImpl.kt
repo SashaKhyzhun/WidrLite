@@ -1,12 +1,11 @@
 package com.alexanderkhyzhun.widrlite.data.storage.impl
 
 import com.alexanderkhyzhun.widrlite.data.Api
-import com.alexanderkhyzhun.widrlite.data.models.MessageItem
 import com.alexanderkhyzhun.widrlite.data.models.ChatItem
 import com.alexanderkhyzhun.widrlite.data.models.NewsItem
-import com.alexanderkhyzhun.widrlite.data.models.response.RPNewsItem
 import com.alexanderkhyzhun.widrlite.data.storage.CollectionRepository
 import com.alexanderkhyzhun.widrlite.data.toNewsItem
+import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message
 import com.alexanderkhyzhun.widrlite.utils.generateRPNews
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
@@ -20,9 +19,9 @@ class CollectionRepositoryImpl(
 ) : CollectionRepository {
 
     private val conversationSubj = BehaviorSubject.create<ChatItem>()
-    private val messagesSubj = BehaviorSubject.create<List<MessageItem>>()
+    private val messagesSubj = BehaviorSubject.create<List<Message>>()
 
-    override fun fetchMessages(): Observable<List<MessageItem>> = messagesSubj
+    override fun fetchMessages(): Observable<List<Message>> = messagesSubj
 
     override fun fetchChatDetails(): Observable<ChatItem> = conversationSubj
 
@@ -30,7 +29,7 @@ class CollectionRepositoryImpl(
         conversationSubj.onNext(item)
     }
 
-    override fun updateMessages(data: List<MessageItem>) {
+    override fun updateMessages(data: List<Message>) {
         messagesSubj.onNext(data)
     }
 
