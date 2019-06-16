@@ -28,5 +28,20 @@
     <string name="item_privaty_title">Droit des sociétés</string>
     <string name="item_privacy_body">Aix-end-Provence</string>
     <string name="item_chat_edit_text_hint">Message</string>
+    <string name="activity_auth_edit_text_hint_first_name">First Name</string>
+    <string name="activity_auth_edit_text_hint_last_name">Last Name</string>
+    <string name="activity_auth_edit_text_hint_phone_number">Phone number</string>
+    <string name="activity_auth_edit_text_hint_email">Your Email</string>
+    <string name="activity_auth_edit_text_hint_password">Password</string>
+    <string name="activity_auth_text_view_terms">By continuing you are indicating that you have read and agree to the Terms of Service and Privacy Policy</string>
+    <string name="activity_auth_text_view_terms_error">You have to accept terms and privacy policy to continue</string>
+    <string name="activity_auth_check_box_text">I accept the terms and conditions</string>
+    <string name="activity_auth_button_sign_up">Sign Up</string>
+    <string name="activity_auth_terms_part_one">By continuing you are indicating that you have read and agree to the</string>
+    <string name="activity_auth_terms_part_two">Terms of Service</string>
+    <string name="activity_auth_terms_part_three">Terms of Service</string>
+    <string name="activity_auth_terms_part_four">and</string>
+    <string name="activity_auth_terms_part_five">Privacy Policy</string>
+    <string name="activity_auth_terms_part_six">Privacy Policy</string>
 
 </resources>

@@ -7,7 +7,7 @@ import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.domain.AuthUseCase
 import com.alexanderkhyzhun.widrlite.domain.modles.ValidationView
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
-import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity.Companion.PHONE_NUMBER_REGEX
+import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity.Companion.FIELD_CHECK_DELAY
 import com.alexanderkhyzhun.widrlite.ui.mvp.BasePresenter
 import com.arellomobile.mvp.InjectViewState
 import io.reactivex.Observable
@@ -16,7 +16,6 @@ import io.reactivex.subjects.PublishSubject
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import java.util.concurrent.TimeUnit
-import java.util.regex.Pattern
 
 /**
  * @author Alexander Khyzhun
@@ -28,7 +27,6 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
 
     val schedulers: Schedulers by inject()
     val useCase: AuthUseCase by inject()
-
 
     var buttonStatus = false
 
@@ -43,11 +41,7 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
         val firstNameFieldState = Observables.combineLatest(
             useCase
                 .firstName()
-                .sample(
-                    BaseActivity.FIELD_CHECK_DELAY,
-                    TimeUnit.MILLISECONDS,
-                    schedulers.computation()
-                )
+                .sample(FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
                 .map(CharSequence::toString), firstNameFocusChangesSubject
         ) { text, focus ->
 
@@ -57,11 +51,7 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
         val lastNameFieldState = Observables.combineLatest(
             useCase
                 .lastName()
-                .sample(
-                    BaseActivity.FIELD_CHECK_DELAY,
-                    TimeUnit.MILLISECONDS,
-                    schedulers.computation()
-                )
+                .sample(FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
                 .map(CharSequence::toString), lastNameFocusChangesSubject
         ) { text, focus ->
 
@@ -71,11 +61,7 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
         val phoneNumberFieldState = Observables.combineLatest(
             useCase
                 .phoneNumber()
-                .sample(
-                    BaseActivity.FIELD_CHECK_DELAY,
-                    TimeUnit.MILLISECONDS,
-                    schedulers.computation()
-                )
+                .sample(FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
                 .map(CharSequence::toString), phoneNumberFocusChangesSubject
         ) { text, focus ->
 
@@ -85,11 +71,7 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
         val emailFieldState = Observables.combineLatest(
             useCase
                 .email()
-                .sample(
-                    BaseActivity.FIELD_CHECK_DELAY,
-                    TimeUnit.MILLISECONDS,
-                    schedulers.computation()
-                )
+                .sample(FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
                 .map(CharSequence::toString), emailFocusChangesSubject
         ) { text, focus ->
 
@@ -99,11 +81,7 @@ class AuthPresenter : BasePresenter<AuthView>(), KoinComponent {
         val passwordFieldState = Observables.combineLatest(
             useCase
                 .password()
-                .sample(
-                    BaseActivity.FIELD_CHECK_DELAY,
-                    TimeUnit.MILLISECONDS,
-                    schedulers.computation()
-                )
+                .sample(FIELD_CHECK_DELAY, TimeUnit.MILLISECONDS, schedulers.computation())
                 .map(CharSequence::toString), passwordFocusChangesSubject
         ) { text, focus ->
 

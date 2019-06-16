@@ -22,10 +22,8 @@ import com.jakewharton.rxbinding2.view.focusChanges
 import com.jakewharton.rxbinding2.widget.checkedChanges
 import com.jakewharton.rxbinding2.widget.textChanges
 import kotlinx.android.synthetic.main.activity_auth.*
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -222,22 +220,32 @@ class AuthActivity : BaseActivity(), AuthView {
      */
     private fun setupMultipleClickableLinks() {
         val spanTxt = SpannableStringBuilder(
-            "By continuing you are indicating that you have read and agree to the "
+            getString(R.string.activity_auth_terms_part_one)
         )
-        spanTxt.append("Terms of Service")
-        spanTxt.setSpan(object : ClickableSpan() {
-            override fun onClick(widget: View) {
-                toast("Terms of services Clicked")
-            }
-        }, spanTxt.length - "Terms of Service".length, spanTxt.length, 0)
+        spanTxt.append(getString(R.string.activity_auth_terms_part_two))
+        spanTxt.setSpan(
+            object : ClickableSpan() {
+                override fun onClick(widget: View) {
+                    toast("Terms of services Clicked")
+                }
+            },
+            spanTxt.length - getString(R.string.activity_auth_terms_part_three).length,
+            spanTxt.length,
+            0
+        )
 
-        spanTxt.append(" and ")
-        spanTxt.append("Privacy Policy")
-        spanTxt.setSpan(object : ClickableSpan() {
-            override fun onClick(widget: View) {
-                toast("Privacy Policy Clicked")
-            }
-        }, spanTxt.length - "Privacy Policy".length, spanTxt.length, 0)
+        spanTxt.append(getString(R.string.activity_auth_terms_part_four))
+        spanTxt.append(getString(R.string.activity_auth_terms_part_five))
+        spanTxt.setSpan(
+            object : ClickableSpan() {
+                override fun onClick(widget: View) {
+                    toast("Privacy Policy Clicked")
+                }
+            },
+            spanTxt.length - getString(R.string.activity_auth_terms_part_six).length,
+            spanTxt.length,
+            0
+        )
 
         activity_auth_tv_terms_and_privacy.movementMethod = LinkMovementMethod.getInstance()
         activity_auth_tv_terms_and_privacy.setText(spanTxt, TextView.BufferType.SPANNABLE)
