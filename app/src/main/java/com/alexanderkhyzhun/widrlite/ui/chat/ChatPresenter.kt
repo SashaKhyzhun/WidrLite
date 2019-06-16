@@ -90,5 +90,15 @@ class ChatPresenter : BasePresenter<ChatView>(), KoinComponent {
         isConnectedSubj.onNext(isConnected)
     }
 
+    fun onClickContact() {
+        viewState.onClickedContact()
+    }
+
+    fun handleContactData(name: String) {
+        onMessageTextChanges(name)
+        onClickSendOrCall(name)
+
+    }
+
 
 }

@@ -1,11 +1,12 @@
 package com.alexanderkhyzhun.widrlite.ui.chat
 
+import android.Manifest
+import android.Manifest.permission.READ_CONTACTS
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
-import android.view.View
-import android.widget.ListView
 import com.alexanderkhyzhun.widrlite.R
 import com.alexanderkhyzhun.widrlite.data.Schedulers
 import com.alexanderkhyzhun.widrlite.data.models.ChatItem
@@ -13,10 +14,6 @@ import com.alexanderkhyzhun.widrlite.ui.adapters.MessageAdapter
 import com.alexanderkhyzhun.widrlite.ui.adapters.models.MemberData
 import com.alexanderkhyzhun.widrlite.ui.adapters.models.Message
 import com.alexanderkhyzhun.widrlite.ui.mvp.BaseActivity
-import com.alexanderkhyzhun.widrlite.utils.getRandomColor
-import com.alexanderkhyzhun.widrlite.utils.getRandomName
-import com.alexanderkhyzhun.widrlite.utils.setGone
-import com.alexanderkhyzhun.widrlite.utils.setVisible
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
@@ -35,6 +32,12 @@ import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
+import android.provider.ContactsContract
+import android.net.Uri
+import android.provider.MediaStore
+import com.alexanderkhyzhun.widrlite.utils.*
+import java.lang.NullPointerException
+
 
 /**
  * @author Alexander Khyzhun
@@ -50,6 +53,7 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
 
     private lateinit var scaledrone: Scaledrone
     private lateinit var messageAdapter: MessageAdapter
+
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,13 +82,14 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
             .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
-            .subscribe { toast("Contact") }
+            .subscribe { presenter.onClickContact() }
 
         item_chat_bottom_panel_iv_contact.clicks()
             .debounce(CLICK_DEBOUNCE, TimeUnit.MILLISECONDS)
             .compose(bindUntilDestroy())
             .observeOn(schedulers.mainThread())
-            .subscribe { toast("contact") }
+            .subscribe { presenter.onClickContact() }
+
 
         /**
          * Image button
@@ -180,6 +185,43 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
     }
 
 
+    override fun onClickedContact() {
+        if (checkSelfPermission(READ_CONTACTS) != PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(READ_CONTACTS), MY_CONTACTS_PERMISSION_CODE)
+        } else {
+            requestContactData()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_PICK_CONTACTS && resultCode == RESULT_OK) {
+
+            try {
+                val name = retrieveContactName(data?.data!!)
+                presenter.handleContactData(name)
+            } catch (ex: Exception) {
+                Timber.e(ex)
+            }
+
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == MY_CONTACTS_PERMISSION_CODE) {
+            if (grantResults[0] == PERMISSION_GRANTED) {
+                requestContactData()
+            }
+        }
+
+    }
+
     override fun onClickedSend(text: String) {
         scaledrone.publish(roomName, text)
         item_chat_bottom_panel_et_input.text.clear()
@@ -272,11 +314,19 @@ class ChatActivity : BaseActivity(), ChatView, RoomListener, Listener {
         showSnack(throwable.message)
     }
 
+    private fun requestContactData() {
+        startActivityForResult(
+            Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI),
+            REQUEST_CODE_PICK_CONTACTS
+        )
+    }
 
     companion object {
         const val TAG = "ChatActivity"
         private const val channelID = "xLrhvoc0sDBIzbgf"
         private const val roomName = "observable-room"
+        private const val REQUEST_CODE_PICK_CONTACTS = 1
+        private const val MY_CONTACTS_PERMISSION_CODE = 12345
         fun getIntent(context: Context?) = Intent(context, ChatActivity::class.java)
     }
 }
